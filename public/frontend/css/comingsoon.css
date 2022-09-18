@@ -199,7 +199,7 @@ html {
     }
 
     .logo{
-    font-size:2.5em;
+    font-size:4.5em;
     font-weight:600;
     }
 
@@ -219,7 +219,7 @@ html {
     .container{
     width:100%;
     height:100vh;
-    background-image:url("https://i.ibb.co/JKFJzJ9/imgonline-com-ua-Compress-To-Size-0-TAu-Lgx-El-Wja.jpg");
+    background-image:url("../img/288337109_1381371785688789_3628662881634499426_n.jpg");
     background-size:cover;
     display:flex;
     align-items:center;

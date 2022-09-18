@@ -14,5 +14,5 @@
     }
     $siteUrl = $protocol.'://127.0.0.1:8000/';
     define('FRONTENDURL',$siteUrl);
-    define('ADMINURL','/cpanel_saiellora');
+    define('ADMINURL','/cpanel');
 ?>
