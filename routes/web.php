@@ -14,7 +14,7 @@ use App\Http\Controllers\admin\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.comingsoon');
 });
 
 Route::prefix(ADMINURL)->group(function () {
