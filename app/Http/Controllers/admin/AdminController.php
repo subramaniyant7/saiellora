@@ -101,6 +101,215 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewadmin')->with($notify['type'], $notify['msg']);
     }
 
+    public function ViewMenu()
+    {
+        $menuDetails = HelperController::getMenuDetails();
+        return view('admin.viewmenu', compact('menuDetails'));
+    }
+
+    public function ManageMenu()
+    {
+        return view('admin.actionmenu');
+    }
+
+    public function ActionMenu($option, $id)
+    {
+        $actionId = decryption($id);
+        $menuData = HelperController::getMenuDetails($actionId);
+        if (count($menuData) == 0) return redirect(ADMINURL . '/viewmenu');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'menu', 'menu_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewmenu')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actionmenu', ['action' => $option, 'data' => $menuData]);
+    }
+
+    public function SaveMenuDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'menu_id', 'edit_menuimage']);
+
+        if ($req->hasFile('menu_image')) {
+            $file = $req->file('menu_image');
+            $destinationPath = public_path('uploads/menu');
+            $fileName = $file->getClientOriginalName();
+            $fileExtension = explode('.', $fileName);
+            if (
+                strtolower(end($fileExtension)) != 'png' && strtolower(end($fileExtension)) != 'jpeg' &&  strtolower(end($fileExtension)) != 'jpg'
+                && strtolower(end($fileExtension)) != 'webp'
+            ) {
+                return redirect()->back()->withInput()->with('error', 'Please upload the valid image!');
+            }
+            $file->move($destinationPath, $fileName);
+            $formData['menu_image'] = $fileName;
+        } else {
+            $formData['menu_image'] =  $req->input('edit_menuimage');
+        }
+        if ($req->input('menu_id') == '') {
+            $saveData = insertQuery('menu', $formData);
+        } else {
+            $productId = decryption($req->input('menu_id'));
+            $saveData = updateQuery('menu', 'menu_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewmenu')->with($notify['type'], $notify['msg']);
+    }
+
+    public function ViewCategory()
+    {
+        $categoryDetails = HelperController::getCategoryDetails();
+        return view('admin.viewcategory', compact('categoryDetails'));
+    }
+
+    public function ManageCategory()
+    {
+        return view('admin.actioncategory');
+    }
+
+    public function ActionCategory($option, $id)
+    {
+        $actionId = decryption($id);
+        $menuData = HelperController::getCategoryDetails($actionId);
+        if (count($menuData) == 0) return redirect(ADMINURL . '/viewcategory');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'category', 'category_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewcategory')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actioncategory', ['action' => $option, 'data' => $menuData]);
+    }
+
+    public function SaveCategoryDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'category_id', 'edit_categoryimage']);
+
+        if ($req->hasFile('category_img')) {
+            $file = $req->file('category_img');
+            $destinationPath = public_path('uploads/category');
+            $fileName = $file->getClientOriginalName();
+            $fileExtension = explode('.', $fileName);
+            if (
+                strtolower(end($fileExtension)) != 'png' && strtolower(end($fileExtension)) != 'jpeg' &&  strtolower(end($fileExtension)) != 'jpg'
+                && strtolower(end($fileExtension)) != 'webp'
+            ) {
+                return redirect()->back()->withInput()->with('error', 'Please upload the valid image!');
+            }
+            $file->move($destinationPath, $fileName);
+            $formData['category_img'] = $fileName;
+        } else {
+            $formData['category_img'] =  $req->input('edit_categoryimage');
+        }
+        if ($req->input('category_id') == '') {
+            $saveData = insertQuery('category', $formData);
+        } else {
+            $productId = decryption($req->input('category_id'));
+            $saveData = updateQuery('category', 'category_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewcategory')->with($notify['type'], $notify['msg']);
+    }
+
+    public function ViewSubCategory()
+    {
+        $subcategoryDetails = HelperController::getSubCategoryDetails();
+        return view('admin.viewsubcategory', compact('subcategoryDetails'));
+    }
+
+    public function ManageSubCategory()
+    {
+        return view('admin.actionsubcategory');
+    }
+
+    public function ActionSubCategory($option, $id)
+    {
+        $actionId = decryption($id);
+        $subCategoryData = HelperController::getSubCategoryDetails($actionId);
+        if (count($subCategoryData) == 0) return redirect(ADMINURL . '/viewsubcategory');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'subcategory', 'subcategory_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actionsubcategory', ['action' => $option, 'data' => $subCategoryData]);
+    }
+
+    public function SaveSubCategoryDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'subcategory_id', 'edit_subcategoryimage']);
+
+        if ($req->hasFile('subcategory_img')) {
+            $file = $req->file('subcategory_img');
+            $destinationPath = public_path('uploads/subcategory');
+            $fileName = $file->getClientOriginalName();
+            $fileExtension = explode('.', $fileName);
+            if (
+                strtolower(end($fileExtension)) != 'png' && strtolower(end($fileExtension)) != 'jpeg' &&  strtolower(end($fileExtension)) != 'jpg'
+                && strtolower(end($fileExtension)) != 'webp'
+            ) {
+                return redirect()->back()->withInput()->with('error', 'Please upload the valid image!');
+            }
+            $file->move($destinationPath, $fileName);
+            $formData['subcategory_img'] = $fileName;
+        } else {
+            $formData['subcategory_img'] =  $req->input('edit_subcategoryimage');
+        }
+        if ($req->input('subcategory_id') == '') {
+            $saveData = insertQuery('subcategory', $formData);
+        } else {
+            $productId = decryption($req->input('subcategory_id'));
+            $saveData = updateQuery('subcategory', 'subcategory_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], $notify['msg']);
+    }
+
+
+
+
+
+
+    public function ViewFAQ()
+    {
+        $faqDetails = HelperController::getFAQDetails();
+        return view('admin.viewfaq', compact('faqDetails'));
+    }
+
+    public function ManageFAQ()
+    {
+        return view('admin.actionfaq');
+    }
+
+    public function ActionFAQ($option, $id)
+    {
+        $actionId = decryption($id);
+        $faqData = HelperController::getFAQDetails($actionId);
+        if (count($faqData) == 0) return redirect(ADMINURL . '/viewfaq');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'faq', 'faq_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewfaq')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actionfaq', ['action' => $option, 'data' => $faqData]);
+    }
+
+    public function SaveFAQDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'faq_id']);
+        if ($req->input('faq_id') == '') {
+            $saveData = insertQuery('faq', $formData);
+        } else {
+            $productId = decryption($req->input('faq_id'));
+            $saveData = updateQuery('faq', 'faq_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewfaq')->with($notify['type'], $notify['msg']);
+    }
+
+
 
     public function ViewProduct()
     {

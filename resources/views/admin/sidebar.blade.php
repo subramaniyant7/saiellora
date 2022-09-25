@@ -29,6 +29,38 @@
             </a>
         </li>
 
+
+        <li>
+            <a class="{{ $title == 'View Menu' ? 'active' :'' }}" href="{{ url(ADMINURL.'/viewmenu') }}">
+                <div class="pull-left">
+                    <i class="fa fa-briefcase mr-20"></i>
+                    <span class="right-nav-text">Menu</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
+
+        <li>
+            <a class="{{ $title == 'View Category' ? 'active' :'' }}" href="{{ url(ADMINURL.'/viewcategory') }}">
+                <div class="pull-left">
+                    <i class="fa fa-briefcase mr-20"></i>
+                    <span class="right-nav-text">Category</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
+        <li>
+            <a class="{{ $title == 'View Sub-Category' ? 'active' :'' }}" href="{{ url(ADMINURL.'/viewsubcategory') }}">
+                <div class="pull-left">
+                    <i class="fa fa-briefcase mr-20"></i>
+                    <span class="right-nav-text">Sub-Category</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
         <li>
             <a class="{{ $title == 'View Products' ? 'active' :'' }}" href="{{ url(ADMINURL.'/viewproduct') }}">
                 <div class="pull-left">
@@ -44,6 +76,16 @@
                 <div class="pull-left">
                     <i class="fa fa-briefcase mr-20"></i>
                     <span class="right-nav-text">Banner Images</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+
+        <li>
+            <a class="{{ $title == 'View FAQ' ? 'active' :'' }}" href="{{ url(ADMINURL.'/viewfaq') }}">
+                <div class="pull-left">
+                    <i class="fa fa-briefcase mr-20"></i>
+                    <span class="right-nav-text">FAQ</span>
                 </div>
                 <div class="clearfix"></div>
             </a>

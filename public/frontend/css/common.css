@@ -1,0 +1,16 @@
+.logo img {
+    width: 95px;
+}
+
+@media (min-width: 768px) {
+    .logo img {
+        width: 125px;
+    }
+}
+
+.section-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+}

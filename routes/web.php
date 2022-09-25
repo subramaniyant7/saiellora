@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('frontend.comingsoon');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+
+
 Route::prefix(ADMINURL)->group(function () {
     Route::get('/', function () { return view('admin.login'); })->middleware('adminloginvalidate');
     Route::post('/login', [AdminController::class, 'AdminLogin'])->middleware('adminloginvalidate');
@@ -31,6 +36,22 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/actionadmin/{option}/{id}', [AdminController::class, 'ActionAdmin']);
         Route::post('/saveadmindetails', [AdminController::class, 'SaveAdminDetails']);
 
+        Route::get('/viewmenu', [AdminController::class, 'ViewMenu']);
+        Route::get('/managemenu', [AdminController::class, 'ManageMenu']);
+        Route::get('/actionmenu/{option}/{id}', [AdminController::class, 'ActionMenu']);
+        Route::post('/savemenudetails', [AdminController::class, 'SaveMenuDetails']);
+
+        Route::get('/viewcategory', [AdminController::class, 'ViewCategory']);
+        Route::get('/managecategory', [AdminController::class, 'ManageCategory']);
+        Route::get('/actioncategory/{option}/{id}', [AdminController::class, 'ActionCategory']);
+        Route::post('/savecategorydetails', [AdminController::class, 'SaveCategoryDetails']);
+
+        Route::get('/viewsubcategory', [AdminController::class, 'ViewSubCategory']);
+        Route::get('/managesubcategory', [AdminController::class, 'ManageSubCategory']);
+        Route::get('/actionsubcategory/{option}/{id}', [AdminController::class, 'ActionSubCategory']);
+        Route::post('/savesubcategorydetails', [AdminController::class, 'SaveSubCategoryDetails']);
+
+
         Route::get('/viewproduct', [AdminController::class, 'ViewProduct']);
         Route::get('/manageproduct', [AdminController::class, 'ManageProduct']);
         Route::get('/actionproduct/{option}/{id}', [AdminController::class, 'ActionProduct']);
@@ -40,6 +61,11 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/managebanner', [AdminController::class, 'ManageBanner']);
         Route::get('/actionbanner/{option}/{id}', [AdminController::class, 'ActionBanner']);
         Route::post('/savebannerdetails', [AdminController::class, 'SaveBannerDetails']);
+
+        Route::get('/viewfaq', [AdminController::class, 'ViewFAQ']);
+        Route::get('/managefaq', [AdminController::class, 'ManageFAQ']);
+        Route::get('/actionfaq/{option}/{id}', [AdminController::class, 'ActionFAQ']);
+        Route::post('/savefaqdetails', [AdminController::class, 'SaveFAQDetails']);
 
         Route::get('/viewblog', [AdminController::class, 'ViewBlog']);
         Route::get('/manageblog', [AdminController::class, 'ManageBlog']);

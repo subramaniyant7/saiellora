@@ -60,6 +60,11 @@ function statustype(){
     return array('Active','De-Active');
 }
 
+
+function typeOfMetal(){
+    return array('Metal 1','Metal 2');
+}
+
 function verifiedStatus(){
     return array('Activate','De-Activate');
 }
@@ -148,17 +153,11 @@ function getAdminInfo($id){
     return DB::table('admin_details')->where('admin_id',$id)->get();
 }
 
-function breedInfoById($id){
-    return DB::table('breeds_info')->where('breed_id',$id)->get();
-}
-
 function getProducts($id){
     return DB::table('products')->where('product_id',$id)->get();
 }
 
-function deliveryDays(){
-    return ['Monday','Friday'];
-}
+
 
 function getUser($id){
     return DB::table('user_details')->where('user_id',$id)->get();
@@ -168,8 +167,12 @@ function getAddress($id){
     return DB::table('user_address')->where('user_id',$id)->get();
 }
 
-function getMyDeliveryProducts($id){
-    return DB::table("deliveryinfo_products")->where('deliveryinfo_id', $id)->get();
+function getMenuDetails($id){
+    return DB::table("menu")->where('menu_id', $id)->get();
+}
+
+function getCategoryDetails($id){
+    return DB::table("category")->where('category_id', $id)->get();
 }
 
 ?>

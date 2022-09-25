@@ -62,10 +62,24 @@
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label mb-10 text-left">Product Price<span class="help"> *</span></label>
+                                                    <label class="col-md-4 control-label mb-10 text-left">Product Size<span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="number" step="any" class="form-control mb-10" name="product_price" required
-                                                         value ="{{ isset($action) && $action=='edit' ? $data[0]->product_price : old('product_price') }}"  >
+                                                        <input type="number" step="any" class="form-control mb-10" name="product_size" required
+                                                         value ="{{ isset($action) && $action=='edit' ? $data[0]->product_size : old('product_size') }}"  >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10  text-left">Type of Metal<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <select class="selectpicker" name="product_type_of_metal" data-style="form-control btn-default btn-outline" required>
+                                                            <option value="">Select</option>
+                                                            @foreach (typeOfMetal() as $k => $metal)
+                                                                <option value="{{ $k+1 }}" {{ ((isset($action) && $action == 'edit') && $data[0]->product_type_of_metal == $k+1 ) ? 'selected' : '' }} >{{ $metal }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

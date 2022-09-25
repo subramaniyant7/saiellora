@@ -26,6 +26,34 @@ class HelperController extends Controller
         return $admin->get();
     }
 
+    static function getMenuDetails($id = '')
+    {
+        $data = DB::table("menu");
+        if ($id != '') $data->where('menu_id', $id);
+        return $data->orderBy('menu_id', 'desc')->get();
+    }
+
+    static function getFAQDetails($id = '')
+    {
+        $data = DB::table("faq");
+        if ($id != '') $data->where('faq_id', $id);
+        return $data->orderBy('faq_id', 'desc')->get();
+    }
+
+    static function getCategoryDetails($id = '')
+    {
+        $data = DB::table("category");
+        if ($id != '') $data->where('category_id', $id);
+        return $data->orderBy('category_id', 'desc')->get();
+    }
+
+    static function getSubCategoryDetails($id = '')
+    {
+        $data = DB::table("subcategory");
+        if ($id != '') $data->where('subcategory_id', $id);
+        return $data->orderBy('subcategory_id', 'desc')->get();
+    }
+
     static function getProductDetails($id = '')
     {
         $data = DB::table("products");
