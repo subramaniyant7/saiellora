@@ -12,7 +12,7 @@
         $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
         define('SITEURL',$protocol.'://'.$_SERVER['HTTP_HOST'].'/');
     }
-    $siteUrl = $protocol.'://127.0.0.1:8000/';
+    $siteUrl = $protocol.'://www.saielloravilakkukadai.com/';
     define('FRONTENDURL',$siteUrl);
     define('ADMINURL','/cpanel_admin');
 ?>
