@@ -34,6 +34,7 @@
                                             <th>Blog Title</th>
                                             <th>Blog Image</th>
                                             <th>Blog Description</th>
+                                            <th>View Home Page</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -50,7 +51,9 @@
                                                 <td>{{ $blog->blog_title }}</td>
                                                 <td><img style="width:100%;height:100px;" src="{{ URL::asset('uploads/blog/'.$blog->blog_image)}}" ></td>
                                                 <td>{{ $blog->blog_description }}</td>
+                                                <td>{{ $blog->blog_home == 1 ? 'Yes' : 'No' }}</span> </td>
                                                 <td><span class="label {{ $stClass}}">{{ statustype()[$blog->status-1] }}</span> </td>
+
                                                 <td class="text-nowrap">
                                                     <a href="{{ url(ADMINURL.'/actionblog/edit/'.encryption($blog->blog_id)) }}" class="mr-25" data-toggle="tooltip" data-original-title="Edit">
                                                         <i class="fa fa-pencil text-inverse m-r-10"></i>

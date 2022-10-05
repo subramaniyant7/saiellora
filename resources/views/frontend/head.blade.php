@@ -1,33 +1,20 @@
 <head>
-    <meta charset="utf-8" />
-    <meta name="smart-seo-integrated" content="true" />
-    <title>Saiellora| Joy of gifting. Premium gifts, Return gifts &amp; Favour bags</title>
-    <meta name='description'
-        content='Saiellora, specializing in premium Indian handicrafts is a retail and bulk-gifting company that is exquisite and second to none !! We offer a wide range of traditional handicrafts with an Indian touch across various categories in premium gifts, utility gifts, corporate gifts and return gifts in the desire to meet and fo' />
+    <title>Saiellora Vilakkukadai</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/all.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/custom.css') }}">
 
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-    <link rel="preload" href="{{ URL::asset('frontend/css/stylesc472.css') }}">
-
-    <link rel="stylesheet" href="{{ URL::asset('frontend/css/all.css') }}">
-    <link rel="stylesheet" type="text/css" media="all" href="{{ URL::asset('frontend/css/shopify_v2.css') }}">
-    <link id="judgeme_widget_leex_css" rel="stylesheet" type="text/css" media="nope!" onload="this.media='all'"
-        href="{{ URL::asset('frontend/css/leex.css') }}">
-
-
-    <link href="{{ URL::asset('frontend/css/common.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ URL::asset('frontend/css/stylesc472.css?v=180539562189466942381647955644') }}" rel="stylesheet"
-        type="text/css" media="all" />
-
-
-
-
-
-    <style>
-        @font-face {
-            font-family: 'Twentieth Century', 'Twentieth Century,sans-serif';
-            src: url('/fonts/TwentiethCenturyforKenmoreMedium.ttf');
-        }
-    </style>
-
+    <script src="{{ URL::asset(FRONTEND . '/js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset(FRONTEND . '/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset(FRONTEND . '/js/popper.min.js') }}"></script>
+    <script src="{{ URL::asset(FRONTEND . '/js/slick.js') }}"></script>
+    <script src="{{ URL::asset(FRONTEND . '/js/custom.js') }}"></script>
+    <script>
+        let siteurl = "{{ FRONTENDURL }}";
+    </script>
 </head>

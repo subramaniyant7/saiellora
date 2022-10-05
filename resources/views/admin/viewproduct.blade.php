@@ -31,11 +31,16 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
+                                            <th>Product Category</th>
+                                            <th>Product SubCategory</th>
                                             <th>Product Name</th>
                                             <th>Product Image</th>
+                                            <th>Product Price</th>
                                             <th>Product Description</th>
                                             <th>Product Size</th>
                                             <th>Product Type of Metal</th>
+                                            <th>Is Latest</th>
+                                            <th>Is MOst Popular</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -43,17 +48,43 @@
                                     <tbody>
                                         @foreach ($productDetails as $k => $product)
                                             @php
-
                                                 $stClass = ($product->status == 1) ? 'label-success' : 'label-danger';
                                                 $stTxt = ($product->status == 1) ? 'Active' : 'label-danger';
+                                                $menu = $category = $subcategory = $productMetal = $productSize = '';
+
+                                                $categoryInfo = App\Http\Controllers\admin\HelperController::getCategoryDetails($product->product_category);
+                                                if(count($categoryInfo)){
+                                                    $category = $categoryInfo[0]->category_name;
+                                                }
+
+                                                $subcategoryInfo = App\Http\Controllers\admin\HelperController::getSubCategoryDetails($product->product_subcategory);
+                                                if(count($subcategoryInfo)){
+                                                    $subcategory = $subcategoryInfo[0]->subcategory_name;
+                                                }
+
+                                                $productMetalInfo = App\Http\Controllers\admin\HelperController::getProductMetal($product->product_size);
+                                                if(count($productMetalInfo)){
+                                                    $productMetal = $productMetalInfo[0]->product_metal_name;
+                                                }
+
+                                                $productSizeInfo = App\Http\Controllers\admin\HelperController::getProductSize($product->product_type_of_metal);
+                                                if(count($productSizeInfo)){
+                                                    $productSize = $productSizeInfo[0]->product_size_name;
+                                                }
                                             @endphp
                                             <tr>
                                                 <td>{{ $k+1 }}</td>
+
+                                                <td>{{ $category }}</td>
+                                                <td>{{ $subcategory }}</td>
                                                 <td>{{ $product->product_name }}</td>
                                                 <td><img style="width:100%;height:100px;" src="{{ URL::asset('uploads/products/'.$product->product_image)}}" ></td>
+                                                <td>Rs.{{ $product->product_price }}</td>
                                                 <td>{{ $product->product_description }}</td>
-                                                <td>{{ $product->product_size }}</td>
-                                                <td>{{ typeOfMetal()[$product->product_type_of_metal-1] }}</td>
+                                                <td>{{ $productMetal }}</td>
+                                                <td>{{ $productSize }}</td>
+                                                <td>{{ $product->product_latest == 1 ? 'Yes' : 'No' }}</td>
+                                                <td>{{ $product->product_most_popular == 1 ? 'Yes' : 'No' }}</td>
                                                 <td><span class="label {{ $stClass}}">{{ statustype()[$product->status-1] }}</span> </td>
                                                 <td class="text-nowrap">
                                                     <a href="{{ url(ADMINURL.'/actionproduct/edit/'.encryption($product->product_id)) }}" class="mr-25" data-toggle="tooltip" data-original-title="Edit">

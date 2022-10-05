@@ -27,7 +27,7 @@
                                     <div class="row">
                                         <div class="col-md-7 col-md-offset-3">
 
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label mb-10  text-left">Menu Name<span class="help"> *</span></label>
                                                     <div class="col-md-8">
@@ -39,7 +39,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -61,6 +61,18 @@
                                                          @if(isset($data) && $data[0]->category_img != '')
                                                          <span><img style="height: 200px;margin-top: 1em;" src="{{ URL::asset('uploads/category/'.$data[0]->category_img)}}"></span>
                                                      @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mb-30 mt-10">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left"></label>
+                                                    <div class="col-md-4" style="display: flex">
+                                                        <input type="checkbox" class="form-control" name="category_homepage"
+                                                            style="height: 15px; width: 9%; margin-right: 10px;" {{ isset($action) && $action == 'edit' && $data[0]->category_homepage == 1 ? 'checked' : ''}}
+                                                            >
+                                                        <span>Home page</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -62,6 +62,65 @@ class AdminController extends Controller
         return back()->with('error', 'User not found');
     }
 
+
+    public function HomePageVideo(){
+        $homeVideo = HelperController::getHomepageVideo();
+        return view('admin.homepagevideo', compact('homeVideo'));
+    }
+
+    public function SaveHomePageVideo(Request $request){
+        $formData =  $request->except(['_token', 'home_video_id', 'edit_homeimage']);
+
+        if ($request->hasFile('home_video_image')) {
+            $file = $request->file('home_video_image');
+            $destinationPath = public_path('uploads/homepage');
+            $fileName = $file->getClientOriginalName();
+            $fileExtension = explode('.', $fileName);
+            if (
+                strtolower(end($fileExtension)) != 'png' && strtolower(end($fileExtension)) != 'jpeg' &&  strtolower(end($fileExtension)) != 'jpg'
+                && strtolower(end($fileExtension)) != 'webp'
+            ) {
+                return redirect()->back()->withInput()->with('error', 'Please upload the valid image!');
+            }
+            $file->move($destinationPath, $fileName);
+            $formData['home_video_image'] = $fileName;
+        } else {
+            $formData['home_video_image'] =  $request->input('edit_homeimage');
+        }
+
+        if ($request->input('home_video_id') == '') {
+            $saveData = insertQueryId('homepage_video', $formData);
+            $homepageId = $saveData;
+        } else {
+            $homepageId = decryption($request->input('home_video_id'));
+            $saveData = updateQuery('homepage_video', 'home_video_id', $homepageId, $formData);
+        }
+
+        $notify = notification($saveData);
+        return back()->with($notify['type'], $notify['msg']);
+    }
+
+
+    public function GetMenuCategory(Request $request){
+        $status = false;
+        $menuid = $request->input('menu_id');
+        $responseData =  DB::table('category')->where([['menu_id', $menuid],['status', 1]])->get();
+        if(count($responseData)){
+            $status = true;
+        }
+        return response()->json(['status' => $status, 'data' => $responseData]);
+    }
+
+    public function GetCatSubCategory(Request $request){
+        $status = false;
+        $categoryid = $request->input('category_id');
+        $responseData =  DB::table('subcategory')->where([['category_id', $categoryid],['status', 1]])->get();
+        if(count($responseData)){
+            $status = true;
+        }
+        return response()->json(['status' => $status, 'data' => $responseData]);
+    }
+
     public function ViewAdmin()
     {
         $adminDetails = HelperController::getAdminDetailsExceptLoggedIn();
@@ -156,6 +215,82 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewmenu')->with($notify['type'], $notify['msg']);
     }
 
+    public function ViewProductMetal()
+    {
+        $productMetal = HelperController::getProductMetal();
+        return view('admin.viewproductmetal', compact('productMetal'));
+    }
+
+    public function ManageProductMetal()
+    {
+        return view('admin.actionproductmetal');
+    }
+
+    public function ActionProductMetal($option, $id)
+    {
+        $actionId = decryption($id);
+        $productMetalData = HelperController::getProductMetal($actionId);
+        if (count($productMetalData) == 0) return redirect(ADMINURL . '/viewproductmetal');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'product_metal', 'product_metal_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewproductmetal')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actionproductmetal', ['action' => $option, 'data' => $productMetalData]);
+    }
+
+    public function SaveProductMetalDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'product_metal_id']);
+        if ($req->input('product_metal_id') == '') {
+            $saveData = insertQuery('product_metal', $formData);
+        } else {
+            $productId = decryption($req->input('product_metal_id'));
+            $saveData = updateQuery('product_metal', 'product_metal_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewproductmetal')->with($notify['type'], $notify['msg']);
+    }
+
+    public function ViewProductSize()
+    {
+        $productMetalSize = HelperController::getProductSize();
+        return view('admin.viewproductsize', compact('productMetalSize'));
+    }
+
+    public function ManageProductSize()
+    {
+        return view('admin.actionproductsize');
+    }
+
+    public function ActionProductSize($option, $id)
+    {
+        $actionId = decryption($id);
+        $productMetalData = HelperController::getProductSize($actionId);
+        if (count($productMetalData) == 0) return redirect(ADMINURL . '/viewproductsize');
+
+        if ($option == 'delete') {
+            $delete = deleteQuery($actionId, 'product_size', 'product_size_id');
+            $notify = notification($delete);
+            return redirect(ADMINURL . '/viewproductsize')->with($notify['type'], 'Data Deleted Successfully');
+        }
+        return view('admin.actionproductsize', ['action' => $option, 'data' => $productMetalData]);
+    }
+
+    public function SaveProductSizeDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'product_size_id']);
+        if ($req->input('product_size_id') == '') {
+            $saveData = insertQuery('product_size', $formData);
+        } else {
+            $productId = decryption($req->input('product_size_id'));
+            $saveData = updateQuery('product_size', 'product_size_id', $productId, $formData);
+        }
+        $notify = notification($saveData);
+        return redirect(ADMINURL . '/viewproductsize')->with($notify['type'], $notify['msg']);
+    }
+
     public function ViewCategory()
     {
         $categoryDetails = HelperController::getCategoryDetails();
@@ -201,6 +336,14 @@ class AdminController extends Controller
         } else {
             $formData['category_img'] =  $req->input('edit_categoryimage');
         }
+
+        $product_latest = 0;
+        if((array_key_exists('category_homepage', $formData)) && $formData['category_homepage'] == 'on'){
+            $product_latest = 1;
+        }
+
+        $formData['category_homepage'] = $product_latest;
+
         if ($req->input('category_id') == '') {
             $saveData = insertQuery('category', $formData);
         } else {
@@ -266,11 +409,6 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], $notify['msg']);
     }
 
-
-
-
-
-
     public function ViewFAQ()
     {
         $faqDetails = HelperController::getFAQDetails();
@@ -309,8 +447,6 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewfaq')->with($notify['type'], $notify['msg']);
     }
 
-
-
     public function ViewProduct()
     {
         $productDetails = HelperController::getProductDetails();
@@ -333,12 +469,16 @@ class AdminController extends Controller
             $notify = notification($delete);
             return redirect(ADMINURL . '/viewproduct')->with($notify['type'], 'Data Deleted Successfully');
         }
-        return view('admin.actionproduct', ['action' => $option, 'data' => $productData]);
+        return view('admin.actionproduct', ['action' => $option, 'data' => $productData, 'moreimages'=>HelperController::getMoreImages($actionId)]);
     }
 
     public function SaveProductDetails(Request $req)
     {
-        $formData =  $req->except(['_token', 'product_id', 'edit_productimage']);
+        $formData =  $req->except(['_token', 'product_id', 'edit_productimage', 'category_hidden','subcategory_hidden','product_subimage']);
+
+        // echo '<pre>';
+        // print_r($formData);
+        // // exit;
 
         if ($req->hasFile('product_image')) {
             $file = $req->file('product_image');
@@ -356,12 +496,58 @@ class AdminController extends Controller
         } else {
             $formData['product_image'] =  $req->input('edit_productimage');
         }
+
+        $product_latest = 0;
+        $product_most_popular = 0;
+
+        // echo $formData['product_latest'];
+        if((array_key_exists('product_latest', $formData)) && $formData['product_latest'] == 'on'){
+            echo 'ppp';
+            $product_latest = 1;
+        }
+
+        if((array_key_exists('product_most_popular', $formData)) && $formData['product_most_popular'] == 'on'){
+            $product_most_popular = 1;
+        }
+
+
+        $formData['product_latest'] = $product_latest;
+        $formData['product_most_popular'] = $product_most_popular;
+
+
+        // print_r($formData);
+        // exit;
+
+
+
         if ($req->input('product_id') == '') {
-            $saveData = insertQuery('products', $formData);
+            $saveData = insertQueryId('products', $formData);
+            $productId = $saveData;
         } else {
             $productId = decryption($req->input('product_id'));
             $saveData = updateQuery('products', 'product_id', $productId, $formData);
         }
+
+        if($req->hasFile('product_subimage')){
+            $moreImages = $req->file('product_subimage');
+            $addtionalImageData = array('product_id'=>$productId);
+            foreach($moreImages as $k => $moreImage){
+                $moredestinationPath = 'uploads/products/additional';
+                $morefileName = ($k+1).'_'.$formData['product_name'].'_'.$moreImage->getClientOriginalName();
+                $moreImage->move($moredestinationPath,$morefileName);
+                if(HelperController::imageExist($productId,$k+1)==0) {
+                    $addtionalImageData['product_image'] = $morefileName;
+                    $addtionalImageData['row'] = $k+1;
+                    $moresaveData = insertQuery('product_images',$addtionalImageData);
+                }else{
+                    $addtionalImageData['product_image'] = $morefileName;
+                    $update = DB::table('product_images')->where([['product_id',$productId],['row',$k+1]])->update($addtionalImageData);
+                }
+            }
+        }
+
+
+
         $notify = notification($saveData);
         return redirect(ADMINURL . '/viewproduct')->with($notify['type'], $notify['msg']);
     }

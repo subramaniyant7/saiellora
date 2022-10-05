@@ -133,6 +133,8 @@ function updateQuery($table,$match,$id,$data){
         $update = DB::table($table)->where($match, $id)->update($data);
         return true;
     }catch(Exception $e){
+        print_r($e->getMessage());
+        exit;
         return false;
     }
 }
@@ -174,5 +176,20 @@ function getMenuDetails($id){
 function getCategoryDetails($id){
     return DB::table("category")->where('category_id', $id)->get();
 }
+
+function getProductMetal($id){
+    return DB::table("product_metal")->where('product_metal_id', $id)->get();
+}
+
+function getProductSize($id){
+    return DB::table("product_size")->where('product_size_id', $id)->get();
+}
+
+function PrintData($data){
+    echo '<pre>';
+    print_r($data);
+
+}
+
 
 ?>

@@ -26,6 +26,13 @@ class HelperController extends Controller
         return $admin->get();
     }
 
+    static function getHomepageVideo($id = '')
+    {
+        $homevideo = DB::table('homepage_video');
+        if ($id != '')  $homevideo->where('home_video_id', $id);
+        return $homevideo->get();
+    }
+
     static function getMenuDetails($id = '')
     {
         $data = DB::table("menu");
@@ -38,6 +45,20 @@ class HelperController extends Controller
         $data = DB::table("faq");
         if ($id != '') $data->where('faq_id', $id);
         return $data->orderBy('faq_id', 'desc')->get();
+    }
+
+    static function getProductMetal($id = '')
+    {
+        $data = DB::table("product_metal");
+        if ($id != '') $data->where('product_metal_id', $id);
+        return $data->orderBy('product_metal_id', 'desc')->get();
+    }
+
+    static function getProductSize($id = '')
+    {
+        $data = DB::table("product_size");
+        if ($id != '') $data->where('product_size_id', $id);
+        return $data->orderBy('product_size_id', 'desc')->get();
     }
 
     static function getCategoryDetails($id = '')
@@ -82,5 +103,12 @@ class HelperController extends Controller
         return false;
     }
 
+    static function imageExist($id,$row){
+        return DB::table('product_images')->where([['product_id',$id],['row',$row]])->count();
+    }
+
+    static function getMoreImages($id){
+        return DB::table('product_images')->where('product_id',$id)->get();
+    }
 
 }

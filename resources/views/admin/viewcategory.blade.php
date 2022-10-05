@@ -31,7 +31,6 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Menu Name</th>
                                             <th>Category Name</th>
                                             <th>Category Image</th>
                                             <th>Status</th>
@@ -41,13 +40,13 @@
                                     <tbody>
                                         @foreach ($categoryDetails as $k => $category)
                                             @php
-                                                $menuName = getMenuDetails($category->menu_id);
+
                                                 $stClass = ($category->status == 1) ? 'label-success' : 'label-danger';
                                                 $stTxt = ($category->status == 1) ? 'Active' : 'label-danger';
                                             @endphp
                                             <tr>
                                                 <td>{{ $k+1 }}</td>
-                                                <td>{{ count($menuName) ? $menuName[0]->menu_name : '' }}</td>
+
                                                 <td>{{ $category->category_name }}</td>
                                                 <td>
                                                     @if($category->category_img != '')

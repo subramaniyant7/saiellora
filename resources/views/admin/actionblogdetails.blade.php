@@ -60,6 +60,22 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-12 mb-10">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10  text-left">Show Home Page</label>
+                                                    <div class="col-md-8">
+                                                        <select class="selectpicker" name="blog_home" data-style="form-control btn-default btn-outline">
+                                                            <option value="">Select</option>
+                                                            @foreach (statustype() as $k => $statustype)
+                                                                <option value="{{ $k+1 }}" {{ ((isset($action) && $action == 'edit') && $data[0]->blog_home == $k+1 ) ? 'selected' : '' }} >{{ $statustype }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                             @if(isset($action) && $action =='edit')
                                             <div class="col-md-12 mb-10">
                                                 <div class="form-group">

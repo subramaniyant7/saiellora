@@ -33,7 +33,7 @@
                                             <th>S.No</th>
                                             <th>Category Name</th>
                                             <th>Sub-Category Name</th>
-                                            <th>Category Image</th>
+                                            <th>Sub-Category Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>

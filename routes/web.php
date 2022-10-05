@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\admin\AdminController;
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +14,24 @@ use App\Http\Controllers\admin\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.comingsoon');
-});
+// Route::get('/', function () {
+//     return view('frontend.comingsoon');
+// });
 
-Route::get('/home', function () {
-    return view('welcome');
-});
+
+Route::get('/', [FrontendController::class, 'Home']);
+Route::get('/terms_conditions', [FrontendController::class, 'TermsConditions']);
+Route::get('/privacy_policy', [FrontendController::class, 'PrivacyPolicy']);
+Route::get('/terms_service', [FrontendController::class, 'TermsService']);
+Route::get('/about_us', [FrontendController::class, 'AboutUs']);
+Route::get('/contact_us', [FrontendController::class, 'ContactUs']);
+Route::get('/contact_form', [FrontendController::class, 'ContactForm']);
+Route::post('/contact_form', [FrontendController::class, 'HandleContactForm']);
+Route::get('/blogs', [FrontendController::class, 'Blogs']);
+Route::get('/faq', [FrontendController::class, 'FAQ']);
+
+Route::get('/products', [FrontendController::class, 'Category']);
+Route::get('/productdetails/{id}', [FrontendController::class, 'ProductDetails']);
 
 
 Route::prefix(ADMINURL)->group(function () {
@@ -31,6 +43,12 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/change_password', [AdminController::class, 'ChangePassword']);
         Route::post('/change_password', [AdminController::class, 'UpdatePassword']);
 
+        Route::get('/homepage_video', [AdminController::class, 'HomePageVideo']);
+        Route::post('/homepage_video', [AdminController::class, 'SaveHomePageVideo']);
+
+        Route::post('/getmenucategory', [AdminController::class, 'GetMenuCategory']);
+        Route::post('/getcatsubcategory', [AdminController::class, 'GetCatSubCategory']);
+
         Route::get('/viewadmin', [AdminController::class, 'ViewAdmin']);
         Route::get('/manageadmin', [AdminController::class, 'ManageAdmin']);
         Route::get('/actionadmin/{option}/{id}', [AdminController::class, 'ActionAdmin']);
@@ -41,6 +59,16 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/actionmenu/{option}/{id}', [AdminController::class, 'ActionMenu']);
         Route::post('/savemenudetails', [AdminController::class, 'SaveMenuDetails']);
 
+        Route::get('/viewproductmetal', [AdminController::class, 'ViewProductMetal']);
+        Route::get('/manageproductmetal', [AdminController::class, 'ManageProductMetal']);
+        Route::get('/actionproductmetal/{option}/{id}', [AdminController::class, 'ActionProductMetal']);
+        Route::post('/saveproductmetaldetails', [AdminController::class, 'SaveProductMetalDetails']);
+
+        Route::get('/viewproductsize', [AdminController::class, 'ViewProductSize']);
+        Route::get('/manageproductsize', [AdminController::class, 'ManageProductSize']);
+        Route::get('/actionproductsize/{option}/{id}', [AdminController::class, 'ActionProductSize']);
+        Route::post('/saveproductsizedetails', [AdminController::class, 'SaveProductSizeDetails']);
+
         Route::get('/viewcategory', [AdminController::class, 'ViewCategory']);
         Route::get('/managecategory', [AdminController::class, 'ManageCategory']);
         Route::get('/actioncategory/{option}/{id}', [AdminController::class, 'ActionCategory']);
@@ -50,7 +78,6 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/managesubcategory', [AdminController::class, 'ManageSubCategory']);
         Route::get('/actionsubcategory/{option}/{id}', [AdminController::class, 'ActionSubCategory']);
         Route::post('/savesubcategorydetails', [AdminController::class, 'SaveSubCategoryDetails']);
-
 
         Route::get('/viewproduct', [AdminController::class, 'ViewProduct']);
         Route::get('/manageproduct', [AdminController::class, 'ManageProduct']);

@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Twentieth Century";
+    src: url("../fonts/6138beb83221f6eb46ed08543a304d1d.eot");
+    /* IE9*/
+    src: url("../fonts/6138beb83221f6eb46ed08543a304d1d.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */
+        url("../fonts/6138beb83221f6eb46ed08543a304d1d.woff2") format("woff2"),
+        /* chrome、firefox */
+        url("../fonts/6138beb83221f6eb46ed08543a304d1d.woff") format("woff"),
+        /* chrome、firefox */
+        url("../fonts/6138beb83221f6eb46ed08543a304d1d.ttf") format("truetype"),
+        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url("../fonts/6138beb83221f6eb46ed08543a304d1d.svg#Twentieth Century") format("svg");
+    /* iOS 4.1- */
+}
+
+
+.logo.align-left a {
+    text-decoration: none;
+}
+
+.logo.align-left a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.page-header {
+    margin: 0;
+    padding-bottom: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#previous_product {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+{
+    background-color: #560835;
+    border-color: #560835;
+    color: #fff;
+}
