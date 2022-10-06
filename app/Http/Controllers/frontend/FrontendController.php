@@ -77,7 +77,7 @@ class FrontendController extends Controller
     {
         $segments = $request->input();
         $menuDetails  = $categoryDetails = [];
-        $limit = 1;
+        $limit = 30;
         $start = $request->input('page')  ? ($request->input('page') - 1) * $limit : 0;
         $filter = [];
         if ($request->has('category')) {

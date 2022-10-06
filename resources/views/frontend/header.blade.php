@@ -23,17 +23,9 @@
                     <div id="toolbar"
                         class="toolbar cf toolbar--two-cols-xs toolbar--two-cols  toolbar--text-box-large">
                         <div class="toolbar-left ">
-                            <div class="mobile-toolbar">
-                                <a class="toggle-mob-nav" href="#" aria-controls="mobile-nav"
-                                    aria-label="Open navigation">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                            </div>
                             <div class="toolbar-logo">
                                 <div class="logo align-left">
-                                    <a href="/" itemprop="url">
+                                    <a href="{{ url(FRONTENDURL) }}" itemprop="url">
                                         <span>Saiellora</span>
                                     </a>
                                 </div>
@@ -52,7 +44,7 @@
                                             autocomplete="off">
                                             <input class="main-search__input snize-input-style" type="text"
                                                 name="queryname" autocomplete="off" placeholder="Search..."
-                                                aria-label="Search Store">
+                                                aria-label="Search Store" required>
 
                                             <button type="submit" aria-label="Submit"><svg width="19px"
                                                     height="21px" viewBox="0 0 19 21" version="1.1"
@@ -97,7 +89,7 @@
                                 <form class="main-search__form" action="{{ url(FRONTENDURL.'products') }}" method="get"
                                     autocomplete="off">
                                     <input class="main-search__input snize-input-style" type="text" name="queryname"
-                                        autocomplete="off" placeholder="Search..." aria-label="Search Store">
+                                        autocomplete="off" placeholder="Search..." aria-label="Search Store" required>
 
                                     <button type="submit" aria-label="Submit"><svg width="19px" height="21px"
                                             viewBox="0 0 19 21" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -212,8 +204,10 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url(FRONTENDURL) }}">Home</a></li>
+
+                    <li><a href="{{ url(FRONTENDURL) }}">Home </a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                             aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span>
