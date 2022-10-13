@@ -145,6 +145,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -161,6 +162,7 @@
                         </div>
                         <div class="light-space-above cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.5s"
                             style="transition-delay: 0.5s;">
+                            {{-- {!! $videoContent[0]->home_video_link !!} --}}
                             <a class="btn" href="{{ $videoContent[0]->home_video_link }}" target="_blank">
                                 Watch Video
                             </a>
@@ -274,6 +276,59 @@
     </div>
     @endif
 
+    @if(count($homepageCategory))
+    {{-- Category --}}
+    <div id="shopify-section-template--15270806126752__1640476649f7fa543d" class="shopify-section">
+        <section class="border-top section collections-section  section-padding-small"
+            data-section-type="featured-collections">
+            <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
+
+                <h2 class="section-heading"><strong>
+                        <center>Categories</center>
+                    </strong></h2>
+
+                <div class="cc-carousel-container not-a-carousel">
+                    <div class="row product-grid grid grid--max-cols-5">
+                        @foreach ($homepageCategory as $category)
+                            <div class="product-block collection-block collection-block--circle flex column max-cols-5 min-cols-2
+                                    cc-animate-init -in cc-animate-complete" data-cc-animate="" data-cc-animate-delay="0.05s" style="">
+                                <div class="product-block__inner">
+                                    <div class="image">
+                                        <div class="inner">
+                                            <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}">
+                                                <div class="rimage-outer-wrapper" style="max-width: 768px">
+                                                    <div class="rimage-wrapper" style="padding-top:100%">
+                                                        <img class="rimage__image "
+                                                            data-lazy-src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
+                                                            loading="lazy" alt="" width="768" height="1024"
+                                                            src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
+                                                            data-lazy-loaded="true">
+                                                        <noscript>
+                                                            <img src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
+                                                                alt="" class="rimage__image ">
+                                                        </noscript>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="title align-center">
+                                        <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}" title="">
+                                            {{ $category->category_name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    @endif
+
     @if(count($popularProducts))
     {{-- Most Popular Products --}}
     <div class="shopify-section has-alt-bg has-full-width-section">
@@ -375,57 +430,6 @@
     </div>
     @endif
 
-    @if(count($homepageCategory))
-    {{-- Category --}}
-    <div id="shopify-section-template--15270806126752__1640476649f7fa543d" class="shopify-section">
-        <section class="border-top section collections-section  section-padding-small"
-            data-section-type="featured-collections">
-            <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
 
-                <h2 class="section-heading"><strong>
-                        <center>Categories</center>
-                    </strong></h2>
-
-                <div class="cc-carousel-container not-a-carousel">
-                    <div class="row product-grid grid grid--max-cols-5">
-                        @foreach ($homepageCategory as $category)
-                            <div class="product-block collection-block collection-block--circle flex column max-cols-5 min-cols-2
-                                    cc-animate-init -in cc-animate-complete" data-cc-animate="" data-cc-animate-delay="0.05s" style="">
-                                <div class="product-block__inner">
-                                    <div class="image">
-                                        <div class="inner">
-                                            <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}">
-                                                <div class="rimage-outer-wrapper" style="max-width: 768px">
-                                                    <div class="rimage-wrapper" style="padding-top:100%">
-                                                        <img class="rimage__image "
-                                                            data-lazy-src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
-                                                            loading="lazy" alt="" width="768" height="1024"
-                                                            src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
-                                                            data-lazy-loaded="true">
-                                                        <noscript>
-                                                            <img src="{{ URL::asset('uploads/category/'.$category->category_img)}}"
-                                                                alt="" class="rimage__image ">
-                                                        </noscript>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="title align-center">
-                                        <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}" title="">
-                                            {{ $category->category_name }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-    </div>
-    @endif
 
 @stop

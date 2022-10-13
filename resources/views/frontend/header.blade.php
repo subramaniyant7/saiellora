@@ -3,11 +3,13 @@
         .logo img {
             width: 95px;
         }
+
         @media (min-width: 768px) {
             .logo img {
                 width: 125px;
             }
         }
+
         .section-header {
             position: -webkit-sticky;
             position: sticky;
@@ -40,8 +42,8 @@
                                     data-show-sale-label="true">
 
                                     <div class="main-search__container ">
-                                        <form class="main-search__form" action="{{ url(FRONTENDURL.'products') }}" method="get"
-                                            autocomplete="off">
+                                        <form class="main-search__form" action="{{ url(FRONTENDURL . 'products') }}"
+                                            method="get" autocomplete="off">
                                             <input class="main-search__input snize-input-style" type="text"
                                                 name="queryname" autocomplete="off" placeholder="Search..."
                                                 aria-label="Search Store" required>
@@ -86,8 +88,8 @@
                             data-show-sold-out-label="true" data-show-sale-label="true">
 
                             <div class="main-search__container ">
-                                <form class="main-search__form" action="{{ url(FRONTENDURL.'products') }}" method="get"
-                                    autocomplete="off">
+                                <form class="main-search__form" action="{{ url(FRONTENDURL . 'products') }}"
+                                    method="get" autocomplete="off">
                                     <input class="main-search__input snize-input-style" type="text" name="queryname"
                                         autocomplete="off" placeholder="Search..." aria-label="Search Store" required>
 
@@ -154,11 +156,12 @@
         }
 
         .navbar-default .navbar-nav .open .dropdown-menu .dropdown-submenu ul {
-            background-color: #f6f6f6;
+            background-color: #fff;
         }
 
         .navbar-default .navbar-nav li a {
-            color: #560835;
+            color: #3a1811;
+            font-size: 20px;
         }
 
         .navbar-inverse .navbar-nav .open .dropdown-menu .dropdown-submenu ul {
@@ -170,8 +173,8 @@
         }
 
         .navbar-default {
-            background-color: #f6f9eb;
-            border-color: #f6f9eb;
+            background-color: #fff;
+            border-color: #fff;
         }
 
         @media screen and (min-width:992px) {
@@ -194,60 +197,65 @@
     </style>
     <nav class="navbar navbar-default ">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 
-                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
 
-                    <li><a href="{{ url(FRONTENDURL) }}">Home </a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            @foreach (getActiveRecord('category') as $category)
-                                @php
-                                    $subCategory = \App\Http\Controllers\frontend\FHelperController::getSubcategoryByCategory($category->category_id);
-                                @endphp
-                            <li class="{{ count($subCategory) ? 'dropdown-submenu' : '' }}" val="{{count($subCategory)}}">
-                                @if(count($subCategory))
-                                    <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}" class="dropdown-submenu-toggle">{{ $category->category_name }} <b
-                                            class="caret"></b></a>
-
-                                @else
-                                    <a href="{{ url(FRONTENDURL.'products?category='.encryption($category->category_id)) }}">
-                                        {{ $category->category_name }}
-                                    </a>
-                                @endif
-                                @if(count($subCategory))
-                                    <ul class="dropdown-menu">
-                                        @foreach($subCategory as $subCategory)
-                                        <li>
-                                            <a href="{{ url('products?category='.encryption($category->category_id).'&subcategory='.encryption($category->category_id)) }}">
-                                                {{ $subCategory->subcategory_name }}
+                        <li><a href="{{ url(FRONTENDURL) }}">Home </a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach (getActiveRecord('category') as $category)
+                                    @php
+                                        $subCategory = \App\Http\Controllers\frontend\FHelperController::getSubcategoryByCategory($category->category_id);
+                                    @endphp
+                                    <li class="{{ count($subCategory) ? 'dropdown-submenu' : '' }}"
+                                        val="{{ count($subCategory) }}">
+                                        @if (count($subCategory))
+                                            <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}"
+                                                class="dropdown-submenu-toggle">{{ $category->category_name }} <b
+                                                    class="caret"></b></a>
+                                        @else
+                                            <a
+                                                href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}">
+                                                {{ $category->category_name }}
                                             </a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </li>
-                            @endforeach
+                                        @endif
+                                        @if (count($subCategory))
+                                            <ul class="dropdown-menu">
+                                                @foreach ($subCategory as $subCategory)
+                                                    <li>
+                                                        <a
+                                                            href="{{ url('products?category=' . encryption($category->category_id) . '&subcategory=' . encryption($category->category_id)) }}">
+                                                            {{ $subCategory->subcategory_name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
 
-                        </ul>
-                    </li>
-                    <li><a href="{{ url(FRONTENDURL.'about_us') }}">About Us</a></li>
-                    <li><a href="{{ url(FRONTENDURL.'contact_us') }}">Contact Us</a></li>
-                    <li><a href="{{ url(FRONTENDURL.'blogs') }}">Blogs</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
+                            </ul>
+                        </li>
+                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}">About Us</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}">Contact Us</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}">Blogs</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div>
         </div><!-- /container -->
     </nav>
 </div>
@@ -264,12 +272,12 @@
             $(this).removeClass("open");
         });
 
-        $('.dropdown-submenu').mouseenter(function (){
-            $(this).children('.dropdown-menu').css('display','block');
+        $('.dropdown-submenu').mouseenter(function() {
+            $(this).children('.dropdown-menu').css('display', 'block');
         });
 
-        $('.dropdown-submenu').mouseleave(function (){
-            $(this).children('.dropdown-menu').css('display','none');
+        $('.dropdown-submenu').mouseleave(function() {
+            $(this).children('.dropdown-menu').css('display', 'none');
         });
 
 

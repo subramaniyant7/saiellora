@@ -90,3 +90,20 @@ const imageUpdate = (path) => {
     $('#change_img').prop('src',path.getAttribute('data-src'))
 }
 
+
+var btn = $('#button');
+
+$(window).scroll(function() {
+    console.log('pppppp')
+    console.log($(window).scrollTop())
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});

@@ -73,6 +73,11 @@ class FrontendController extends Controller
         }
     }
 
+    public function AllCategory(){
+        $activeCategory = getActiveRecord('category');
+        return view('frontend.viewallcategory', compact('activeCategory'));
+    }
+
     public function Category(Request $request)
     {
         $segments = $request->input();
