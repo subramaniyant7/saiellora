@@ -160,7 +160,7 @@
         }
 
         .navbar-default .navbar-nav li a {
-            color: #3a1811;
+            color: #f4c014;
             font-size: 20px;
         }
 
