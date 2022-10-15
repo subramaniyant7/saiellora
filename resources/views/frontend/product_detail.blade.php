@@ -176,7 +176,7 @@
                             </div>
                         @endif
                     </div>
-                    <form method="post" action="/cart/add" id="product_form_7231342510240" accept-charset="UTF-8"
+                    <form method="post" action="#" id="product_form_7231342510240" accept-charset="UTF-8"
                         class="product-form product-form--mini product-form--not-quickbuy half column"
                         enctype="multipart/form-data" data-ajax-add-to-cart="true" data-product-id="7231342510240"
                         data-enable-history-state="true" data-open-cart-drawer="true"><input type="hidden"
@@ -223,7 +223,7 @@
             <div class="product-recommendations cc-animate-init -in cc-animate-complete" data-product-id="7231342510240"
                 data-section-id="template--15270806290592__product-recommendations"
                 data-section-type="product-recommendations"
-                data-url="/recommendations/products?section_id=template--15270806290592__product-recommendations&amp;limit=5&amp;product_id=7231342510240"
+                data-url="#"
                 data-cc-animate="">
                 <section class="border-top section products-section">
                     <div class="container">
@@ -278,7 +278,7 @@
                                         </div>
                                         <div class="product-block__title-price">
                                             <a class="title"
-                                                href="/products/german-silver-imported-urli-with-round-stand-10-inches-wl1054?pr_prod_strat=copurchase&amp;pr_rec_id=b99522115&amp;pr_rec_pid=7281726816416&amp;pr_ref_pid=7231342510240&amp;pr_seq=uniform">
+                                                href="{{ url(FRONTENDURL.'productdetails/'.encryption($relatedproducts->product_id)) }}">
                                                 {{ $relatedproducts->product_name }}
                                             </a>
                                             @if($relatedproducts->product_price > 0)
