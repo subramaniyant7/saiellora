@@ -1,10 +1,10 @@
 @extends('frontend.layout')
 
 @section('content')
-    <main id="content">
+    <main id="content" style="background:#e7c49c;">
         <style>
             .panel-heading {
-                background: #560835 !important;
+                background: #3a1811 !important;
                 color: #fff !important;
             }
 

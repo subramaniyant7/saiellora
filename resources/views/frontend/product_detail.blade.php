@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <main id="content">
+    <main id="content" style="padding-top:4em;background:#e7c49c;">
         <div id="shopify-section-template--15270806290592__main" class="shopify-section section-product-template">
             <div class="section container product-container product-container--wide " data-section-type="product-template"
                 data-components="accordion">

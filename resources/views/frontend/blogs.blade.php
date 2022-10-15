@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('content')
-    <main id="content">
+    <main id="content" style="background:#e7c49c;">
         <div id="shopify-section-template--15270806028448__main" class="shopify-section">
             <div class="section container" data-section-type="blog-template">
                 <div class="inline-row cf mt-0 cc-animate-init -in cc-animate-complete" data-cc-animate="">

@@ -155,12 +155,16 @@
             margin-bottom: 8px;
         }
 
+        .navbar{
+            margin-bottom: 0;
+        }
+
         .navbar-default .navbar-nav .open .dropdown-menu .dropdown-submenu ul {
             background-color: #fff;
         }
 
         .navbar-default .navbar-nav li a {
-            color: #f4c014;
+            color: #3a1811;
             font-size: 20px;
         }
 
@@ -173,8 +177,8 @@
         }
 
         .navbar-default {
-            background-color: #fff;
-            border-color: #fff;
+            background-color: #e7c49c;
+            border-color: #e7c49c;
         }
 
         @media screen and (min-width:992px) {

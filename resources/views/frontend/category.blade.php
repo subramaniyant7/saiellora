@@ -6,7 +6,7 @@
 
     </style>
 
-    <main id="content">
+    <main id="content" style="background:#e7c49c;">
         <div id="shopify-section-template--15270806093984__main" class="shopify-section main-collection-section">
             <div class="section collection-page" data-section-type="collection-template"
                 data-components="price-range,accordion,sticky-scroll-direction" data-use-infinite-scroll="false"

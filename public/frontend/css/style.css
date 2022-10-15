@@ -951,7 +951,7 @@ body {
   font-style: normal;
   font-size: 16px;
   line-height: 1.4em;
-  color: #353535;
+  color: #3a1811;
   overflow-x: hidden;
   /* Fonts on Macs look bad without these */
   -moz-font-feature-settings: "liga";
@@ -989,7 +989,7 @@ h1, .added-notice .added-notice__price, .image-overlay .line-1, .product-details
   font-weight: 600;
   font-style: normal;
   line-height: 1.4em;
-  color: #343434;
+  color: #3a1811;
   margin: 0 0 0.7em;
   padding: 0;
 }
@@ -1011,7 +1011,7 @@ a {
   transition: background-color 120ms, color 120ms, border-color 120ms;
 }
 a:hover {
-  color: #666666;
+  color: #3a1811;
 }
 a:hover svg, a:hover svg g {
   fill: #666666;
@@ -1215,7 +1215,7 @@ input[type=submit],
   -webkit-appearance: none;
   display: inline-block;
   background: #3a1811;
-  color: #ffffff;
+  color: #e7c49c;
   border: 2px solid #3a1811;
   height: auto;
   width: auto;
@@ -1278,8 +1278,8 @@ input[type=submit].btn--secondary,
 .account-area .btn--secondary.action_link,
 .button.alt,
 .button.btn--secondary {
-  background: #ffffff;
-  color: #3a1811;
+  background: #3a1811;
+  color: #e7c49c;
 }
 button.alt:hover, button.btn--secondary:hover,
 input[type=submit].alt:hover,
@@ -1292,8 +1292,8 @@ input[type=submit].btn--secondary:hover,
 .account-area .btn--secondary.action_link:hover,
 .button.alt:hover,
 .button.btn--secondary:hover {
-  background: #eee6eb;
-  color: #3a1811;
+  background: #3a1811;
+  color: #e7c49c;
 }
 button.alt svg, button.btn--secondary svg,
 input[type=submit].alt svg,
@@ -4151,25 +4151,25 @@ body {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e7c49c;
 }
 
 .border-top, .page-footer {
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid #e7c49c;
 }
 
 @media (max-width: 767px) {
   .border-top-xs {
-    border-top: 1px solid #f5f5f5;
+    border-top: 1px solid #e7c49c;
   }
 }
 
 .border-left {
-  border-left: 1px solid #f5f5f5;
+  border-left: 1px solid #e7c49c;
 }
 
 .border-right {
-  border-right: 1px solid #f5f5f5;
+  border-right: 1px solid #e7c49c;
 }
 
 .header-container {
@@ -4662,7 +4662,7 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
   z-index: 2;
   width: 46px;
   border: none;
-  background: #bcbcbc;
+  background: #e7c49c;
   padding: 0;
   position: absolute;
   right: 0;
@@ -5376,6 +5376,7 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
   padding-top: 0.1em;
   margin: 0 0 0.2em;
   font-weight: 500;
+  font-size: 1.3em;
 }
 .product-block .product-block__weight-value {
   margin: 0 0 8px;
@@ -5612,7 +5613,7 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
 
 .product-grid.grid .product-block {
   margin-left: -1px;
-  border: 1px solid #f5f5f5;
+  /* border: 1px solid #f5f5f5; */
   transition: border-color 0.4s;
 }
 @media (min-width: 768px) {
@@ -5865,15 +5866,15 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
   border-top: transparent;
 }
 #content .section {
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
+  /* margin-top: 2.5em; */
+  /* margin-bottom: 2.5em; */
   padding-top: 0;
   padding-bottom: 0;
 }
 @media (min-width: 768px) {
   #content .section {
-    margin-top: 2.5em;
-    margin-bottom: 2.5em;
+    /* margin-top: 2.5em; */
+    /* margin-bottom: 2.5em; */
   }
 }
 #content .shopify-section.last-alt-bg .use-alt-bg {
@@ -5922,7 +5923,7 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
 
 .page-footer {
   padding: 4em 0 1em 0;
-  background: #fff;
+  background: #e7c49c;
   color: #3a1811;
 }
 @media (min-width: 768px) {
@@ -6069,11 +6070,13 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
 .footer-columns .text-beside-logo-column {
   width: 40%;
   flex: 0 1 auto;
+  font-size: 1.3em;
 }
 .footer-columns .links-column {
   width: 16%;
   flex: 1 0 auto;
-  line-height: 1.3em;
+  line-height: 1em;
+  font-size: 1.3em;
 }
 .footer-columns .links-column li {
   padding-top: 0.3em;
@@ -10559,7 +10562,7 @@ html.template-password #password-login .password-owner {
 }
 
 .product-list-toolbar {
-  background-color: #ffffff;
+  background-color: #e7c49c;
   z-index: 10;
   margin-left: -20px;
   margin-right: -20px;
@@ -10570,8 +10573,8 @@ html.template-password #password-login .password-owner {
   font-weight: 400;
   height: 62px;
   padding: 0 20px;
-  border-bottom: 1px solid #f5f5f5;
-  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e7c49c;
+  border-top: 1px solid #e7c49c;
   overflow-x: hidden;
 }
 .product-list-toolbar--sticky {
@@ -11455,11 +11458,11 @@ shopify-payment-terms {
   }
 }
 .cc-accordion {
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid #e7c49c;
 }
 
 .cc-accordion-item {
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e7c49c;
 }
 
 .cc-accordion-item__title {
