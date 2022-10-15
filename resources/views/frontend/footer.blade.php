@@ -100,13 +100,8 @@
 
                 <div class="text-beside-logo-column column">
                     <div class="rte">
-                        <p><strong>Saiellora -</strong> India’s most favorite gifting brand in retail and bulk gifting,
-                            exclusively
-                            aims at satisfying your various gifting needs. Wedtree offers a wide range of about 2000+
-                            gifts across
-                            various categories in premium gifts, utility gifts, return gifts, and corporate gifts that
-                            are of
-                            supreme quality to meet your various requirements for all of your occasions.&nbsp;</p>
+                        <p><strong>Saiellora -</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.&nbsp;</p>
                     </div>
                 </div>
 
