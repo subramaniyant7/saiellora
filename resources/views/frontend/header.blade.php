@@ -79,6 +79,13 @@
 
 
                         </div>
+
+                        <div style="color:#000; display:none">
+                            <select >
+                                <option value="en" selected>English(Default)</option>
+                                <option value="ta">Tamil</option>
+                            </select>
+                        </div>
                     </div>
 
 
@@ -155,7 +162,7 @@
             margin-bottom: 8px;
         }
 
-        .navbar{
+        .navbar {
             margin-bottom: 0;
         }
 

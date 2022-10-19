@@ -62,13 +62,14 @@ class AdminController extends Controller
         return back()->with('error', 'User not found');
     }
 
-
-    public function HomePageVideo(){
+    public function HomePageVideo()
+    {
         $homeVideo = HelperController::getHomepageVideo();
         return view('admin.homepagevideo', compact('homeVideo'));
     }
 
-    public function SaveHomePageVideo(Request $request){
+    public function SaveHomePageVideo(Request $request)
+    {
         $formData =  $request->except(['_token', 'home_video_id', 'edit_homeimage']);
 
         if ($request->hasFile('home_video_image')) {
@@ -100,22 +101,46 @@ class AdminController extends Controller
         return back()->with($notify['type'], $notify['msg']);
     }
 
+    public function SaveTamilHomePageVideo(Request $req)
+    {
+        if ($req->input('home_video_id')) {
+            try {
+                $homeId = decryption($req->input('home_video_id'));
+                $homdeData = HelperController::getHomepageVideo($homeId);
+                if (count($homdeData)) {
+                    $formData = json_decode(json_encode($homdeData[0]), true);
+                    $formData['home_video_title_tamil'] = $req->input('home_video_title_tamil');
+                    $formData['home_video_description_tamil'] = $req->input('home_video_description_tamil');
+                    $saveData = updateQuery('homepage_video', 'home_video_id', $homeId, $formData);
+                    $notify = notification($saveData);
+                    return back()->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter mandatory details');
+    }
 
-    public function GetMenuCategory(Request $request){
+    public function GetMenuCategory(Request $request)
+    {
         $status = false;
         $menuid = $request->input('menu_id');
-        $responseData =  DB::table('category')->where([['menu_id', $menuid],['status', 1]])->get();
-        if(count($responseData)){
+        $responseData =  DB::table('category')->where([['menu_id', $menuid], ['status', 1]])->get();
+        if (count($responseData)) {
             $status = true;
         }
         return response()->json(['status' => $status, 'data' => $responseData]);
     }
 
-    public function GetCatSubCategory(Request $request){
+    public function GetCatSubCategory(Request $request)
+    {
         $status = false;
         $categoryid = $request->input('category_id');
-        $responseData =  DB::table('subcategory')->where([['category_id', $categoryid],['status', 1]])->get();
-        if(count($responseData)){
+        $responseData =  DB::table('subcategory')->where([['category_id', $categoryid], ['status', 1]])->get();
+        if (count($responseData)) {
             $status = true;
         }
         return response()->json(['status' => $status, 'data' => $responseData]);
@@ -253,6 +278,28 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewproductmetal')->with($notify['type'], $notify['msg']);
     }
 
+    public function SaveTamilProductMetalDetails(Request $req)
+    {
+        if ($req->input('product_metal_id')) {
+            try {
+                $metalId = decryption($req->input('product_metal_id'));
+                $metalData = HelperController::getProductMetal($metalId);
+                if (count($metalData)) {
+                    $formData = json_decode(json_encode($metalData[0]), true);
+                    $formData['product_metal_name_tamil'] = $req->input('product_metal_name_tamil');
+                    $saveData = updateQuery('product_metal', 'product_metal_id', $metalId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewproductmetal')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter category mandatory details');
+    }
+
     public function ViewProductSize()
     {
         $productMetalSize = HelperController::getProductSize();
@@ -290,6 +337,29 @@ class AdminController extends Controller
         $notify = notification($saveData);
         return redirect(ADMINURL . '/viewproductsize')->with($notify['type'], $notify['msg']);
     }
+
+    public function SaveTamilProductSizeDetails(Request $req)
+    {
+        if ($req->input('product_size_id')) {
+            try {
+                $productSizeId = decryption($req->input('product_size_id'));
+                $productSizeData = HelperController::getProductSize($productSizeId);
+                if (count($productSizeData)) {
+                    $formData = json_decode(json_encode($productSizeData[0]), true);
+                    $formData['product_size_name_tamil'] = $req->input('product_size_name_tamil');
+                    $saveData = updateQuery('product_size', 'product_size_id', $productSizeId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewproductsize')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter category mandatory details');
+    }
+
 
     public function ViewCategory()
     {
@@ -338,7 +408,7 @@ class AdminController extends Controller
         }
 
         $product_latest = 0;
-        if((array_key_exists('category_homepage', $formData)) && $formData['category_homepage'] == 'on'){
+        if ((array_key_exists('category_homepage', $formData)) && $formData['category_homepage'] == 'on') {
             $product_latest = 1;
         }
 
@@ -352,6 +422,29 @@ class AdminController extends Controller
         }
         $notify = notification($saveData);
         return redirect(ADMINURL . '/viewcategory')->with($notify['type'], $notify['msg']);
+    }
+
+    public function SaveTamilCategoryDetails(Request $req)
+    {
+        $formData =  $req->except(['_token', 'category_id']);
+        if ($req->input('category_id')) {
+            try {
+                $categoryId = decryption($req->input('category_id'));
+                $categoryData = HelperController::getCategoryDetails($categoryId);
+                if (count($categoryData)) {
+                    $formData = json_decode(json_encode($categoryData[0]), true);
+                    $formData['category_name_tamil'] = $req->input('category_name_tamil');
+                    $saveData = updateQuery('category', 'category_id', $categoryId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewcategory')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter category mandatory details');
     }
 
     public function ViewSubCategory()
@@ -409,6 +502,28 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], $notify['msg']);
     }
 
+    public function SaveTamilSubCategoryDetails(Request $req)
+    {
+        if ($req->input('subcategory_id')) {
+            try {
+                $subcategoryId = decryption($req->input('subcategory_id'));
+                $subcategoryData = HelperController::getSubCategoryDetails($subcategoryId);
+                if (count($subcategoryData)) {
+                    $formData = json_decode(json_encode($subcategoryData[0]), true);
+                    $formData['subcategory_name_tamil'] = $req->input('subcategory_name_tamil');
+                    $saveData = updateQuery('subcategory', 'subcategory_id', $subcategoryId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter category mandatory details');
+    }
+
     public function ViewFAQ()
     {
         $faqDetails = HelperController::getFAQDetails();
@@ -447,6 +562,32 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewfaq')->with($notify['type'], $notify['msg']);
     }
 
+    public function SaveTamilFAQDetails(Request $req)
+    {
+        if ($req->input('faq_id')) {
+            try {
+                $faqId = decryption($req->input('faq_id'));
+                $faqData = HelperController::getFAQDetails($faqId);
+                if (count($faqData)) {
+                    $formData = json_decode(json_encode($faqData[0]), true);
+                    $formData['faq_question_tamil'] = $req->input('faq_question_tamil');
+                    $formData['faq_answer_tamil'] = $req->input('faq_answer_tamil');
+                    $saveData = updateQuery('faq', 'faq_id', $faqId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewfaq')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter mandatory details');
+    }
+
+
+
+
     public function ViewProduct()
     {
         $productDetails = HelperController::getProductDetails();
@@ -469,16 +610,12 @@ class AdminController extends Controller
             $notify = notification($delete);
             return redirect(ADMINURL . '/viewproduct')->with($notify['type'], 'Data Deleted Successfully');
         }
-        return view('admin.actionproduct', ['action' => $option, 'data' => $productData, 'moreimages'=>HelperController::getMoreImages($actionId)]);
+        return view('admin.actionproduct', ['action' => $option, 'data' => $productData, 'moreimages' => HelperController::getMoreImages($actionId)]);
     }
 
     public function SaveProductDetails(Request $req)
     {
-        $formData =  $req->except(['_token', 'product_id', 'edit_productimage', 'category_hidden','subcategory_hidden','product_subimage']);
-
-        // echo '<pre>';
-        // print_r($formData);
-        // // exit;
+        $formData =  $req->except(['_token', 'product_id', 'edit_productimage', 'category_hidden', 'subcategory_hidden', 'product_subimage']);
 
         if ($req->hasFile('product_image')) {
             $file = $req->file('product_image');
@@ -501,12 +638,12 @@ class AdminController extends Controller
         $product_most_popular = 0;
 
         // echo $formData['product_latest'];
-        if((array_key_exists('product_latest', $formData)) && $formData['product_latest'] == 'on'){
+        if ((array_key_exists('product_latest', $formData)) && $formData['product_latest'] == 'on') {
             echo 'ppp';
             $product_latest = 1;
         }
 
-        if((array_key_exists('product_most_popular', $formData)) && $formData['product_most_popular'] == 'on'){
+        if ((array_key_exists('product_most_popular', $formData)) && $formData['product_most_popular'] == 'on') {
             $product_most_popular = 1;
         }
 
@@ -528,20 +665,20 @@ class AdminController extends Controller
             $saveData = updateQuery('products', 'product_id', $productId, $formData);
         }
 
-        if($req->hasFile('product_subimage')){
+        if ($req->hasFile('product_subimage')) {
             $moreImages = $req->file('product_subimage');
-            $addtionalImageData = array('product_id'=>$productId);
-            foreach($moreImages as $k => $moreImage){
-                $moredestinationPath = 'uploads/products/additional';
-                $morefileName = ($k+1).'_'.$formData['product_name'].'_'.$moreImage->getClientOriginalName();
-                $moreImage->move($moredestinationPath,$morefileName);
-                if(HelperController::imageExist($productId,$k+1)==0) {
+            $addtionalImageData = array('product_id' => $productId);
+            foreach ($moreImages as $k => $moreImage) {
+                $moredestinationPath = public_path('uploads/products/additional');
+                $morefileName = ($k + 1) . '_' . $formData['product_name'] . '_' . $moreImage->getClientOriginalName();
+                $moreImage->move($moredestinationPath, $morefileName);
+                if (HelperController::imageExist($productId, $k + 1) == 0) {
                     $addtionalImageData['product_image'] = $morefileName;
-                    $addtionalImageData['row'] = $k+1;
-                    $moresaveData = insertQuery('product_images',$addtionalImageData);
-                }else{
+                    $addtionalImageData['row'] = $k + 1;
+                    $moresaveData = insertQuery('product_images', $addtionalImageData);
+                } else {
                     $addtionalImageData['product_image'] = $morefileName;
-                    $update = DB::table('product_images')->where([['product_id',$productId],['row',$k+1]])->update($addtionalImageData);
+                    $update = DB::table('product_images')->where([['product_id', $productId], ['row', $k + 1]])->update($addtionalImageData);
                 }
             }
         }
@@ -550,6 +687,29 @@ class AdminController extends Controller
 
         $notify = notification($saveData);
         return redirect(ADMINURL . '/viewproduct')->with($notify['type'], $notify['msg']);
+    }
+
+    public function SaveTamilProductDetails(Request $req)
+    {
+        if ($req->input('product_id')) {
+            try {
+                $productId = decryption($req->input('product_id'));
+                $productData = HelperController::getProductDetails($productId);
+                if (count($productData)) {
+                    $formData = json_decode(json_encode($productData[0]), true);
+                    $formData['product_name_tamil'] = $req->input('product_name_tamil');
+                    $formData['product_description_tamil'] = $req->input('product_description_tamil');
+                    $saveData = updateQuery('products', 'product_id', $productId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewproduct')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter category mandatory details');
     }
 
     public function ViewBanner()
@@ -666,6 +826,28 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewblog')->with($notify['type'], $notify['msg']);
     }
 
+    public function SaveTamilBlogDetails(Request $req)
+    {
+        if ($req->input('blog_id')) {
+            try {
+                $blogId = decryption($req->input('blog_id'));
+                $blogData = HelperController::getBlogDetails($blogId);
+                if (count($blogData)) {
+                    $formData = json_decode(json_encode($blogData[0]), true);
+                    $formData['blog_title_tamil'] = $req->input('blog_title_tamil');
+                    $formData['blog_description_tamil'] = $req->input('blog_description_tamil');
+                    $saveData = updateQuery('blog_details', 'blog_id', $blogId, $formData);
+                    $notify = notification($saveData);
+                    return redirect(ADMINURL . '/viewblog')->with($notify['type'], $notify['msg']);
+                } else {
+                    return back()->with('error', 'Something went wrong. Please try again');
+                }
+            } catch (\Exception $e) {
+                return back()->with('error', 'Something went wrong. Please try again');
+            }
+        }
+        return back()->with('error', 'Please Enter mandatory details');
+    }
 
     public function AdminLogout(Request $req)
     {

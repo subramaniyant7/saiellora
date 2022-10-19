@@ -32,6 +32,7 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Product Metal Name</th>
+                                            <th>Product Tamil Metal Name</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -46,6 +47,7 @@
                                             <tr>
                                                 <td>{{ $k+1 }}</td>
                                                 <td>{{ $productmetal->product_metal_name }}</td>
+                                                <td>{{ $productmetal->product_metal_name_tamil }}</td>
                                                 <td><span class="label {{ $stClass}}">{{ statustype()[$productmetal->status-1] }}</span> </td>
                                                 <td class="text-nowrap">
                                                     <a href="{{ url(ADMINURL.'/actionproductmetal/edit/'.encryption($productmetal->product_metal_id)) }}" class="mr-25" data-toggle="tooltip" data-original-title="Edit">

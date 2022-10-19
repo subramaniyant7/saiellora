@@ -9,7 +9,7 @@
     define('ADMINIMAGE','admin/img');
     define('ADMINUPLOAD','admin/uploads');
     if(isset($_SERVER["SERVER_PROTOCOL"])){
-        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
+        $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'https';
         define('SITEURL',$protocol.'://'.$_SERVER['HTTP_HOST'].'/');
     }
     $siteUrl = $protocol.'://www.saielloravilakkukadai.com/';

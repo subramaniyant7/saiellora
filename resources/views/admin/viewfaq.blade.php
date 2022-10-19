@@ -32,7 +32,9 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Question</th>
+                                            <th>Question Tamil</th>
                                             <th>Answer</th>
+                                            <th>Answer Tamil</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -47,7 +49,9 @@
                                             <tr>
                                                 <td>{{ $k+1 }}</td>
                                                 <td>{{ $faq->faq_question }}</td>
+                                                <td>{{ $faq->faq_question_tamil }}</td>
                                                 <td>{{ $faq->faq_answer }}</td>
+                                                <td>{{ $faq->faq_answer_tamil }}</td>
                                                 <td><span class="label {{ $stClass}}">{{ statustype()[$faq->status-1] }}</span> </td>
                                                 <td class="text-nowrap">
                                                     <a href="{{ url(ADMINURL.'/actionfaq/edit/'.encryption($faq->faq_id)) }}" class="mr-25" data-toggle="tooltip" data-original-title="Edit">

@@ -32,6 +32,7 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Category Name</th>
+                                            <th>Category Tamil Name</th>
                                             <th>Category Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -48,6 +49,7 @@
                                                 <td>{{ $k+1 }}</td>
 
                                                 <td>{{ $category->category_name }}</td>
+                                                <td>{{ $category->category_name_tamil }}</td>
                                                 <td>
                                                     @if($category->category_img != '')
                                                     <img style="width:100%;height:100px;" src="{{ URL::asset('uploads/category/'.$category->category_img)}}" >

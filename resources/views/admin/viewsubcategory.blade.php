@@ -33,6 +33,7 @@
                                             <th>S.No</th>
                                             <th>Category Name</th>
                                             <th>Sub-Category Name</th>
+                                            <th>Sub-Category Tamil Name</th>
                                             <th>Sub-Category Image</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -49,6 +50,7 @@
                                                 <td>{{ $k+1 }}</td>
                                                 <td>{{ count($categoryName) ? $categoryName[0]->category_name : '' }}</td>
                                                 <td>{{ $subcategory->subcategory_name }}</td>
+                                                <td>{{ $subcategory->subcategory_name_tamil }}</td>
                                                 <td>
                                                     @if($subcategory->subcategory_img != '')
                                                     <img style="width:100%;height:100px;" src="{{ URL::asset('uploads/subcategory/'.$subcategory->subcategory_img)}}" >

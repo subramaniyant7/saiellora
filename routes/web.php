@@ -46,6 +46,7 @@ Route::prefix(ADMINURL)->group(function () {
 
         Route::get('/homepage_video', [AdminController::class, 'HomePageVideo']);
         Route::post('/homepage_video', [AdminController::class, 'SaveHomePageVideo']);
+        Route::post('/homepage_tamilvideo', [AdminController::class, 'SaveTamilHomePageVideo']);
 
         Route::post('/getmenucategory', [AdminController::class, 'GetMenuCategory']);
         Route::post('/getcatsubcategory', [AdminController::class, 'GetCatSubCategory']);
@@ -64,26 +65,31 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/manageproductmetal', [AdminController::class, 'ManageProductMetal']);
         Route::get('/actionproductmetal/{option}/{id}', [AdminController::class, 'ActionProductMetal']);
         Route::post('/saveproductmetaldetails', [AdminController::class, 'SaveProductMetalDetails']);
+        Route::post('/savetamilproductmetaldetails', [AdminController::class, 'SaveTamilProductMetalDetails']);
 
         Route::get('/viewproductsize', [AdminController::class, 'ViewProductSize']);
         Route::get('/manageproductsize', [AdminController::class, 'ManageProductSize']);
         Route::get('/actionproductsize/{option}/{id}', [AdminController::class, 'ActionProductSize']);
         Route::post('/saveproductsizedetails', [AdminController::class, 'SaveProductSizeDetails']);
+        Route::post('/savetamilproductsizedetails', [AdminController::class, 'SaveTamilProductSizeDetails']);
 
         Route::get('/viewcategory', [AdminController::class, 'ViewCategory']);
         Route::get('/managecategory', [AdminController::class, 'ManageCategory']);
         Route::get('/actioncategory/{option}/{id}', [AdminController::class, 'ActionCategory']);
         Route::post('/savecategorydetails', [AdminController::class, 'SaveCategoryDetails']);
+        Route::post('/savetamilcategorydetails', [AdminController::class, 'SaveTamilCategoryDetails']);
 
         Route::get('/viewsubcategory', [AdminController::class, 'ViewSubCategory']);
         Route::get('/managesubcategory', [AdminController::class, 'ManageSubCategory']);
         Route::get('/actionsubcategory/{option}/{id}', [AdminController::class, 'ActionSubCategory']);
         Route::post('/savesubcategorydetails', [AdminController::class, 'SaveSubCategoryDetails']);
+        Route::post('/savetamilsubcategorydetails', [AdminController::class, 'SaveTamilSubCategoryDetails']);
 
         Route::get('/viewproduct', [AdminController::class, 'ViewProduct']);
         Route::get('/manageproduct', [AdminController::class, 'ManageProduct']);
         Route::get('/actionproduct/{option}/{id}', [AdminController::class, 'ActionProduct']);
         Route::post('/saveproductdetails', [AdminController::class, 'SaveProductDetails']);
+        Route::post('/savetamilproductdetails', [AdminController::class, 'SaveTamilProductDetails']);
 
         Route::get('/viewbanner', [AdminController::class, 'ViewBanner']);
         Route::get('/managebanner', [AdminController::class, 'ManageBanner']);
@@ -94,11 +100,13 @@ Route::prefix(ADMINURL)->group(function () {
         Route::get('/managefaq', [AdminController::class, 'ManageFAQ']);
         Route::get('/actionfaq/{option}/{id}', [AdminController::class, 'ActionFAQ']);
         Route::post('/savefaqdetails', [AdminController::class, 'SaveFAQDetails']);
+        Route::post('/savetamilfaqdetails', [AdminController::class, 'SaveTamilFAQDetails']);
 
         Route::get('/viewblog', [AdminController::class, 'ViewBlog']);
         Route::get('/manageblog', [AdminController::class, 'ManageBlog']);
         Route::get('/actionblog/{option}/{id}', [AdminController::class, 'ActionBlog']);
         Route::post('/saveblogdetails', [AdminController::class, 'SaveBlogDetails']);
+        Route::post('/savetamilblogdetails', [AdminController::class, 'SaveTamilBlogDetails']);
 
         Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('logout');
     });

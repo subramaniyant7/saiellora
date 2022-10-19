@@ -175,7 +175,7 @@
                                             @php
                                                 $count = isset($moreimages) ? count($moreimages) : 0;
                                             @endphp
-                                            @if(isset($moreimages) && count($moreimages))
+                                            @if (isset($moreimages) && count($moreimages))
                                                 @foreach ($moreimages as $l => $moreimages)
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -267,6 +267,55 @@
                                             </div>
 
 
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <hr />
+                            <div class="form-wrap mt-40">
+                                <div style="padding-bottom: 3em;" class="text-center">
+                                    <h3>Tamil </h3>
+                                </div>
+                                <form method="post" action="{{ url(ADMINURL . '/savetamilproductdetails') }}"
+                                    enctype='multipart/form-data'>
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-7 col-md-offset-3">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Product Name<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="product_name_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->product_name_tamil : old('product_name_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Product Description<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <textarea class="form-control mb-10" name="product_description_tamil" required>{{isset($action)&& $action == 'edit' ? $data[0]->product_description_tamil: old('product_description_tamil')}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <input type="hidden" class="form-control mb-10" name="product_id"
+                                                value="{{ isset($action) && $action == 'edit' ? encryption($data[0]->product_id) : '' }}">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="col-md-4 control-label mb-10  text-left"> </label>
+                                                        <button class="btn  btn-primary btn-rounded"
+                                                            type="submit">Save</button>
+                                                        <a href="{{ url(ADMINURL . '/viewproduct') }}"
+                                                            class="btn btn-danger btn-rounded">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

@@ -32,8 +32,10 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Blog Title</th>
+                                            <th>Blog Title Tamil</th>
                                             <th>Blog Image</th>
                                             <th>Blog Description</th>
+                                            <th>Blog Description Tamil</th>
                                             <th>View Home Page</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -49,8 +51,10 @@
                                             <tr>
                                                 <td>{{ $k+1 }}</td>
                                                 <td>{{ $blog->blog_title }}</td>
+                                                <td>{{ $blog->blog_title_tamil }}</td>
                                                 <td><img style="width:100%;height:100px;" src="{{ URL::asset('uploads/blog/'.$blog->blog_image)}}" ></td>
                                                 <td>{{ $blog->blog_description }}</td>
+                                                <td>{{ $blog->blog_description_tamil }}</td>
                                                 <td>{{ $blog->blog_home == 1 ? 'Yes' : 'No' }}</span> </td>
                                                 <td><span class="label {{ $stClass}}">{{ statustype()[$blog->status-1] }}</span> </td>
 

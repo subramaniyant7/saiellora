@@ -28,11 +28,11 @@
                                         <div class="col-md-7 col-md-offset-3">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label mb-10 text-left">Size<span
+                                                    <label class="col-md-4 control-label mb-10 text-left">Size Name<span
                                                             class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10" name="product_size_name"
-                                                            required
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="product_size_name" required
                                                             value="{{ isset($action) && $action == 'edit' ? $data[0]->product_size_name : old('product_size_name') }}">
                                                     </div>
                                                 </div>
@@ -75,6 +75,46 @@
                                             </div>
 
 
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <hr />
+                            <div class="form-wrap mt-40">
+                                <div style="padding-bottom: 3em;" class="text-center">
+                                    <h3>Tamil </h3>
+                                </div>
+                                <form method="post" action="{{ url(ADMINURL . '/savetamilproductsizedetails') }}"
+                                    enctype='multipart/form-data'>
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-7 col-md-offset-3">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Size
+                                                        Name<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="product_size_name_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->product_size_name_tamil : old('product_size_name_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" class="form-control mb-10" name="product_size_id"
+                                                value="{{ isset($action) && $action == 'edit' ? encryption($data[0]->product_size_id) : '' }}">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="col-md-4 control-label mb-10  text-left"> </label>
+                                                        <button class="btn  btn-primary btn-rounded"
+                                                            type="submit">Save</button>
+                                                        <a href="{{ url(ADMINURL . '/viewproductsize') }}"
+                                                            class="btn btn-danger btn-rounded">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
