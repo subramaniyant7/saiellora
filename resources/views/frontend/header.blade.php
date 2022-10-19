@@ -249,7 +249,7 @@
                                                 @foreach ($subCategory as $subCategory)
                                                     <li>
                                                         <a
-                                                            href="{{ url('products?category=' . encryption($category->category_id) . '&subcategory=' . encryption($category->category_id)) }}">
+                                                            href="{{ url('products?category=' . encryption($category->category_id) . '&subcategory=' . encryption($subCategory->subcategory_id)) }}">
                                                             {{ $subCategory->subcategory_name }}
                                                         </a>
                                                     </li>
