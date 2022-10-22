@@ -123,7 +123,7 @@
                                     </details>
                                 </div>
 
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true" style="display: {{ request()->get('category') == '' ? 'none' : 'block' }}">
                                     <details class="cc-accordion-item is-open" open="">
                                         <summary class="cc-accordion-item__title">
                                             {{ request()->lang != 'ta' ? 'Sub-Category' : 'துணை வகை' }}</summary>
@@ -137,7 +137,7 @@
                                                         }
                                                     }
                                                 @endphp
-                                                @foreach (getActiveRecord('subcategory') as $subcategory)
+                                                @foreach (getSubcategoryByCategory($categoryList) as $subcategory)
                                                     @php
                                                         $checked = '';
                                                         if (count($subcategoryList) && in_array($subcategory->subcategory_id, $subcategoryList)) {
