@@ -98,7 +98,7 @@ class FrontendController extends Controller
             }
             $filter['product_category'] = $categoryId;
             $products->whereIn('product_category', $categoryId);
-            $total->whereIn('product_subcategory', $categoryId);
+            $total->whereIn('product_category', $categoryId);
 
             $categoryDetails = FHelperController::getCategoryById($categoryId);
         }
