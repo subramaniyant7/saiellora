@@ -12,8 +12,8 @@
 
                     <div class="opposing-items opposing-items--heading">
                         <h2 class="section-heading left">
-                            <a href="javascript:void(0)">
-                                Categories
+                            <a href="{{ url(FRONTENDURL).'category'}}">
+                                {{ request()->lang != 'ta' ? 'Categories' : 'வகைகள்' }}
                             </a>
                         </h2>
                     </div>
@@ -49,7 +49,7 @@
                                         <div class="title align-center">
                                             <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}"
                                                 title="">
-                                                {{ $category->category_name }}
+                                                {{ request()->lang != 'ta' ? $category->category_name : ($category->category_name_tamil != '' ? $category->category_name_tamil : $category->category_name) }}
                                             </a>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                     <div class="opposing-items opposing-items--heading">
                         <h2 class="section-heading left">
                             <a href="javascript:void(0)">
-                                Latest Products
+                                {{ request()->lang != 'ta' ? 'Latest Products' : 'சமீபத்திய தயாரிப்புகள்' }}
                             </a>
                         </h2>
                     </div>
@@ -126,7 +126,8 @@
                                         </div>
                                         <div class="product-block__title-price">
                                             <a class="title" href="#">
-                                                {{ $latestproduct->product_name }}
+                                                {{ request()->lang != 'ta' ? $latestproduct->product_name : ($latestproduct->product_name_tamil != '' ? $latestproduct->product_name_tamil : $latestproduct->product_name) }}
+
                                             </a>
                                             @if ($latestproduct->product_price > 0)
                                                 <div class="price ">
@@ -146,18 +147,18 @@
 
                 <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
                     id="previous_product" data-cc-animate="" aria-label="Previous">
-                    <svg fill="#000000" viewBox="0 0 24 24" height="24" width="24"
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z"></path>
+                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2"></path>
                     </svg>
 
                 </button>
 
                 <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete" data-cc-animate=""
                     id="next_product" aria-label="Next">
-                    <svg fill="#000000" viewBox="0 0 24 24" height="24" width="24"
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z"></path>
+                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2"></path>
                     </svg>
 
                 </button>
@@ -227,19 +228,21 @@
                         <div class="image-with-text__text__wrap padded-block-y">
                             <h2 class="h1 align-center cc-animate-init -in cc-animate-complete" data-cc-animate=""
                                 data-cc-animate-delay="0.3s" style="">
-                                {{ $homepageBlog[0]->blog_title }}
+                                {{ request()->lang != 'ta' ? $homepageBlog[0]->blog_title : ($homepageBlog[0]->blog_title_tamil != '' ? $homepageBlog[0]->blog_title_tamil : $homepageBlog[0]->blog_title) }}
                             </h2>
 
                             <div class="rte align-center cc-animate-init -in cc-animate-complete" data-cc-animate=""
                                 data-cc-animate-delay="0.4s" style="">
-                                <p> {{ $homepageBlog[0]->blog_description }}
+                                <p>
+                                    {{ request()->lang != 'ta' ? $homepageBlog[0]->blog_description : ($homepageBlog[0]->blog_description_tamil != '' ? $homepageBlog[0]->blog_description_tamil : $homepageBlog[0]->blog_description) }}
+
                                 </p>
                             </div>
 
                             <div class="light-space-above cc-animate-init -in cc-animate-complete" data-cc-animate=""
                                 data-cc-animate-delay="0.5s" style="">
                                 <a class="btn" href="{{ url(FRONTENDURL . 'blogs') }}">
-                                    Read Blogs
+                                    {{ request()->lang != 'ta' ? 'Read Blogs' : 'வலைப்பதிவுகளைப் படியுங்கள்' }}
                                 </a>
                             </div>
                         </div>
@@ -277,7 +280,7 @@
                     <div class="opposing-items opposing-items--heading">
                         <h2 class="section-heading left">
                             <a href="javascript:void(0)">
-                                Most Popular Products
+                                {{ request()->lang != 'ta' ? 'Most Popular Products' : 'மிகவும் பிரபலமான தயாரிப்புகள்' }}
                             </a>
                         </h2>
                     </div>
@@ -332,7 +335,8 @@
                                         </div>
                                         <div class="product-block__title-price">
                                             <a class="title" href="#">
-                                                {{ $popularProduct->product_name }}
+                                                {{ request()->lang != 'ta' ? $popularProduct->product_name : ($popularProduct->product_name_tamil != '' ? $popularProduct->product_name_tamil : $popularProduct->product_name) }}
+
                                             </a>
                                             @if ($popularProduct->product_price > 0)
                                                 <div class="price ">
@@ -352,17 +356,17 @@
 
                 <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
                     id="previouslatest_product" data-cc-animate="" aria-label="Previous">
-                    <svg fill="#000000" viewBox="0 0 24 24" height="24" width="24"
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z"></path>
+                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2"></path>
                     </svg>
                 </button>
 
                 <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
                     data-cc-animate="" id="nextlatest_product" aria-label="Next">
-                    <svg fill="#000000" viewBox="0 0 24 24" height="24" width="24"
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z"></path>
+                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2"></path>
                     </svg>
                 </button>
             </section>
@@ -419,17 +423,19 @@
                         <div class="image-with-text__text__wrap padded-block-y">
                             <h2 class="h1 align-center cc-animate-init -in cc-animate-complete" data-cc-animate=""
                                 data-cc-animate-delay="0.3s" style="">
-                                {{ $videoContent[0]->home_video_title }}
+                                {{ request()->lang != 'ta' ? $videoContent[0]->home_video_title : ($videoContent[0]->home_video_title_tamil != '' ? $videoContent[0]->home_video_title_tamil : $videoContent[0]->home_video_title) }}
                             </h2>
                             <div class="rte align-center cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.4s"
                                 style="transition-delay: 0.4s;">
-                                <p><strong>{{ $videoContent[0]->home_video_description }}<br><br></p>
+                                <p><strong>
+                                    {{ request()->lang != 'ta' ? $videoContent[0]->home_video_description : ($videoContent[0]->home_video_description_tamil != '' ? $videoContent[0]->home_video_description_tamil : $videoContent[0]->home_video_description) }}
+                                   </strong><br><br></p>
                             </div>
                             <div class="light-space-above cc-animate-init" data-cc-animate=""
                                 data-cc-animate-delay="0.5s" style="transition-delay: 0.5s;">
                                 {{-- {!! $videoContent[0]->home_video_link !!} --}}
                                 <a class="btn" href="{{ $videoContent[0]->home_video_link }}" target="_blank">
-                                    Watch Video
+                                    {{ request()->lang != 'ta' ? 'Watch Video' : 'வீடியோவை பார்க்கவும்' }}
                                 </a>
                             </div>
                         </div>

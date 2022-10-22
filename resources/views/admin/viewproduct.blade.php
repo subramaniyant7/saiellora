@@ -37,8 +37,8 @@
                                             <th>Product Image</th>
                                             <th>Product Price</th>
                                             <th>Product Description</th>
-                                            <th>Product Size</th>
                                             <th>Product Type of Metal</th>
+                                            <th>Product Size</th>
                                             <th>Is Latest</th>
                                             <th>Is MOst Popular</th>
                                             <th>Status</th>
@@ -62,12 +62,12 @@
                                                     $subcategory = $subcategoryInfo[0]->subcategory_name;
                                                 }
 
-                                                $productMetalInfo = App\Http\Controllers\admin\HelperController::getProductMetal($product->product_size);
+                                                $productMetalInfo = App\Http\Controllers\admin\HelperController::getProductMetal($product->product_type_of_metal);
                                                 if(count($productMetalInfo)){
                                                     $productMetal = $productMetalInfo[0]->product_metal_name;
                                                 }
 
-                                                $productSizeInfo = App\Http\Controllers\admin\HelperController::getProductSize($product->product_type_of_metal);
+                                                $productSizeInfo = App\Http\Controllers\admin\HelperController::getProductSize($product->product_size);
                                                 if(count($productSizeInfo)){
                                                     $productSize = $productSizeInfo[0]->product_size_name;
                                                 }

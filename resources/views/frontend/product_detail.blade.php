@@ -151,7 +151,7 @@
                                         role="listbox">
                                         @foreach ($categoryInfo as $categoryInfo)
                                             <a class="thumbnail thumbnail--media-image active slick-slide slick-current slick-active"
-                                                href="javascript:void(0)"
+                                                href="{{ url(FRONTENDURL . 'products?category=' . encryption($categoryInfo->category_id)) }}"
                                                 data-src="{{ URL::asset('uploads/products/additional/' . $categoryInfo->product_image) }}"
                                                 data-full-image-width="768" data-media-type="image"
                                                 data-media-id="25365304869024" aria-label="Select thumbnail"
@@ -186,13 +186,19 @@
                             data-cc-animate-delay="0.5s" style="">
                             <div class="brand-and-type feature-col product-detail__gap-sm">
                                 <span class="type">
-                                    <a href="javascript:void(0)"
-                                        title="">{{ getCategoryDetails($productInfo[0]->product_category)[0]->category_name }}</a>
+                                    @php
+                                        $catInfo = getCategoryDetails($productInfo[0]->product_category);
+                                    @endphp
+                                    <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($catInfo[0]->category_id)) }}"
+                                        title="">
+
+                                        {{ request()->lang != 'ta' ? $catInfo[0]->category_name : $catInfo[0]->category_name_tamil }}
+                                    </a>
                                 </span>
                             </div>
 
                             <h1 class="product-title product-detail__gap-sm">
-                                {{ $productInfo[0]->product_name }}
+                                {{ request()->lang != 'ta' ? $productInfo[0]->product_name : ($productInfo[0]->product_name_tamil != '' ? $productInfo[0]->product_name_tamil : $productInfo[0]->product_name) }}
                             </h1>
 
                             @if ($productInfo[0]->product_price > 0)
@@ -204,12 +210,20 @@
                             <div class="cc-rating-container product-detail__gap-sm"></div>
 
                             <div class="product-detail__gap-sm" data-show-in-quickbuy="true">
-                                {{ $productInfo[0]->product_description }} <br /><br /><br />
+                                {{ request()->lang != 'ta' ? $productInfo[0]->product_description : ($productInfo[0]->product_description_tamil != '' ? $productInfo[0]->product_description_tamil : $productInfo[0]->product_description) }}
+                                <br /><br /><br />
 
-                                <b>Size : </b> <span
-                                    class="metafield-multi_line_text_field">{{ getProductMetal($productInfo[0]->product_size)[0]->product_metal_name }}</span>
-                                |<b> Type of Metal :
-                                </b>{{ getProductSize($productInfo[0]->product_type_of_metal)[0]->product_size_name }}<br><br><br>
+                                <b>{{ request()->lang != 'ta' ? 'Size' : 'அளவு' }} : </b> <span
+                                    class="metafield-multi_line_text_field">
+                                    @php
+                                        $metalInfo = getProductMetal($productInfo[0]->product_size);
+                                        $productSizeInfo = getProductSize($productInfo[0]->product_type_of_metal);
+                                    @endphp
+                                    {{ request()->lang != 'ta' ? $metalInfo[0]->product_metal_name : ($metalInfo[0]->product_metal_name_tamil != '' ? $metalInfo[0]->product_metal_name_tamil : $metalInfo[0]->product_metal_name) }}</span>
+                                |<b> {{ request()->lang != 'ta' ? 'Type of Metal' : 'உலோக வகை' }} :
+                                </b>
+                                {{ request()->lang != 'ta' ? $productSizeInfo[0]->product_size_name : ($productSizeInfo[0]->product_size_name_tamil != '' ? $productSizeInfo[0]->product_size_name_tamil : $productSizeInfo[0]->product_size_name) }}
+                                <br><br><br>
                             </div>
 
                         </div>
@@ -222,82 +236,88 @@
         <div id="shopify-section-template--15270806290592__product-recommendations" class="shopify-section">
             <div class="product-recommendations cc-animate-init -in cc-animate-complete" data-product-id="7231342510240"
                 data-section-id="template--15270806290592__product-recommendations"
-                data-section-type="product-recommendations"
-                data-url="#"
-                data-cc-animate="">
+                data-section-type="product-recommendations" data-url="#" data-cc-animate="">
                 <section class="border-top section products-section">
                     <div class="container">
-                        <h2 class="section-heading">You may also like</h2>
-                        <div class="product-grid row grid one-row" data-normheights=".image" data-normheights-inner="img"
-                            style="">
+                        <h1 class="section-heading" style="font-size: 30px;padding-top: 1em;">
+                            {{ request()->lang != 'ta' ? 'You may also like' : 'நீயும் விரும்புவாய்' }} </h2>
+                            <div class="product-grid row grid one-row" data-normheights=".image"
+                                data-normheights-inner="img" style="">
 
-                            @foreach ($productRelatedInfo as $relatedproducts)
-                                <div class="product-block layout-align-above align-center flex column max-cols-5 min-cols-2 product-block--gutter-0 product-block--gap-10 product-block--border-true product-block--no-quickbuy"
-                                    id="template--15270806290592__product-recommendations_7281726816416">
-                                    <div class="product-block__inner">
-                                        <div class="image image--shape-natural image--with-secondary"
-                                            style="min-height: 361.062px;">
-                                            <div class="inner">
-                                                <a href="{{ url(FRONTENDURL.'productdetails/'.encryption($relatedproducts->product_id)) }}"
-                                                    aria-label="German Silver - Urli with Round Stand - 10 Inches - WL1054">
-                                                    <div class="image__primary">
-                                                        <div class="rimage-outer-wrapper" style="max-width: 768px">
-                                                            <div class="rimage-wrapper"
-                                                                style="padding-top:133.33333333333334%">
-                                                                <img class="rimage__image "
-                                                                    data-lazy-src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
-                                                                    loading="lazy" alt="" width="768"
-                                                                    height="1024"
-                                                                    src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
-                                                                    data-lazy-loaded="true">
+                                @foreach ($productRelatedInfo as $relatedproducts)
+                                    <div class="product-block layout-align-above align-center flex column max-cols-5 min-cols-2 product-block--gutter-0 product-block--gap-10 product-block--border-true product-block--no-quickbuy"
+                                        id="template--15270806290592__product-recommendations_7281726816416">
+                                        <div class="product-block__inner">
+                                            <div class="image image--shape-natural image--with-secondary"
+                                                style="min-height: 361.062px;">
+                                                <div class="inner">
+                                                    <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id)) }}"
+                                                        aria-label="German Silver - Urli with Round Stand - 10 Inches - WL1054">
+                                                        <div class="image__primary">
+                                                            <div class="rimage-outer-wrapper" style="max-width: 768px">
+                                                                <div class="rimage-wrapper"
+                                                                    style="padding-top:133.33333333333334%">
+                                                                    <img class="rimage__image "
+                                                                        data-lazy-src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
+                                                                        loading="lazy" alt="" width="768"
+                                                                        height="1024"
+                                                                        src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
+                                                                        data-lazy-loaded="true">
 
+                                                                    <noscript>
+                                                                        <img src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
+                                                                            alt="" class="rimage__image ">
+                                                                    </noscript>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="image__secondary">
+                                                            <div class="rimage-outer-wrapper rimage-background"
+                                                                data-lazy-bg="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
+                                                                data-parent-fit="contain" data-lazy-loaded="true"
+                                                                style="background-image: url(&quot;{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}&quot;);">
                                                                 <noscript>
-                                                                    <img src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
-                                                                        alt="" class="rimage__image ">
+                                                                    <div class="rimage-wrapper"
+                                                                        style="padding-top:133.33333333333334%">
+                                                                        <img src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
+                                                                            alt="" class="rimage__image">
+                                                                    </div>
                                                                 </noscript>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-block__title-price">
+                                                <a class="title"
+                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id)) }}">
 
-                                                    <div class="image__secondary">
-                                                        <div class="rimage-outer-wrapper rimage-background"
-                                                            data-lazy-bg="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
-                                                            data-parent-fit="contain" data-lazy-loaded="true"
-                                                            style="background-image: url(&quot;{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}&quot;);">
-                                                            <noscript>
-                                                                <div class="rimage-wrapper"
-                                                                    style="padding-top:133.33333333333334%">
-                                                                    <img src="{{ URL::asset('uploads/products/' . $relatedproducts->product_image) }}"
-                                                                        alt="" class="rimage__image">
-                                                                </div>
-                                                            </noscript>
-                                                        </div>
-                                                    </div>
+                                                    {{ request()->lang != 'ta' ? $relatedproducts->product_name : ($relatedproducts->product_name_tamil != '' ? $relatedproducts->product_name_tamil : $relatedproducts->product_name) }}
                                                 </a>
+                                                @if ($relatedproducts->product_price > 0)
+                                                    <div class="price ">
+                                                        <span class="amount theme-money">Rs
+                                                            {{ number_format($relatedproducts->product_price, 2) }}</span>
+                                                    </div>
+                                                @endif
                                             </div>
-                                        </div>
-                                        <div class="product-block__title-price">
-                                            <a class="title"
-                                                href="{{ url(FRONTENDURL.'productdetails/'.encryption($relatedproducts->product_id)) }}">
-                                                {{ $relatedproducts->product_name }}
-                                            </a>
-                                            @if($relatedproducts->product_price > 0)
-                                            <div class="price ">
-                                                <span class="amount theme-money">Rs  {{ number_format($relatedproducts->product_price,2) }}</span>
-                                            </div>
-                                            @endif
                                         </div>
                                     </div>
+                                @endforeach
+
+
+                                <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2">
                                 </div>
-                            @endforeach
-
-
-                            <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2"></div>
-                            <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2"></div>
-                            <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2"></div>
-                            <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2"></div>
-                            <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2"></div>
-                        </div>
+                                <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2">
+                                </div>
+                                <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2">
+                                </div>
+                                <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2">
+                                </div>
+                                <div class="product-block product-block--flex-spacer flex column max-cols-5 min-cols-2">
+                                </div>
+                            </div>
                     </div>
                 </section>
             </div>

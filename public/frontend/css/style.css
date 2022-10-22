@@ -72,7 +72,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
   display: block;
 }
 
-
+.product-detail__gap-sm{
+    font-size: 25px;
+}
 #button {
     display: inline-block;
     background-color: #FF9800;
@@ -4688,7 +4690,7 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
   }
 }
 .main-search__form button svg, .main-search__form button svg g {
-  fill: currentColor;
+  fill: #3a1811;
 }
 
 .current-cart-icon {
@@ -5672,7 +5674,6 @@ body:not(.tab-used) .main-search__form .id-main-search__product-types select:foc
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
 }
 .rimage-wrapper .rimage__image.blur-in {
   -webkit-filter: blur(10px);
@@ -10608,7 +10609,7 @@ html.template-password #password-login .password-owner {
   top: 1px;
 }
 .product-list-toolbar .cc-toolbar-filter-toggle {
-  color: #666666;
+  color: #3a1811;
   white-space: nowrap;
 }
 @media (max-width: 767px) {

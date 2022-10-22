@@ -8,14 +8,14 @@
                     <!-- Begin breadcrumbs -->
                     <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                            <a href="{{ url(FRONTENDURL) }}" itemprop="item"><span itemprop="name">Home</span></a>
+                            <a href="{{ url(FRONTENDURL) }}" itemprop="item"><span itemprop="name"> {{ request()->lang != 'ta' ? 'Home' : 'வீடு' }}</span></a>
                             <meta itemprop="position" content="1">
                         </li>
 
                         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
                             <span class="breadcrumbs-divider"> / </span>
                             <a class="breadcrumb-active" href="javascript:void(0)" itemprop="item"><span
-                                    itemprop="name">Blogs</span></a>
+                                    itemprop="name">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</span></a>
                             <meta itemprop="position" content="2">
                         </li>
                     </ul>
@@ -26,7 +26,7 @@
                 <div class="page-title opposing-items float-right cc-animate-init -in cc-animate-complete"
                     data-cc-animate="" data-cc-animate-delay="0.2s" style="">
                     <h1 class="left">
-                        Blogs
+                        {{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}
                     </h1>
                 </div>
 
@@ -39,7 +39,7 @@
                                 <h2>
                                     <a href="/blogs/customer-tales/a-host-of-wedding-gift-options-not-confused-just-thrilled"
                                         title="">
-                                       {{ $blog->blog_title }}
+                                        {{ request()->lang != 'ta' ? $blog->blog_title : ($blog->blog_title_tamil != '' ? $blog->blog_title_tamil : $blog->blog_title) }}
                                     </a>
                                 </h2>
 
@@ -50,7 +50,8 @@
                                     </div>
                                     <p>
                                         <span>
-                                            {{ $blog->blog_description }}
+                                            {{ request()->lang != 'ta' ? $blog->blog_description : ($blog->blog_description_tamil != '' ? $blog->blog_description_tamil : $blog->blog_description) }}
+
                                         </span>
                                     </p>
                                 </div>

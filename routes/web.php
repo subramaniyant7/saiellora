@@ -33,6 +33,8 @@ Route::get('/faq', [FrontendController::class, 'FAQ']);
 Route::get('/category', [FrontendController::class, 'AllCategory']);
 Route::get('/products', [FrontendController::class, 'Category']);
 Route::get('/productdetails/{id}', [FrontendController::class, 'ProductDetails']);
+Route::get('/filter_data', [FrontendController::class, 'FilterData']);
+
 
 
 Route::prefix(ADMINURL)->group(function () {

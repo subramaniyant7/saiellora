@@ -17,14 +17,15 @@
                             data-cc-animate="">
                             <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                    <a href="{{ url(FRONTENDURL) }}" itemprop="item"><span itemprop="name">Home</span></a>
+                                    <a href="{{ url(FRONTENDURL) }}" itemprop="item"><span
+                                            itemprop="name">{{ request()->lang != 'ta' ? 'Home' : 'வீடு' }}</span></a>
                                     <meta itemprop="position" content="1">
                                 </li>
 
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
                                     <span class="breadcrumbs-divider"> / </span>
                                     <a class="breadcrumb-active" href="javascript:void(0)" itemprop="item"><span
-                                            itemprop="name">{{ $categoryDetails[0]->category_name }}</span></a>
+                                            itemprop="name">{{ request()->lang != 'ta' ? $categoryDetails[0]->category_name : ($categoryDetails[0]->category_name_tamil != '' ? $categoryDetails[0]->category_name_tamil : $categoryDetails[0]->category_name) }}</span></a>
                                     <meta itemprop="position" content="2">
                                 </li>
                             </ul>
@@ -58,7 +59,7 @@
                                             stroke="currentColor">
                                         </circle>
                                     </svg>
-                                    Filter
+                                    {{ request()->lang != 'ta' ? 'Filter' : 'வடிகட்டி' }}
                                     <span class="filter-count"></span>
                                 </a>
                             </div>
@@ -70,8 +71,9 @@
 
                             <form data-filter-form=""
                                 class="cc-product-filter cc-product-filter--sticky cc-sticky-scroll-direction cc-initialized"
-                                style="top: 0px;">
-                                <h2 class="cc-product-filter__mob_title">Filter</h2>
+                                style="top: 0px;" id="filter_form">
+                                <h2 class="cc-product-filter__mob_title">
+                                    {{ request()->lang != 'ta' ? 'Filter' : 'வடிகட்டி' }}</h2>
 
                                 <button type="button" class="cc-product-filter__close" aria-label="Close">
                                     <svg aria-hidden="true" focusable="false" role="presentation" class="icon feather-x"
@@ -79,98 +81,163 @@
                                         <path d="M18 6L6 18M6 6l12 12"></path>
                                     </svg>
                                 </button>
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
-                                    <details class="cc-accordion-item is-open" open="">
-                                        <summary class="cc-accordion-item__title">Category</summary>
-                                        <div class="cc-accordion-item__panel">
-                                            <div class="cc-accordion-item__content">
-                                                @foreach (getActiveRecord('category') as $category)
-                                                    <label class="cc-checkbox ">
-                                                        <input class="cc-checkbox__input"
-                                                            id="Filter-filter.v.availability-1" type="checkbox"
-                                                            name="filter.v.availability"
-                                                            value="{{ encryption($category->category_id) }}"
-                                                            {{ request()->get('category') && $category->category_id == decryption(request()->get('category')) ? 'checked' : '' }}
-                                                            onclick="handlFilter('category', this.value)">
-                                                        <span
-                                                            class="cc-checkbox__label">{{ $category->category_name }}</span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </details>
-                                </div>
-
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
-                                    <details class="cc-accordion-item is-open" open="">
-                                        <summary class="cc-accordion-item__title">Sub-Category</summary>
-                                        <div class="cc-accordion-item__panel">
-                                            <div class="cc-accordion-item__content">
-                                                @foreach (getActiveRecord('subcategory') as $subcategory)
-                                                    <label class="cc-checkbox ">
-                                                        <input class="cc-checkbox__input"
-                                                            id="Filter-filter.v.availability-1" type="checkbox"
-                                                            name="filter.v.availability"
-                                                            value="{{ encryption($subcategory->subcategory_id) }}"
-                                                            {{ request()->get('subcategory') && $subcategory->subcategory_id == decryption(request()->get('subcategory')) ? 'checked' : '' }}
-                                                            onclick="handlFilter('subcategory', this.value)">
-                                                        <span
-                                                            class="cc-checkbox__label">{{ $subcategory->subcategory_name }}</span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </details>
-                                </div>
-
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
-                                    <details class="cc-accordion-item is-open" open="">
-                                        <summary class="cc-accordion-item__title">Product Metal</summary>
-                                        <div class="cc-accordion-item__panel">
-                                            <div class="cc-accordion-item__content">
-                                                @foreach (getActiveRecord('product_metal') as $metal)
-                                                    <label class="cc-checkbox ">
-                                                        <input class="cc-checkbox__input"
-                                                            id="Filter-filter.v.availability-1" type="checkbox"
-                                                            name="filter.v.availability"
-                                                            value="{{ encryption($metal->product_metal_id) }}"
-                                                            {{ request()->get('metal') && $metal->product_metal_id == decryption(request()->get('metal')) ? 'checked' : '' }}
-                                                            onclick="handlFilter('metal', this.value)">
-                                                        <span
-                                                            class="cc-checkbox__label">{{ $metal->product_metal_name }}</span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </details>
-                                </div>
-
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
-                                    <details class="cc-accordion-item is-open" open="">
-                                        <summary class="cc-accordion-item__title">Product Size</summary>
-                                        <div class="cc-accordion-item__panel">
-                                            <div class="cc-accordion-item__content">
-                                                @foreach (getActiveRecord('product_size') as $metal)
-                                                    <label class="cc-checkbox ">
-                                                        <input class="cc-checkbox__input"
-                                                            id="Filter-filter.v.availability-1" type="checkbox"
-                                                            name="filter.v.availability"
-                                                            value="{{ encryption($metal->product_size_id) }}"
-                                                            {{ request()->get('size') && $metal->product_size_id == decryption(request()->get('size')) ? 'checked' : '' }}
-                                                            onclick="handlFilter('size', this.value)">
-                                                        <span
-                                                            class="cc-checkbox__label">{{ $metal->product_size_name }}</span>
-                                                    </label>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </details>
-                                </div>
 
                                 <a href="{{ url(FRONTENDURL . 'products?category=' . request()->get('category')) }}"
                                     type="button" class="clear_all button alt" style="display:none">
-                                    Clear all
+                                    {{ request()->lang != 'ta' ? 'Clear all' : 'அனைத்தையும் அழி' }}
                                 </a>
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
+                                    <details class="cc-accordion-item is-open" open="">
+                                        <summary class="cc-accordion-item__title">
+                                            {{ request()->lang != 'ta' ? 'Category' : 'வகை' }}</summary>
+                                        <div class="cc-accordion-item__panel">
+                                            <div class="cc-accordion-item__content">
+                                                @php
+                                                    $categoryList = request()->get('category') ? explode('~', request()->get('category')) : [];
+                                                    if (count($categoryList)) {
+                                                        foreach ($categoryList as $value) {
+                                                            array_push($categoryList, decryption($value));
+                                                        }
+                                                    }
+                                                @endphp
+                                                @foreach (getActiveRecord('category') as $category)
+                                                    @php
+                                                        $checked = '';
+                                                        if (count($categoryList) && in_array($category->category_id, $categoryList)) {
+                                                            $checked = 'checked';
+                                                        }
+                                                    @endphp
+                                                    <label class="cc-checkbox ">
+                                                        <input class="cc-checkbox__input"
+                                                            id="Filter-filter.v.availability-1" type="checkbox"
+                                                            name="category[]"
+                                                            value="{{ encryption($category->category_id) }}"
+                                                            {{ $checked }}
+                                                            onclick="handlFilter('category', this.value)">
+                                                        <span
+                                                            class="cc-checkbox__label">{{ request()->lang != 'ta' ? $category->category_name : ($category->category_name_tamil != '' ? $category->category_name_tamil : $category->category_name) }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
+                                    <details class="cc-accordion-item is-open" open="">
+                                        <summary class="cc-accordion-item__title">
+                                            {{ request()->lang != 'ta' ? 'Sub-Category' : 'துணை வகை' }}</summary>
+                                        <div class="cc-accordion-item__panel">
+                                            <div class="cc-accordion-item__content">
+                                                @php
+                                                    $subcategoryList = request()->get('subcategory') ? explode('~', request()->get('subcategory')) : [];
+                                                    if (count($subcategoryList)) {
+                                                        foreach ($subcategoryList as $value) {
+                                                            array_push($subcategoryList, decryption($value));
+                                                        }
+                                                    }
+                                                @endphp
+                                                @foreach (getActiveRecord('subcategory') as $subcategory)
+                                                    @php
+                                                        $checked = '';
+                                                        if (count($subcategoryList) && in_array($subcategory->subcategory_id, $subcategoryList)) {
+                                                            $checked = 'checked';
+                                                        }
+                                                    @endphp
+                                                    <label class="cc-checkbox ">
+                                                        <input class="cc-checkbox__input"
+                                                            id="Filter-filter.v.availability-1" type="checkbox"
+                                                            name="subcategory[]"
+                                                            value="{{ encryption($subcategory->subcategory_id) }}"
+                                                            {{ $checked }}
+                                                            onclick="handlFilter('subcategory', this.value)">
+                                                        <span
+                                                            class="cc-checkbox__label">{{ request()->lang != 'ta' ? $subcategory->subcategory_name : ($subcategory->subcategory_name_tamil != '' ? $subcategory->subcategory_name_tamil : $subcategory->subcategory_name) }}</span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
+                                    <details class="cc-accordion-item is-open" open="">
+                                        <summary class="cc-accordion-item__title">
+                                            {{ request()->lang != 'ta' ? 'Product Metal' : 'தயாரிப்பு உலோகம்' }}</summary>
+                                        <div class="cc-accordion-item__panel">
+                                            <div class="cc-accordion-item__content">
+                                                @php
+                                                    $metalList = request()->get('metal') ? explode('~', request()->get('metal')) : [];
+                                                    if (count($metalList)) {
+                                                        foreach ($metalList as $value) {
+                                                            array_push($metalList, decryption($value));
+                                                        }
+                                                    }
+                                                @endphp
+                                                @foreach (getActiveRecord('product_metal') as $metal)
+                                                    @php
+                                                        $checked = '';
+                                                        if (count($metalList) && in_array($metal->product_metal_id, $metalList)) {
+                                                            $checked = 'checked';
+                                                        }
+                                                    @endphp
+                                                    <label class="cc-checkbox ">
+                                                        <input class="cc-checkbox__input"
+                                                            id="Filter-filter.v.availability-1" type="checkbox"
+                                                            name="metal[]"
+                                                            value="{{ encryption($metal->product_metal_id) }}"
+                                                            {{ $checked }}
+                                                            onclick="handlFilter('metal', this.value)">
+                                                        <span class="cc-checkbox__label">
+                                                            {{ request()->lang != 'ta' ? $metal->product_metal_name : ($metal->product_metal_name_tamil != '' ? $metal->product_metal_name_tamil : $metal->product_metal_name) }}
+
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true">
+                                    <details class="cc-accordion-item is-open" open="">
+                                        <summary class="cc-accordion-item__title">
+                                            {{ request()->lang != 'ta' ? 'Product Size' : 'தயாரிப்பு அளவு' }}</summary>
+                                        <div class="cc-accordion-item__panel">
+                                            <div class="cc-accordion-item__content">
+                                                @php
+                                                    $sizeList = request()->get('product_size') ? explode('~', request()->get('product_size')) : [];
+                                                    if (count($sizeList)) {
+                                                        foreach ($sizeList as $value) {
+                                                            array_push($sizeList, decryption($value));
+                                                        }
+                                                    }
+                                                @endphp
+                                                @foreach (getActiveRecord('product_size') as $metal)
+                                                    @php
+                                                        $checked = '';
+                                                        if (count($sizeList) && in_array($metal->product_size_id, $sizeList)) {
+                                                            $checked = 'checked';
+                                                        }
+                                                    @endphp
+                                                    <label class="cc-checkbox ">
+                                                        <input class="cc-checkbox__input"
+                                                            id="Filter-filter.v.availability-1" type="checkbox"
+                                                            name="product_size[]"
+                                                            value="{{ encryption($metal->product_size_id) }}"
+                                                            {{ $checked }} onclick="handlFilter('size', this.value)">
+                                                        <span class="cc-checkbox__label">
+                                                            {{ request()->lang != 'ta' ? $metal->product_size_name : ($metal->product_size_name_tamil != '' ? $metal->product_size_name_tamil : $metal->product_size_name) }}
+
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+
+
                             </form>
 
                             <div class="product-list-container product-list-container--sidebar cc-animate-init -in cc-animate-complete"
@@ -189,6 +256,12 @@
                                             $paginationLimit = isset($number[1]) ? $number[0] + 1 : $number[0];
                                         }
                                     @endphp
+                                    @if (count($totalproducts))
+                                        <div style="display: block; width: 100%;padding-bottom: 1em;">
+                                            <div class="results-count results-count--lower">{{ count($totalproducts) }}
+                                                {{ request()->lang != 'ta' ? 'results' : 'முடிவுகள்' }} </div>
+                                        </div>
+                                    @endif
                                     @forelse ($productsLimit as $product)
                                         <div
                                             class="product-block layout-align-above align-center flex column max-cols-3 min-cols-1 product-block--gutter-0  product-block--gap-10 product-block--border-true
@@ -219,7 +292,8 @@
                                                                     <div class="product-block__title-price">
                                                                         <a class="title"
                                                                             href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}">
-                                                                            {{ $product->product_name }}
+
+                                                                            {{ request()->lang != 'ta' ? $product->product_name : ($product->product_name_tamil != '' ? $product->product_name_tamil : $product->product_name) }}
                                                                         </a>
                                                                         @if ($product->product_price > 0)
                                                                             <div>Rs.{{ $product->product_price }}</div>
@@ -229,20 +303,21 @@
                                                             </div>
 
                                                             <div class="image__secondary">
-                                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}">
-                                                                <div class="rimage-outer-wrapper"
-                                                                    data-lazy-bg="{{ URL::asset('uploads/products/' . $product->product_image) }}"
-                                                                    data-parent-fit="contain" data-lazy-loaded="true"
-                                                                    style="background-image: url(&quot;{{ URL::asset('uploads/products/' . $product->product_image) }}&quot;);">
-                                                                    <noscript>
-                                                                        <div class="rimage-wrapper"
-                                                                            style="padding-top:133.33333333333334%">
-                                                                            <img src="{{ URL::asset('uploads/products/' . $product->product_image) }}"
-                                                                                alt="" class="rimage__image">
-                                                                        </div>
-                                                                    </noscript>
-                                                                </div>
-                                                            </a>
+                                                                <a
+                                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}">
+                                                                    <div class="rimage-outer-wrapper"
+                                                                        data-lazy-bg="{{ URL::asset('uploads/products/' . $product->product_image) }}"
+                                                                        data-parent-fit="contain" data-lazy-loaded="true"
+                                                                        style="background-image: url(&quot;{{ URL::asset('uploads/products/' . $product->product_image) }}&quot;);">
+                                                                        <noscript>
+                                                                            <div class="rimage-wrapper"
+                                                                                style="padding-top:133.33333333333334%">
+                                                                                <img src="{{ URL::asset('uploads/products/' . $product->product_image) }}"
+                                                                                    alt="" class="rimage__image">
+                                                                            </div>
+                                                                        </noscript>
+                                                                    </div>
+                                                                </a>
                                                             </div>
 
 
@@ -252,7 +327,8 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <h1>No Products found</h1>
+                                        <h1> {{ request()->lang != 'ta' ? 'No Products found' : 'தயாரிப்புகள் எதுவும் இல்லை' }}
+                                        </h1>
                                     @endforelse
 
                                     <div
@@ -268,12 +344,7 @@
 
 
                                 <div class="results-pagination ">
-                                    @if (count($totalproducts))
-                                        <div>
-                                            <div class="results-count results-count--lower">{{ count($totalproducts) }}
-                                                results</div>
-                                        </div>
-                                    @endif
+
                                     @if ($paginationLimit > 0)
                                         <div>
                                             <ul class="pagination">

@@ -93,14 +93,14 @@
                 <div class="logo-column column">
                     <div class="footer-logo-container">
                         <a href="{{ url(FRONTENDURL) }}" style="font-size: 38px;">
-                            Saiellora
+                            Sai Ellora
                         </a>
                     </div>
                 </div>
 
                 <div class="text-beside-logo-column column">
                     <div class="rte">
-                        <p><strong>Saiellora -</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <p><strong>Sai Ellora -</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.&nbsp;</p>
                     </div>
                 </div>
@@ -120,7 +120,8 @@
                                 <li>
                                     <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}"
                                         title="{{ $category->category_name }}">
-                                        {{ $category->category_name }}
+                                        {{ request()->lang != 'ta' ? $category->category_name : ($category->category_name_tamil != '' ? $category->category_name_tamil : $category->category_name) }}
+
                                     </a>
                                 </li>
                             @endif
@@ -130,11 +131,11 @@
 
                 <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'category') }}" title="">Products</a>
-                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}" title="">Blogs</a>
-                        <li><a href="{{ url(FRONTENDURL . 'faq') }}" title="">FAQs</a>
-                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}" title="About Us">About Us</a></li>
-                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}" title="">Contact Us</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'category') }}" title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}" title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'faq') }}" title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}" title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}" title="">{{ request()->lang != 'ta' ? 'Contact Us' : 'தொடர்பு கொள்ள' }}</a></li>
                     </ul>
                     <ul class="social_media_footer">
                         <li>
