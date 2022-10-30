@@ -84,6 +84,10 @@ summary {
     display: block;
 }
 
+.product-block.layout-align-above {
+    margin-top: 1em;
+}
+
 .product-detail__gap-sm {
     font-size: 25px;
 }
