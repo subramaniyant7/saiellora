@@ -8,6 +8,22 @@
     .social_media_footer li {
         padding-right: 1em;
     }
+
+    .facebook svg g, .facebook svg g:hover {
+        fill: #039be5 !important;
+    }
+
+    .twitter svg, .twitter svg:hover {
+        fill: #03A9F4 !important;
+    }
+
+    .youtube svg g, .youtube svg g:hover {
+        fill: #FF3D00 !important;
+    }
+
+    .instagram svg g, .instagram svg g:hover{
+        fill : #BC2A8D !important;
+    }
 </style>
 <div id="shopify-section-footer" class="shopify-section">
     <footer id="page-footer" class="page-footer cc-animate-init -in cc-animate-complete" data-section-type="footer"
@@ -100,7 +116,8 @@
 
                 <div class="text-beside-logo-column column">
                     <div class="rte">
-                        <p><strong>Sai Ellora -</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <p><strong>Sai Ellora -</strong> Lorem Ipsum is simply dummy text of the printing and
+                            typesetting industry.
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.&nbsp;</p>
                     </div>
                 </div>
@@ -131,20 +148,27 @@
 
                 <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'category') }}" title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}" title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'faq') }}" title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}" title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
-                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}" title="">{{ request()->lang != 'ta' ? 'Contact Us' : 'தொடர்பு கொள்ள' }}</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'category') }}"
+                                title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}"
+                                title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'faq') }}"
+                                title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
+                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}"
+                                title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
+                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}"
+                                title="">{{ request()->lang != 'ta' ? 'Contact Us' : 'தொடர்பு கொள்ள' }}</a>
+                        </li>
                     </ul>
                     <ul class="social_media_footer">
                         <li>
-                            <a aria-label="Facebook" class="facebook" target="_blank" rel="noopener" href="https://www.facebook.com/people/SAI-Ellora-Handicrafts/100066463855744/">
+                            <a aria-label="Facebook" class="facebook" target="_blank" rel="noopener"
+                                href="https://www.facebook.com/people/SAI-Ellora-Handicrafts/100066463855744/">
                                 <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <title>Facebook</title>
                                     <defs></defs>
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g stroke="none" stroke-width="1" fill="#039be5" fill-rule="evenodd">
                                         <g transform="translate(-325.000000, -295.000000)" fill="#000000">
                                             <path
                                                 d="M350.638355,343 L327.649232,343 C326.185673,343 325,341.813592 325,340.350603 L325,297.649211 C325,296.18585 326.185859,295 327.649232,295 L370.350955,295 C371.813955,295 373,296.18585 373,297.649211 L373,340.350603 C373,341.813778 371.813769,343 370.350955,343 L358.119305,343 L358.119305,324.411755 L364.358521,324.411755 L365.292755,317.167586 L358.119305,317.167586 L358.119305,312.542641 C358.119305,310.445287 358.701712,309.01601 361.70929,309.01601 L365.545311,309.014333 L365.545311,302.535091 C364.881886,302.446808 362.604784,302.24957 359.955552,302.24957 C354.424834,302.24957 350.638355,305.625526 350.638355,311.825209 L350.638355,317.167586 L344.383122,317.167586 L344.383122,324.411755 L350.638355,324.411755 L350.638355,343 L350.638355,343 Z">
@@ -156,8 +180,13 @@
                             </a>
                         </li>
                         <li>
-                            <a aria-label="Twitter" class="twitter" target="_blank" rel="noopener" href="https://twitter.com/karunaveen86">
-                                <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="60px" height="60px">    <path d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z"/></svg>
+                            <a aria-label="Twitter" class="twitter" target="_blank" rel="noopener"
+                                href="https://twitter.com/karunaveen86">
+                                <svg fill="#03A9F4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"
+                                    width="60px" height="60px">
+                                    <path
+                                        d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z" />
+                                </svg>
                             </a>
                         </li>
 
@@ -206,7 +235,7 @@
 
                 <div class="inline-item left" style="float:none">
                     <div class="copy">
-                        Copyright © {{ date('Y') }} <a href="{{ url(FRONTENDURL) }}">Saiellora </a>
+                        Copyright © {{ date('Y') }} <a href="{{ url(FRONTENDURL) }}">Sai Ellora </a>
                     </div>
 
                 </div>

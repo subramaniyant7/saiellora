@@ -183,9 +183,16 @@
             padding-left: 30px;
         }
 
-        .navbar-default {
+        /* .navbar-default {
             background-color: #e7c49c;
             border-color: #e7c49c;
+        } */
+        .navbar-default {
+            background-color: #fff;
+            border-color: #fff;
+        }
+        .product-block.layout-align-above{
+            background: #e7c49c;
         }
 
         @media screen and (min-width:992px) {

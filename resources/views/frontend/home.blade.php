@@ -6,7 +6,7 @@
     @if (count($homepageCategory))
         {{-- Category --}}
         <div id="shopify-section-template--15270806126752__1640476649f7fa543d" class="shopify-section">
-            <section style="background: #e7c49c;" class="border-top section collections-section  section-padding-small"
+            <section style="background: #fff;" class="border-top section collections-section  section-padding-small"
                 data-section-type="featured-collections">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
 
@@ -65,7 +65,7 @@
     @if (count($latestProducts))
         {{-- Latest Products --}}
         <div class="shopify-section has-alt-bg has-full-width-section">
-            <section style="background: #e7c49c;"
+            <section style="background: #fff;"
                 class="border-top section products-section use-alt-bg full-width-section section-padding-small cc-start cc-carousel-scrolling"
                 data-section-type="featured-collection">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
@@ -89,7 +89,7 @@
                                         <div class="image image--shape-natural image--with-secondary"
                                             style="min-height: 278.927px;">
                                             <div class="inner">
-                                                <a href="#" aria-label="Jewel Box with german Oxidised Finish W3431">
+                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($latestproduct->product_id)) }}" aria-label="">
                                                     <div class="image__primary">
                                                         <div class="rimage-outer-wrapper" style="max-width: 768px">
                                                             <div class="rimage-wrapper"
@@ -218,7 +218,7 @@
         </style>
 
         @if (count($homepageBlog) && $homepageBlog[0]->status == 1)
-            <section style="background: #e7c49c;"
+            <section style="background: #fff;"
                 class="border-top section image-with-text cf section-id-template--15270806126752__1660395035d7566d05
                 image-with-text--contain image-with-text--image-right"
                 data-section-type="image-with-text">
@@ -273,7 +273,7 @@
     @if (count($popularProducts))
         {{-- Most Popular Products --}}
         <div class="shopify-section has-alt-bg has-full-width-section">
-            <section style="background: #e7c49c;"
+            <section style="background: #fff;"
                 class="border-top section products-section use-alt-bg full-width-section section-padding-small cc-start cc-carousel-scrolling"
                 data-section-type="featured-collection">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
@@ -297,7 +297,7 @@
                                         <div class="image image--shape-natural image--with-secondary"
                                             style="min-height: 278.927px;">
                                             <div class="inner">
-                                                <a href="#"
+                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($popularProduct->product_id)) }}"
                                                     aria-label="Jewel Box with german Oxidised Finish W3431">
                                                     <div class="image__primary">
                                                         <div class="rimage-outer-wrapper" style="max-width: 768px">
@@ -394,7 +394,7 @@
                 }
             </style>
 
-            <section style="background: #e7c49c;"
+            <section style="background: #fff;"
                 class="border-top section image-with-text cf section-id-template--15270806126752__1661578506d4ee519e
                 image-with-text--contain image-with-text--image-left"
                 data-section-type="image-with-text">
