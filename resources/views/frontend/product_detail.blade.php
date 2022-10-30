@@ -219,10 +219,11 @@
                                         $metalInfo = getProductMetal($productInfo[0]->product_type_of_metal);
                                         $productSizeInfo = getProductSize($productInfo[0]->product_size);
                                     @endphp
-                                    {{ request()->lang != 'ta' ? $metalInfo[0]->product_metal_name : ($metalInfo[0]->product_metal_name_tamil != '' ? $metalInfo[0]->product_metal_name_tamil : $metalInfo[0]->product_metal_name) }}</span>
+                                    {{ request()->lang != 'ta' ? $productSizeInfo[0]->product_size_name : ($productSizeInfo[0]->product_size_name_tamil != '' ? $productSizeInfo[0]->product_size_name_tamil : $productSizeInfo[0]->product_size_name) }}
+                                    </span>
                                 |<b> {{ request()->lang != 'ta' ? 'Type of Metal' : 'உலோக வகை' }} :
                                 </b>
-                                {{ request()->lang != 'ta' ? $productSizeInfo[0]->product_size_name : ($productSizeInfo[0]->product_size_name_tamil != '' ? $productSizeInfo[0]->product_size_name_tamil : $productSizeInfo[0]->product_size_name) }}
+                                {{ request()->lang != 'ta' ? $metalInfo[0]->product_metal_name : ($metalInfo[0]->product_metal_name_tamil != '' ? $metalInfo[0]->product_metal_name_tamil : $metalInfo[0]->product_metal_name) }}
                                 <br><br><br>
                             </div>
 
