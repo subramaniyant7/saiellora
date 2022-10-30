@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('content')
-    {{-- @include('frontend.banner') --}}
+    @include('frontend.banner')
 
     @if (count($homepageCategory))
         {{-- Category --}}

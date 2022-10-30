@@ -18,10 +18,12 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    @include('admin.notification')
+
                     <div class="panel-wrapper collapse in">
                         <div class="panel-body">
+                            @include('admin.notification')
                             <div class="form-wrap mt-40">
+
                                 <form method="post" action="{{ url(ADMINURL . '/saveproductdetails') }}"
                                     enctype='multipart/form-data'>
                                     @csrf

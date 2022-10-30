@@ -686,7 +686,8 @@ class AdminController extends Controller
 
 
         $notify = notification($saveData);
-        return redirect(ADMINURL . '/viewproduct')->with($notify['type'], $notify['msg']);
+        return back()->with($notify['type'], $notify['msg']);
+        // return redirect(ADMINURL . '/viewproduct')->with($notify['type'], $notify['msg']);
     }
 
     public function SaveTamilProductDetails(Request $req)

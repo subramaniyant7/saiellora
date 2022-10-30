@@ -9,20 +9,24 @@
         padding-right: 1em;
     }
 
-    .facebook svg g, .facebook svg g:hover {
+    .facebook svg g,
+    .facebook svg g:hover {
         fill: #039be5 !important;
     }
 
-    .twitter svg, .twitter svg:hover {
+    .twitter svg,
+    .twitter svg:hover {
         fill: #03A9F4 !important;
     }
 
-    .youtube svg g, .youtube svg g:hover {
+    .youtube svg g,
+    .youtube svg g:hover {
         fill: #FF3D00 !important;
     }
 
-    .instagram svg g, .instagram svg g:hover{
-        fill : #BC2A8D !important;
+    .instagram svg g,
+    .instagram svg g:hover {
+        fill: #BC2A8D !important;
     }
 </style>
 <div id="shopify-section-footer" class="shopify-section">
@@ -130,7 +134,7 @@
                     </ul>
                 </div> --}}
 
-                <div class="links-column column" role="navigation" aria-label="Secondary footer navigation">
+                {{-- <div class="links-column column" role="navigation" aria-label="Secondary footer navigation">
                     <ul class="plain">
                         @foreach (getActiveRecord('category') as $k => $category)
                             @if ($k <= 4)
@@ -144,9 +148,10 @@
                             @endif
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
 
-                <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
+
+                <div class="links-column column" role="navigation" aria-label="Secondary footer navigation">
                     <ul class="plain">
                         <li><a href="{{ url(FRONTENDURL . 'category') }}"
                                 title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
@@ -154,6 +159,11 @@
                                 title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
                         <li><a href="{{ url(FRONTENDURL . 'faq') }}"
                                 title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
+                    </ul>
+                </div>
+
+                <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
+                    <ul class="plain">
                         <li><a href="{{ url(FRONTENDURL . 'about_us') }}"
                                 title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
                         <li><a href="{{ url(FRONTENDURL . 'contact_us') }}"
