@@ -216,8 +216,8 @@
                                 <b>{{ request()->lang != 'ta' ? 'Size' : 'அளவு' }} : </b> <span
                                     class="metafield-multi_line_text_field">
                                     @php
-                                        $metalInfo = getProductMetal($productInfo[0]->product_size);
-                                        $productSizeInfo = getProductSize($productInfo[0]->product_type_of_metal);
+                                        $metalInfo = getProductMetal($productInfo[0]->product_type_of_metal);
+                                        $productSizeInfo = getProductSize($productInfo[0]->product_size);
                                     @endphp
                                     {{ request()->lang != 'ta' ? $metalInfo[0]->product_metal_name : ($metalInfo[0]->product_metal_name_tamil != '' ? $metalInfo[0]->product_metal_name_tamil : $metalInfo[0]->product_metal_name) }}</span>
                                 |<b> {{ request()->lang != 'ta' ? 'Type of Metal' : 'உலோக வகை' }} :
