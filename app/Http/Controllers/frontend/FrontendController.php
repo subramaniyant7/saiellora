@@ -15,14 +15,19 @@ class FrontendController extends Controller
     public function SendEmail(Request $request)
     {
         $to      = 'tsubramaniyan2@gamil.com';
-        $subject = 'The test for php mail function';
-        $message = 'Hello';
+        $subject = 'Contact Us';
+        $message = 'Hi Admin,' . '<br>';
+        $message .= 'We got enquiry from Sai Ellora website.' . "<br>";
+        $message .= 'Name :' . "<br>";
+        $message .= 'Phone Number : ' . "<br>";
+        $message .= 'Email :' . "<br>";
+        $message .= 'Message :' . "<br>";
         $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
             'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($to, $subject, $message, $headers);
+            'Content-Type: text/html; charset=UTF-8' . "\r\n";
+        //mail($to, $subject, $message, $headers);
 
-        mail('tsubramaniyan2@gmail.com', 'Contact Us', 'Body of Message Here', 'From: info@saielloravilakkukadai.com');
+        mail($to, $subject, $message, $headers);
 
         // $otp = mt_rand(100000, 999999);
         // $emailContent = ['user_email' => 'tsubramaniyan2@gmail.com', 'user_otp' => $otp];
@@ -63,21 +68,22 @@ class FrontendController extends Controller
         ) {
             $to      = 'tsubramaniyan2@gamil.com';
             $subject = 'Contact Us';
-            $message = 'Hi Admin,'. "<br/>" .
-            'We got enquiry from Sai Ellora website.' . "<br/>" .
-            'Name : '.$request->input('name') ."<br/>".
-            'Email : '.$request->input('email') ."<br/>".
-            'Phone : '.$request->input('phone') ."<br/>".
-            'Message : '.$request->input('body') ."<br/>"
-            ;
+            $message = 'Hi Admin,' . '<br>';
+            $message .= 'We got enquiry from Sai Ellora website.' . "<br>";
+            $message .= 'Name :' . $request->input('name') . "<br>";
+            $message .= 'Phone Number : ' . $request->input('phone') . "<br>";
+            $message .= 'Email :' . $request->input('email') . "<br>";
+            $message .= 'Message :' . $request->input('body') . "<br>";
             $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
                 'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
+                'Content-Type: text/html; charset=UTF-8' . "\r\n";
             mail($to, $subject, $message, $headers);
-            return back()->with('success','Request Submitted successfully. We will contat you soon');
+
+
+            return back()->with('success', 'Request Submitted successfully. We will contat you soon');
             // mail('tsubramaniyan2@gmail.com', 'Contact Us', 'Body of Message Here', 'From: info@saielloravilakkukadai.com');
         }
-        return back()->with('error','Something went wrong. Please try again');
+        return back()->with('error', 'Something went wrong. Please try again');
     }
 
 
