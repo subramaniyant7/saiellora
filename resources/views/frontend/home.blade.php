@@ -23,7 +23,8 @@
 
 
                     <div class="cc-carousel-container ">
-                        <div class="product-grid cc-carousel cc-initialized row product-grid grid grid--max-cols-5" id="category_content">
+                        <div class="product-grid cc-carousel cc-initialized row product-grid grid grid--max-cols-5"
+                            id="category_content">
                             @foreach ($homepageCategory as $category)
                                 <div class="product-block collection-block collection-block--circle flex column max-cols-5 min-cols-2
                                     cc-animate-init -in cc-animate-complete"
@@ -62,25 +63,27 @@
                     </div>
                 </div>
 
-                <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
-                    id="previous_category" data-cc-animate="" aria-label="Previous">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
-                        </path>
-                    </svg>
+                @if (count($homepageCategory) > 5)
+                    <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
+                        id="previous_category" data-cc-animate="" aria-label="Previous">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
+                            </path>
+                        </svg>
 
-                </button>
+                    </button>
 
-                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete" data-cc-animate=""
-                    id="next_category" aria-label="Next">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
-                            stroke-width="2"></path>
-                    </svg>
+                    <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
+                        data-cc-animate="" id="next_category" aria-label="Next">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
+                                stroke-width="2"></path>
+                        </svg>
 
-                </button>
+                    </button>
+                @endif
             </section>
         </div>
     @endif
@@ -169,25 +172,28 @@
                     </div>
                 </div>
 
-                <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
-                    id="previous_product" data-cc-animate="" aria-label="Previous">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
-                        </path>
-                    </svg>
+                @if (count($latestProducts) > 5)
+                    <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
+                        id="previous_product" data-cc-animate="" aria-label="Previous">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811"
+                                stroke-width="2">
+                            </path>
+                        </svg>
 
-                </button>
+                    </button>
 
-                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
-                    data-cc-animate="" id="next_product" aria-label="Next">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
-                            stroke-width="2"></path>
-                    </svg>
+                    <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
+                        data-cc-animate="" id="next_product" aria-label="Next">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z"
+                                stroke="#3a1811" stroke-width="2"></path>
+                        </svg>
 
-                </button>
+                    </button>
+                @endif
             </section>
         </div>
     @endif
@@ -380,25 +386,28 @@
                     </div>
                 </div>
 
+                @if (count($popularProducts) > 5)
+                    <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
+                        id="previouslatest_product" data-cc-animate="" aria-label="Previous">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811"
+                                stroke-width="2">
+                            </path>
+                        </svg>
 
-                <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
-                    id="previouslatest_product" data-cc-animate="" aria-label="Previous">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
-                        </path>
-                    </svg>
+                    </button>
 
-                </button>
-
-                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
-                    data-cc-animate="" id="nextlatest_product" aria-label="Next">
-                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2">
-                        </path>
-                    </svg>
-                </button>
+                    <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
+                        data-cc-animate="" id="nextlatest_product" aria-label="Next">
+                        <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
+                                stroke-width="2">
+                            </path>
+                        </svg>
+                    </button>
+                @endif
             </section>
         </div>
     @endif
