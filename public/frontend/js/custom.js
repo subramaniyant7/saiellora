@@ -12,6 +12,15 @@ $(document).ready(function () {
         document.getElementById('scroll_content').scrollLeft -= 200;
     });
 
+    $("#next_category").click(function () {
+        document.getElementById('category_content').scrollLeft += 200;
+    });
+
+    $("#previous_category").click(function () {
+        console.log('pppp')
+        document.getElementById('category_content').scrollLeft -= 200;
+    });
+
 
     $("#nextlatest_product").click(function () {
         document.getElementById('scrolllatest_content').scrollLeft += 200;

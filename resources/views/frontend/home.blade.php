@@ -23,7 +23,7 @@
 
 
                     <div class="cc-carousel-container ">
-                        <div class="row product-grid grid grid--max-cols-5">
+                        <div class="product-grid cc-carousel cc-initialized row product-grid grid grid--max-cols-5" id="category_content">
                             @foreach ($homepageCategory as $category)
                                 <div class="product-block collection-block collection-block--circle flex column max-cols-5 min-cols-2
                                     cc-animate-init -in cc-animate-complete"
