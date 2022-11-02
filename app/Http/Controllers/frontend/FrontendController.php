@@ -63,12 +63,12 @@ class FrontendController extends Controller
         ) {
             $to      = 'tsubramaniyan2@gamil.com';
             $subject = 'Contact Us';
-            $message = 'Hi Admin,'. "\r\n" .
-            'We got enquiry from Sai Ellora website.' . "\r\n" .
-            'Name : '.$request->input('name') ."\r\n".
-            'Email : '.$request->input('email') ."\r\n".
-            'Phone : '.$request->input('phone') ."\r\n".
-            'Message : '.$request->input('body') ."\r\n"
+            $message = 'Hi Admin,'. "<br/>" .
+            'We got enquiry from Sai Ellora website.' . "<br/>" .
+            'Name : '.$request->input('name') ."<br/>".
+            'Email : '.$request->input('email') ."<br/>".
+            'Phone : '.$request->input('phone') ."<br/>".
+            'Message : '.$request->input('body') ."<br/>"
             ;
             $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
                 'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
