@@ -44,9 +44,8 @@
                                                     <label class="col-md-4 control-label mb-10 text-left">Answer<span
                                                             class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10" name="faq_answer"
-                                                            required
-                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->faq_answer : old('faq_answer') }}">
+                                                        <textarea class="form-control mb-10" name="faq_answer" required>{{isset($action)&& $action == 'edit' ? $data[0]->faq_answer: old('faq_answer')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,9 +115,8 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label mb-10 text-left">Tamil Answer<span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="faq_answer_tamil" required
-                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->faq_answer_tamil : old('faq_answer_tamil') }}">
+                                                        <textarea class="form-control mb-10" name="faq_answer_tamil" required>{{isset($action)&& $action == 'edit' ? $data[0]->faq_answer_tamil: old('faq_answer_tamil')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>

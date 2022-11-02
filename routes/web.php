@@ -31,6 +31,7 @@ Route::get('/blogs', [FrontendController::class, 'Blogs']);
 Route::get('/faq', [FrontendController::class, 'FAQ']);
 
 Route::get('/category', [FrontendController::class, 'AllCategory']);
+Route::get('/subcategory/{id}', [FrontendController::class, 'SubCategory']);
 Route::get('/products', [FrontendController::class, 'Category']);
 Route::get('/productdetails/{id}', [FrontendController::class, 'ProductDetails']);
 Route::get('/filter_data', [FrontendController::class, 'FilterData']);

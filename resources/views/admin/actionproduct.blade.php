@@ -101,9 +101,8 @@
                                                     <label class="col-md-4 control-label mb-10 text-left">Product
                                                         Description<span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="product_description" required
-                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->product_description : old('product_description') }}">
+                                                        <textarea class="form-control mb-10" name="product_description" required>{{isset($action) && $action == 'edit' ? $data[0]->product_description : old('product_description')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>

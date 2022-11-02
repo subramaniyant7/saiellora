@@ -1,11 +1,10 @@
 @extends('frontend.layout')
 
 @section('content')
-
-    <style>
-
-    </style>
-
+    @php
+        $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+        $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+    @endphp
     <main id="content" style="background:#e7c49c;">
         <div id="shopify-section-template--15270806093984__main" class="shopify-section main-collection-section">
             <div class="section collection-page" data-section-type="collection-template"
@@ -17,7 +16,7 @@
                             data-cc-animate="">
                             <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
                                 <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                                    <a href="{{ url(FRONTENDURL) }}" itemprop="item"><span
+                                    <a href="{{ url(FRONTENDURL).$lang }}" itemprop="item"><span
                                             itemprop="name">{{ request()->lang != 'ta' ? 'Home' : 'வீடு' }}</span></a>
                                     <meta itemprop="position" content="1">
                                 </li>
@@ -82,7 +81,7 @@
                                     </svg>
                                 </button>
 
-                                <a href="{{ url(FRONTENDURL . 'products?category=' . request()->get('category')) }}"
+                                <a href="{{ url(FRONTENDURL . 'products?category=' . request()->get('category').$langCon) }}"
                                     type="button" class="clear_all button alt" style="display:none">
                                     {{ request()->lang != 'ta' ? 'Clear all' : 'அனைத்தையும் அழி' }}
                                 </a>
@@ -123,7 +122,8 @@
                                     </details>
                                 </div>
 
-                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true" style="display: {{ request()->get('category') == '' ? 'none' : 'block' }}">
+                                <div class="cc-accordion cc-initialized" data-allow-multi-open="true"
+                                    style="display: {{ request()->get('category') == '' ? 'none' : 'block' }}">
                                     <details class="cc-accordion-item is-open" open="">
                                         <summary class="cc-accordion-item__title">
                                             {{ request()->lang != 'ta' ? 'Sub-Category' : 'துணை வகை' }}</summary>
@@ -270,7 +270,7 @@
                                                 <div class="image image--shape-natural image--with-secondary"
                                                     style="min-height: 365.771px;">
                                                     <div class="inner">
-                                                        <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}"
+                                                        <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id).$lang) }}"
                                                             aria-label="Coffee Mug (Set of 2) - Black Matt - WL0986">
                                                             <div class="image__primary">
                                                                 <div class="rimage-outer-wrapper"
@@ -291,7 +291,7 @@
                                                                     </div>
                                                                     <div class="product-block__title-price">
                                                                         <a class="title"
-                                                                            href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}">
+                                                                            href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id).$lang) }}">
 
                                                                             {{ request()->lang != 'ta' ? $product->product_name : ($product->product_name_tamil != '' ? $product->product_name_tamil : $product->product_name) }}
                                                                         </a>
@@ -304,7 +304,7 @@
 
                                                             <div class="image__secondary">
                                                                 <a
-                                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id)) }}">
+                                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($product->product_id).$lang) }}">
                                                                     <div class="rimage-outer-wrapper"
                                                                         data-lazy-bg="{{ URL::asset('uploads/products/' . $product->product_image) }}"
                                                                         data-parent-fit="contain" data-lazy-loaded="true"

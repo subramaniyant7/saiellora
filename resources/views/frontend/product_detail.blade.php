@@ -1,7 +1,10 @@
 @extends('frontend.layout')
 
 @section('content')
-
+    @php
+        $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+        $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+    @endphp
     <main id="content" style="padding-top:4em;background:#e7c49c;">
         <div id="shopify-section-template--15270806290592__main" class="shopify-section section-product-template">
             <div class="section container product-container product-container--wide " data-section-type="product-template"
@@ -151,7 +154,7 @@
                                         role="listbox">
                                         @foreach ($categoryInfo as $categoryInfo)
                                             <a class="thumbnail thumbnail--media-image active slick-slide slick-current slick-active"
-                                                href="{{ url(FRONTENDURL . 'products?category=' . encryption($categoryInfo->product_id)) }}"
+                                                href="{{ url(FRONTENDURL . 'products?category=' . encryption($categoryInfo->product_id).$langCon) }}"
                                                 data-src="{{ URL::asset('uploads/products/additional/' . $categoryInfo->product_image) }}"
                                                 data-full-image-width="768" data-media-type="image"
                                                 data-media-id="25365304869024" aria-label="Select thumbnail"
@@ -189,7 +192,7 @@
                                     @php
                                         $catInfo = getCategoryDetails($productInfo[0]->product_category);
                                     @endphp
-                                    <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($catInfo[0]->category_id)) }}"
+                                    <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($catInfo[0]->category_id).$langCon) }}"
                                         title="">
 
                                         {{ request()->lang != 'ta' ? $catInfo[0]->category_name : $catInfo[0]->category_name_tamil }}
@@ -220,7 +223,7 @@
                                         $productSizeInfo = getProductSize($productInfo[0]->product_size);
                                     @endphp
                                     {{ request()->lang != 'ta' ? $productSizeInfo[0]->product_size_name : ($productSizeInfo[0]->product_size_name_tamil != '' ? $productSizeInfo[0]->product_size_name_tamil : $productSizeInfo[0]->product_size_name) }}
-                                    </span>
+                                </span>
                                 |<b> {{ request()->lang != 'ta' ? 'Type of Metal' : 'உலோக வகை' }} :
                                 </b>
                                 {{ request()->lang != 'ta' ? $metalInfo[0]->product_metal_name : ($metalInfo[0]->product_metal_name_tamil != '' ? $metalInfo[0]->product_metal_name_tamil : $metalInfo[0]->product_metal_name) }}
@@ -252,7 +255,7 @@
                                             <div class="image image--shape-natural image--with-secondary"
                                                 style="min-height: 361.062px;">
                                                 <div class="inner">
-                                                    <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id)) }}"
+                                                    <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id).$lang) }}"
                                                         aria-label="German Silver - Urli with Round Stand - 10 Inches - WL1054">
                                                         <div class="image__primary">
                                                             <div class="rimage-outer-wrapper" style="max-width: 768px">
@@ -292,7 +295,7 @@
                                             </div>
                                             <div class="product-block__title-price">
                                                 <a class="title"
-                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id)) }}">
+                                                    href="{{ url(FRONTENDURL . 'productdetails/' . encryption($relatedproducts->product_id).$lang) }}">
 
                                                     {{ request()->lang != 'ta' ? $relatedproducts->product_name : ($relatedproducts->product_name_tamil != '' ? $relatedproducts->product_name_tamil : $relatedproducts->product_name) }}
                                                 </a>

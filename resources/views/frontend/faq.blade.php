@@ -12,9 +12,11 @@
             #mainWrap {
                 opacity: 1;
             }
+
             main {
                 opacity: 1;
             }
+
             .s-main-faq__main {
                 flex: 7;
                 min-width: 400px;
@@ -446,9 +448,13 @@
             }
         </style>
 
+        @php
+            $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+            $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+        @endphp
         <div class="faq-container">
             <div class="faq-title">
-                <h1>FAQ</h1>
+                <h1>{{ request()->lang != 'ta' ? 'Frequently Asked Questions(FAQ)' : 'அடிக்கடி கேட்கப்படும் கேள்விகள்'}}</h1>
             </div>
 
             <div class="panel-group" id="accordion">
@@ -458,13 +464,13 @@
                             <h4 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
                                     href="#collapseOne">
-                                    {{ $faq->faq_question}}
+                                    {{ request()->lang != 'ta' ? $faq->faq_question : ($faq->faq_question_tamil !='' ? $faq->faq_question_tamil : $faq->faq_question) }}
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                {{ $faq->faq_answer}}
+                                {{ request()->lang != 'ta' ? $faq->faq_answer : ($faq->faq_answer_tamil !='' ? $faq->faq_answer_tamil : $faq->faq_answer)}}
                             </div>
                         </div>
                     </div>

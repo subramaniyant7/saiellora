@@ -47,7 +47,7 @@ class FHelperController extends Controller
 
     static function getRelatedProducts($id)
     {
-        return DB::table("products")->where('product_id', '!=', $id)->get();
+        return DB::table("products")->where('product_subcategory', '!=', $id)->get();
     }
 
     static function getFilterProductsLimit($filter, $offset, $limit)

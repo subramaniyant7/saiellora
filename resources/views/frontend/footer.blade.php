@@ -30,6 +30,10 @@
     }
 </style>
 <div id="shopify-section-footer" class="shopify-section">
+    @php
+        $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+        $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+    @endphp
     <footer id="page-footer" class="page-footer cc-animate-init -in cc-animate-complete" data-section-type="footer"
         data-cc-animate="">
         <div class="container">
@@ -112,7 +116,7 @@
             <div class="footer-columns row section padless-top">
                 <div class="logo-column column">
                     <div class="footer-logo-container">
-                        <a href="{{ url(FRONTENDURL) }}" style="font-size: 38px;">
+                        <a href="{{ url(FRONTENDURL).$lang }}" style="font-size: 38px;">
                             Sai Ellora
                         </a>
                     </div>
@@ -153,20 +157,20 @@
 
                 <div class="links-column column" role="navigation" aria-label="Secondary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'category') }}"
+                        <li><a href="{{ url(FRONTENDURL . 'category'.$lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'blogs') }}"
+                        <li><a href="{{ url(FRONTENDURL . 'blogs'.$lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'faq') }}"
+                        <li><a href="{{ url(FRONTENDURL . 'faq'.$lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
                     </ul>
                 </div>
 
                 <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'about_us') }}"
+                        <li><a href="{{ url(FRONTENDURL . 'about_us'.$lang) }}"
                                 title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
-                        <li><a href="{{ url(FRONTENDURL . 'contact_us') }}"
+                        <li><a href="{{ url(FRONTENDURL . 'contact_us'.$lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Contact Us' : 'தொடர்பு கொள்ள' }}</a>
                         </li>
                     </ul>

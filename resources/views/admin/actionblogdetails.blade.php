@@ -61,9 +61,8 @@
                                                     <label class="col-md-4 control-label mb-10 text-left">Blog
                                                         Description<span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="blog_description" required
-                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->blog_description : old('blog_description') }}">
+                                                        <textarea class="form-control mb-10" name="blog_description" required>{{isset($action) && $action == 'edit' ? $data[0]->blog_description : old('blog_description')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,9 +160,8 @@
                                                         Description
                                                         <span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="blog_description_tamil" required
-                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->blog_description_tamil : old('blog_description_tamil') }}">
+                                                        <textarea class="form-control mb-10" name="blog_description_tamil" required>{{isset($action) && $action == 'edit' ? $data[0]->blog_description_tamil : old('blog_description_tamil')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>

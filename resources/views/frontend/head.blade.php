@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/all.css') }}">
     <link rel="stylesheet" href="{{ URL::asset(FRONTEND . '/css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
+
 
     <script src="{{ URL::asset(FRONTEND . '/js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset(FRONTEND . '/js/bootstrap.min.js') }}"></script>
@@ -31,7 +33,7 @@
             -webkit-border-radius: 60px;
             -moz-border-radius: 60px;
             border-radius: 60px;
-            z-index:1;
+            z-index: 1;
         }
 
         #scroll span {
@@ -54,5 +56,8 @@
         }
     </style>
 </head>
-
+@php
+    $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+    $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+@endphp
 <a href="#" id="scroll" style="display: none;"><span></span></a>

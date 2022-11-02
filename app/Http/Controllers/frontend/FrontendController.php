@@ -33,7 +33,7 @@ class FrontendController extends Controller
 
     public function HandleContactForm(Request $request)
     {
-        PrintData($request->input());
+        // PrintData($request->input());
     }
 
     public function TermsConditions()
@@ -79,6 +79,17 @@ class FrontendController extends Controller
     {
         $activeCategory = getActiveRecord('category');
         return view('frontend.viewallcategory', compact('activeCategory'));
+    }
+
+    public function SubCategory($id)
+    {
+        try {
+            $subcategory = FHelperController::getSubcategoryByCategory(decryption($id));
+            $categoryId = $id;
+            return view('frontend.viewsubcategory', compact('subcategory', 'categoryId'));
+        } catch (\Exception $e) {
+            return redirect(FRONTENDURL);
+        }
     }
 
     public function Category(Request $request)
@@ -155,7 +166,7 @@ class FrontendController extends Controller
     {
         $productId = decryption($id);
         $productInfo = FHelperController::getProducts($productId);
-        $productRelatedInfo = FHelperController::getRelatedProducts($productId);
+        $productRelatedInfo = FHelperController::getRelatedProducts($productInfo[0]->product_subcategory);
         return view('frontend.product_detail', compact('productInfo', 'productRelatedInfo'));
     }
 

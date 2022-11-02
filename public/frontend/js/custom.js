@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
 
     $("#previouslatest_product").click(function () {
-        console.log('pppp')
+        console.log('pppplll')
         document.getElementById('scrolllatest_content').scrollLeft -= 200;
     });
 

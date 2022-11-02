@@ -57,9 +57,8 @@
                                                     <label class="col-md-4 control-label mb-10 text-left">Description<span
                                                             class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="home_video_description" required
-                                                            value="{{ count($homeVideo) ? $homeVideo[0]->home_video_description : old('home_video_description') }}">
+                                                        <textarea class="form-control mb-10" name="home_video_description" required>{{count($homeVideo) ? $homeVideo[0]->home_video_description : old('home_video_description')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,9 +144,8 @@
                                                     <label class="col-md-4 control-label mb-10 text-left">Tamil
                                                         Description<span class="help"> *</span></label>
                                                     <div class="col-md-8">
-                                                        <input type="text" class="form-control mb-10"
-                                                            name="home_video_description_tamil" required
-                                                            value="{{ count($homeVideo) ? $homeVideo[0]->home_video_description_tamil : old('home_video_description_tamil') }}">
+                                                        <textarea class="form-control mb-10" name="home_video_description_tamil" required>{{count($homeVideo) ? $homeVideo[0]->home_video_description_tamil : old('home_video_description_tamil')}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>

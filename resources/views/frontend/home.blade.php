@@ -2,24 +2,27 @@
 
 @section('content')
     @include('frontend.banner')
-
+    @php
+        $lang = request()->lang != '' ? '?lang=' . request()->lang : '';
+        $langCon = request()->lang != '' ? '&lang=' . request()->lang : '';
+    @endphp
     @if (count($homepageCategory))
         {{-- Category --}}
         <div id="shopify-section-template--15270806126752__1640476649f7fa543d" class="shopify-section">
-            <section style="background: #fff;" class="border-top section collections-section  section-padding-small"
+            <section style="background: #e7c49c;" class="border-top section collections-section  section-padding-small"
                 data-section-type="featured-collections">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
 
                     <div class="opposing-items opposing-items--heading">
                         <h2 class="section-heading left">
-                            <a href="{{ url(FRONTENDURL).'category'}}">
+                            <a href="{{ url(FRONTENDURL) . 'category' . $lang }}">
                                 {{ request()->lang != 'ta' ? 'Categories' : 'வகைகள்' }}
                             </a>
                         </h2>
                     </div>
 
 
-                    <div class="cc-carousel-container not-a-carousel">
+                    <div class="cc-carousel-container ">
                         <div class="row product-grid grid grid--max-cols-5">
                             @foreach ($homepageCategory as $category)
                                 <div class="product-block collection-block collection-block--circle flex column max-cols-5 min-cols-2
@@ -29,7 +32,7 @@
                                         <div class="image">
                                             <div class="inner">
                                                 <a
-                                                    href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}">
+                                                    href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id) . $langCon) }}">
                                                     <div class="rimage-outer-wrapper" style="max-width: 768px">
                                                         <div class="rimage-wrapper" style="padding-top:100%">
                                                             <img class="rimage__image "
@@ -47,7 +50,7 @@
                                             </div>
                                         </div>
                                         <div class="title align-center">
-                                            <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id)) }}"
+                                            <a href="{{ url(FRONTENDURL . 'products?category=' . encryption($category->category_id) . $langCon) }}"
                                                 title="">
                                                 {{ request()->lang != 'ta' ? $category->category_name : ($category->category_name_tamil != '' ? $category->category_name_tamil : $category->category_name) }}
                                             </a>
@@ -58,6 +61,26 @@
                         </div>
                     </div>
                 </div>
+
+                <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
+                    id="previous_category" data-cc-animate="" aria-label="Previous">
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
+                        </path>
+                    </svg>
+
+                </button>
+
+                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete" data-cc-animate=""
+                    id="next_category" aria-label="Next">
+                    <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
+                            stroke-width="2"></path>
+                    </svg>
+
+                </button>
             </section>
         </div>
     @endif
@@ -65,7 +88,7 @@
     @if (count($latestProducts))
         {{-- Latest Products --}}
         <div class="shopify-section has-alt-bg has-full-width-section">
-            <section style="background: #fff;"
+            <section style="background: #e7c49c;"
                 class="border-top section products-section use-alt-bg full-width-section section-padding-small cc-start cc-carousel-scrolling"
                 data-section-type="featured-collection">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
@@ -89,7 +112,8 @@
                                         <div class="image image--shape-natural image--with-secondary"
                                             style="min-height: 278.927px;">
                                             <div class="inner">
-                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($latestproduct->product_id)) }}" aria-label="">
+                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($latestproduct->product_id) . $lang) }}"
+                                                    aria-label="">
                                                     <div class="image__primary">
                                                         <div class="rimage-outer-wrapper" style="max-width: 768px">
                                                             <div class="rimage-wrapper"
@@ -149,16 +173,18 @@
                     id="previous_product" data-cc-animate="" aria-label="Previous">
                     <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2"></path>
+                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
+                        </path>
                     </svg>
 
                 </button>
 
-                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete" data-cc-animate=""
-                    id="next_product" aria-label="Next">
+                <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
+                    data-cc-animate="" id="next_product" aria-label="Next">
                     <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2"></path>
+                        <path font-weight="bold" d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811"
+                            stroke-width="2"></path>
                     </svg>
 
                 </button>
@@ -218,7 +244,7 @@
         </style>
 
         @if (count($homepageBlog) && $homepageBlog[0]->status == 1)
-            <section style="background: #fff;"
+            <section style="background: #e7c49c;"
                 class="border-top section image-with-text cf section-id-template--15270806126752__1660395035d7566d05
                 image-with-text--contain image-with-text--image-right"
                 data-section-type="image-with-text">
@@ -241,7 +267,7 @@
 
                             <div class="light-space-above cc-animate-init -in cc-animate-complete" data-cc-animate=""
                                 data-cc-animate-delay="0.5s" style="">
-                                <a class="btn" href="{{ url(FRONTENDURL . 'blogs') }}">
+                                <a class="btn" href="{{ url(FRONTENDURL . 'blogs' . $lang) }}">
                                     {{ request()->lang != 'ta' ? 'Read Blogs' : 'வலைப்பதிவுகளைப் படியுங்கள்' }}
                                 </a>
                             </div>
@@ -273,7 +299,7 @@
     @if (count($popularProducts))
         {{-- Most Popular Products --}}
         <div class="shopify-section has-alt-bg has-full-width-section">
-            <section style="background: #fff;"
+            <section style="background: #e7c49c;"
                 class="border-top section products-section use-alt-bg full-width-section section-padding-small cc-start cc-carousel-scrolling"
                 data-section-type="featured-collection">
                 <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
@@ -297,7 +323,7 @@
                                         <div class="image image--shape-natural image--with-secondary"
                                             style="min-height: 278.927px;">
                                             <div class="inner">
-                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($popularProduct->product_id)) }}"
+                                                <a href="{{ url(FRONTENDURL . 'productdetails/' . encryption($popularProduct->product_id) . $lang) }}"
                                                     aria-label="Jewel Box with german Oxidised Finish W3431">
                                                     <div class="image__primary">
                                                         <div class="rimage-outer-wrapper" style="max-width: 768px">
@@ -354,19 +380,23 @@
                     </div>
                 </div>
 
+
                 <button class="cc-carousel--previous cc-animate-init cc-initialized -in cc-animate-complete"
                     id="previouslatest_product" data-cc-animate="" aria-label="Previous">
                     <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2"></path>
+                        <path d="M 14.51,6.51 14,6 8,12 14,18 14.51,17.49 9.03,12 Z" stroke="#3a1811" stroke-width="2">
+                        </path>
                     </svg>
+
                 </button>
 
                 <button class="cc-carousel--next cc-animate-init cc-initialized -in cc-animate-complete"
                     data-cc-animate="" id="nextlatest_product" aria-label="Next">
                     <svg fill="#3a1811" viewBox="0 0 24 24" height="24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2"></path>
+                        <path d="M 10,6 9.49,6.51 14.97,12 9.49,17.49 10,18 16,12 Z" stroke="#3a1811" stroke-width="2">
+                        </path>
                     </svg>
                 </button>
             </section>
@@ -394,7 +424,7 @@
                 }
             </style>
 
-            <section style="background: #fff;"
+            <section style="background: #e7c49c;"
                 class="border-top section image-with-text cf section-id-template--15270806126752__1661578506d4ee519e
                 image-with-text--contain image-with-text--image-left"
                 data-section-type="image-with-text">
@@ -427,9 +457,10 @@
                             </h2>
                             <div class="rte align-center cc-animate-init" data-cc-animate="" data-cc-animate-delay="0.4s"
                                 style="transition-delay: 0.4s;">
-                                <p><strong>
+                                <p>
                                     {{ request()->lang != 'ta' ? $videoContent[0]->home_video_description : ($videoContent[0]->home_video_description_tamil != '' ? $videoContent[0]->home_video_description_tamil : $videoContent[0]->home_video_description) }}
-                                   </strong><br><br></p>
+                                    <br><br>
+                                </p>
                             </div>
                             <div class="light-space-above cc-animate-init" data-cc-animate=""
                                 data-cc-animate-delay="0.5s" style="transition-delay: 0.5s;">
