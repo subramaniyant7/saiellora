@@ -12,7 +12,7 @@ use DB;
 class FrontendController extends Controller
 {
 
-    public function SendEmail()
+    public function SendEmail(Request $request)
     {
         $to      = 'tsubramaniyan2@gamil.com';
         $subject = 'The test for php mail function';
@@ -21,7 +21,17 @@ class FrontendController extends Controller
             'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
         mail($to, $subject, $message, $headers);
-        echo 'Email Sent';
+
+        mail('tsubramaniyan2@gmail.com', 'Contact Us', 'Body of Message Here', 'From: info@saielloravilakkukadai.com');
+
+        // $otp = mt_rand(100000, 999999);
+        // $emailContent = ['user_email' => 'tsubramaniyan2@gmail.com', 'user_otp' => $otp];
+        // Mail::send('frontend.email_contactus', $emailContent, function ($message) use ($emailContent) {
+        //     $message->to($emailContent['user_email'], 'Admin')->subject('Email OTP Verification - MechCareer');
+        //     $message->from(getenv('MAIL_USERNAME'), 'Admin');
+        // });
+
+        echo 'Email sent';
     }
 
     public function Home(Request $request)
@@ -47,7 +57,29 @@ class FrontendController extends Controller
     public function HandleContactForm(Request $request)
     {
         // PrintData($request->input());
+        if (
+            $request->input('name') != '' && $request->input('email') != '' && $request->input('phone') != '' &&
+            $request->input('body') != ''
+        ) {
+            $to      = 'tsubramaniyan2@gamil.com';
+            $subject = 'Contact Us';
+            $message = 'Hi Admin,'. "\r\n" .
+            'We got enquiry from Sai Ellora website.' . "\r\n" .
+            'Name : '.$request->input('name') ."\r\n".
+            'Email : '.$request->input('email') ."\r\n".
+            'Phone : '.$request->input('phone') ."\r\n".
+            'Message : '.$request->input('body') ."\r\n"
+            ;
+            $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
+                'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $message, $headers);
+            return back()->with('success','Request Submitted successfully. We will contat you soon');
+            // mail('tsubramaniyan2@gmail.com', 'Contact Us', 'Body of Message Here', 'From: info@saielloravilakkukadai.com');
+        }
+        return back()->with('error','Something went wrong. Please try again');
     }
+
 
     public function TermsConditions()
     {

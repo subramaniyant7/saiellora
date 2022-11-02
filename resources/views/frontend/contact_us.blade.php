@@ -83,6 +83,24 @@
                         <div class="">
                             <h1 class="page-title">
                                 {{ request()->lang != 'ta' ? 'Get in touch with us' : 'எங்களை தொடர்பு கொள்ளவும்' }}</h1>
+                            @if (session('error'))
+                                <div class="form-outline mb-4">
+                                    <div class="col">
+                                        <div class="error-msg">
+                                            <span> Error : {{ session('error') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                            @if (session('success'))
+                                <div class="form-outline mb-4">
+                                    <div class="col">
+                                        <div class="error-msg">
+                                            <span> {{ session('success') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <form method="post" action="{{ url(FRONTENDURL . 'contact_form') }}" id="contact_form"
                                 accept-charset="UTF-8" class="contact-form"><input type="hidden" name="form_type"
                                     value="contact">
@@ -97,7 +115,7 @@
                                 </div>
                                 <div class="input-row" style="display: flex;justify-content:space-around">
                                     <label for="contactFormTelephone">Phone:</label>
-                                    <input type="telephone" id="contactFormTelephone" name="phone" required>
+                                    <input type="number" id="contactFormTelephone" name="phone" required>
                                 </div>
                                 <div class="input-row" style="display: flex;justify-content:space-around">
                                     <label for="contactFormMessage">Message:</label>
