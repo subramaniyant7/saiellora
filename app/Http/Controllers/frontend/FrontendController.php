@@ -11,6 +11,19 @@ use DB;
 
 class FrontendController extends Controller
 {
+
+    public function SendEmail()
+    {
+        $to      = 'tsubramaniyan2@gamil.com';
+        $subject = 'The test for php mail function';
+        $message = 'Hello';
+        $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
+            'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+        echo 'Email Sent';
+    }
+
     public function Home(Request $request)
     {
         $homepageBlog = FHelperController::getHomepageBlog();

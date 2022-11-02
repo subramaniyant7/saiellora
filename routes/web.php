@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\AdminController;
 
 
 Route::get('/', [FrontendController::class, 'Home']);
+Route::get('/sendemail', [FrontendController::class, 'SendEmail']);
 Route::get('/terms_conditions', [FrontendController::class, 'TermsConditions']);
 Route::get('/privacy_policy', [FrontendController::class, 'PrivacyPolicy']);
 Route::get('/terms_service', [FrontendController::class, 'TermsService']);
