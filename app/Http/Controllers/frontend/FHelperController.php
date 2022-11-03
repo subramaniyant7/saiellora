@@ -33,8 +33,8 @@ class FHelperController extends Controller
     static function getFilterProducts($filter)
     {
         $products = DB::table("products");
-        if(array_key_exists('product_name',$filter)){
-            $products->where('product_name', 'like', '%'.$filter['product_name'].'%');
+        if (array_key_exists('product_name', $filter)) {
+            $products->where('product_name', 'like', '%' . $filter['product_name'] . '%');
             unset($filter['product_name']);
         }
         return $products->where($filter)->get();
@@ -45,16 +45,16 @@ class FHelperController extends Controller
         return DB::table("products")->where('product_id', $id)->get();
     }
 
-    static function getRelatedProducts($id)
+    static function getRelatedProducts($id, $prodId)
     {
-        return DB::table("products")->where('product_subcategory', '!=', $id)->get();
+        return DB::table("products")->where([['product_subcategory', $id], ['product_id', '!=', $prodId], ['status', 1]])->get();
     }
 
     static function getFilterProductsLimit($filter, $offset, $limit)
     {
         $products = DB::table("products");
-        if(array_key_exists('product_name',$filter)){
-            $products->where('product_name', 'like', '%'.$filter['product_name'].'%');
+        if (array_key_exists('product_name', $filter)) {
+            $products->where('product_name', 'like', '%' . $filter['product_name'] . '%');
             unset($filter['product_name']);
         }
         return $products->where($filter)->skip($offset)->take($limit)->get();
@@ -98,6 +98,6 @@ class FHelperController extends Controller
 
     static function getSubcategoryByCategory($id)
     {
-        return DB::table('subcategory')->where('category_id', $id)->get();
+        return DB::table('subcategory')->where([['category_id', $id], ['status', 1]])->get();
     }
 }

@@ -1415,7 +1415,7 @@ label,
 .cart-items__heading,
 .product-section legend {
     display: block;
-    color: #353535;
+    color: #3a1811;
     font-size: 90%;
     line-height: 1.2em;
     font-weight: normal;
@@ -7146,8 +7146,8 @@ body:not(.tab-used) .main-search__form select#main-search__product-types:not(.re
 
 .page-footer {
     padding: 4em 0 1em 0;
-    background: #e7c49c;
-    color: #3a1811;
+    background: #3a1811;
+    color: #e7c49c;
 }
 
 @media (min-width: 768px) {
@@ -7244,7 +7244,7 @@ body:not(.tab-used) .main-search__form select#main-search__product-types:not(.re
 }
 
 .page-footer a {
-    color: #343434;
+    color: #e7c49c;
     border-bottom: 1px solid transparent;
 }
 

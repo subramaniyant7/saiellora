@@ -19,7 +19,7 @@
             </style>
 
             <div class="container">
-                <h1 style="text-align:center;">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</h1>
+                <h1 style="text-align:center;font-size:24px;">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</h1>
                 <div class="column-count--2 align-center">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                     industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and

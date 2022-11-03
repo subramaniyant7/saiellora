@@ -18,7 +18,7 @@
             </style>
 
             <div class="container">
-                <h1 style="text-align:center;">
+                <h1 style="text-align:center;font-weight:24px;">
                     {{ request()->lang != 'ta' ? "We'd love to hear from you" : 'நாங்கள் உங்களிடமிருந்து கேட்க விரும்புகிறோம்' }}
                 </h1>
                 <div class="column-container column-count--2 align-center">
@@ -81,7 +81,7 @@
                         class="text-column align-center cc-fade-in-up cc-animate-init -in cc-animate-complete"
                         data-cc-animate="cc-fade-in-up" data-cc-animate-delay="0.3s" style="">
                         <div class="">
-                            <h1 class="page-title">
+                            <h1 class="page-title" style="font-size:24px !important;">
                                 {{ request()->lang != 'ta' ? 'Get in touch with us' : 'எங்களை தொடர்பு கொள்ளவும்' }}</h1>
                             @if (session('error'))
                                 <div class="form-outline mb-4">

@@ -207,6 +207,9 @@ class FrontendController extends Controller
             unset($filter['product_name']);
         }
 
+        $products->where('status', 1);
+        $total->where('status', 1);
+
         $productsLimit = $products->skip($start)->take($limit)->get();
         $totalproducts = $total->get();
 
@@ -217,7 +220,7 @@ class FrontendController extends Controller
     {
         $productId = decryption($id);
         $productInfo = FHelperController::getProducts($productId);
-        $productRelatedInfo = FHelperController::getRelatedProducts($productInfo[0]->product_subcategory);
+        $productRelatedInfo = FHelperController::getRelatedProducts($productInfo[0]->product_subcategory, $productInfo[0]->product_id);
         return view('frontend.product_detail', compact('productInfo', 'productRelatedInfo'));
     }
 

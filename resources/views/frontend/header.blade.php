@@ -33,7 +33,7 @@
                                 <div class="logo align-left">
                                     <a href="{{ url(FRONTENDURL) . $lang }}" itemprop="url" type="{{ request()->lang }}">
                                         <span>Sai Ellora</span>
-                                        <span style="display: block;font-size: 16px">Since 1950</span>
+                                        <span style="display: block;font-size: 16px">Since 1973</span>
                                     </a>
                                 </div>
                             </div>

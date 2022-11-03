@@ -7,7 +7,7 @@
     @endphp
     <div id="shopify-section-template--15270806126752__1640476649f7fa543d" class="shopify-section">
         <section class="border-top section collections-section  section-padding-small"
-            data-section-type="featured-collections">
+            data-section-type="featured-collections" style="background:#e7c49c">
             <div class="container cc-animate-init -in cc-animate-complete" data-cc-animate="">
                 <div class="cc-carousel-container not-a-carousel">
                     <div class="row product-grid grid grid--max-cols-5">
