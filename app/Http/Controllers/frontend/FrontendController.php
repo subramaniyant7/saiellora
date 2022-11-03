@@ -31,7 +31,7 @@ class FrontendController extends Controller
 
         // $otp = mt_rand(100000, 999999);
         // $emailContent = ['user_email' => 'tsubramaniyan2@gmail.com', 'user_otp' => $otp];
-        // Mail::send('frontend.email_contactus', $emailContent, function ($message) use ($emailContent) {
+        // Mail::send('frontend.email_enquiry', $emailContent, function ($message) use ($emailContent) {
         //     $message->to($emailContent['user_email'], 'Admin')->subject('Email OTP Verification - MechCareer');
         //     $message->from(getenv('MAIL_USERNAME'), 'Admin');
         // });

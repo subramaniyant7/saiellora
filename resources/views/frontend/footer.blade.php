@@ -116,7 +116,7 @@
             <div class="footer-columns row section padless-top">
                 <div class="logo-column column">
                     <div class="footer-logo-container">
-                        <a href="{{ url(FRONTENDURL).$lang }}" style="font-size: 38px;">
+                        <a href="{{ url(FRONTENDURL) . $lang }}" style="font-size: 38px;">
                             Sai Ellora
                         </a>
                     </div>
@@ -157,20 +157,20 @@
 
                 <div class="links-column column" role="navigation" aria-label="Secondary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'category'.$lang) }}"
+                        <li><a href="{{ url(FRONTENDURL . 'category' . $lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Products' : 'தயாரிப்புகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'blogs'.$lang) }}"
+                        <li><a href="{{ url(FRONTENDURL . 'blogs' . $lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}</a>
-                        <li><a href="{{ url(FRONTENDURL . 'faq'.$lang) }}"
+                        <li><a href="{{ url(FRONTENDURL . 'faq' . $lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'FAQs' : 'அடிக்கடி கேட்கப்படும்' }}</a>
                     </ul>
                 </div>
 
                 <div class="links-column column" role="navigation" aria-label="Tertiary footer navigation">
                     <ul class="plain">
-                        <li><a href="{{ url(FRONTENDURL . 'about_us'.$lang) }}"
+                        <li><a href="{{ url(FRONTENDURL . 'about_us' . $lang) }}"
                                 title="About Us">{{ request()->lang != 'ta' ? 'About Us' : 'எங்களை பற்றி' }}</a></li>
-                        <li><a href="{{ url(FRONTENDURL . 'contact_us'.$lang) }}"
+                        <li><a href="{{ url(FRONTENDURL . 'contact_us' . $lang) }}"
                                 title="">{{ request()->lang != 'ta' ? 'Contact Us' : 'தொடர்பு கொள்ள' }}</a>
                         </li>
                     </ul>
@@ -240,6 +240,12 @@
                                     </g>
                                 </svg>
                             </a>
+                        </li>
+
+                    </ul>
+                    <ul class="plain">
+                        <li>
+                            <a href="https://saiellora.in/" target="_blank">Saiellora.in</a>
                         </li>
                     </ul>
                 </div>
