@@ -30,7 +30,7 @@
 
                 <div class="page-title opposing-items float-right cc-animate-init -in cc-animate-complete"
                     data-cc-animate="" data-cc-animate-delay="0.2s" style="">
-                    <h1 class="left">
+                    <h1 class="text-center" style="font-size: 24px;">
                         {{ request()->lang != 'ta' ? 'Blogs' : 'வலைப்பதிவுகள்' }}
                     </h1>
                 </div>
