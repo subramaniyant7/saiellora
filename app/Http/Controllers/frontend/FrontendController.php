@@ -25,16 +25,7 @@ class FrontendController extends Controller
         $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
             'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
             'Content-Type: text/html; charset=UTF-8' . "\r\n";
-        //mail($to, $subject, $message, $headers);
-
         mail($to, $subject, $message, $headers);
-
-        // $otp = mt_rand(100000, 999999);
-        // $emailContent = ['user_email' => 'tsubramaniyan2@gmail.com', 'user_otp' => $otp];
-        // Mail::send('frontend.email_enquiry', $emailContent, function ($message) use ($emailContent) {
-        //     $message->to($emailContent['user_email'], 'Admin')->subject('Email OTP Verification - MechCareer');
-        //     $message->from(getenv('MAIL_USERNAME'), 'Admin');
-        // });
 
         echo 'Email sent';
     }
@@ -66,22 +57,20 @@ class FrontendController extends Controller
             $request->input('name') != '' && $request->input('email') != '' && $request->input('phone') != '' &&
             $request->input('body') != ''
         ) {
-            $to      = 'tsubramaniyan2@gamil.com';
+            $to      = 'saiellora@gmail.com';
             $subject = 'Contact Us';
-            $message = 'Hi Admin,' . '<br>';
+            $message = 'Hi Admin,' . "<br>";
             $message .= 'We got enquiry from Sai Ellora website.' . "<br>";
             $message .= 'Name :' . $request->input('name') . "<br>";
             $message .= 'Phone Number : ' . $request->input('phone') . "<br>";
             $message .= 'Email :' . $request->input('email') . "<br>";
             $message .= 'Message :' . $request->input('body') . "<br>";
             $headers = 'From: info@saielloravilakkukadai.com' . "\r\n" .
-                'Reply-To: info@saielloravilakkukadai.com' . "\r\n" .
                 'Content-Type: text/html; charset=UTF-8' . "\r\n";
+
             mail($to, $subject, $message, $headers);
 
-
             return back()->with('success', 'Request Submitted successfully. We will contat you soon');
-            // mail('tsubramaniyan2@gmail.com', 'Contact Us', 'Body of Message Here', 'From: info@saielloravilakkukadai.com');
         }
         return back()->with('error', 'Something went wrong. Please try again');
     }
