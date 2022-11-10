@@ -59,6 +59,22 @@
                                                 </div>
                                             @endif
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3>Tamil </h3>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Size
+                                                        Name<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="product_size_name_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->product_size_name_tamil : old('product_size_name_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <input type="hidden" class="form-control mb-10" name="product_size_id"
                                                 value="{{ isset($action) && $action == 'edit' ? encryption($data[0]->product_size_id) : '' }}">
 
@@ -80,7 +96,7 @@
                                 </form>
                             </div>
 
-
+{{--
                             <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
@@ -118,7 +134,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

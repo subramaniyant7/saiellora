@@ -49,7 +49,7 @@
                                                             {{ isset($data) && $data[0]->blog_image != '' ? '' : 'required' }}
                                                             value="{{ isset($action) && $action == 'edit' ? $data[0]->blog_image : old('blog_image') }}">
                                                         @if (isset($data) && $data[0]->blog_image != '')
-                                                            <span><img style="height: 200px;margin-top: 1em;"
+                                                            <span><img style="height: 200px;width:100%;margin-top: 1em;"
                                                                     src="{{ URL::asset('uploads/blog/' . $data[0]->blog_image) }}"></span>
                                                         @endif
                                                     </div>
@@ -107,6 +107,34 @@
                                                 </div>
                                             @endif
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3>Tamil </h3>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Blog Title
+                                                        <span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="blog_title_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->blog_title_tamil : old('blog_title_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Blog
+                                                        Description
+                                                        <span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <textarea class="form-control mb-10" name="blog_description_tamil" required>{{isset($action) && $action == 'edit' ? $data[0]->blog_description_tamil : old('blog_description_tamil')}}</textarea>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <input type="hidden" name="edit_blogimage"
                                                 value="{{ isset($data) ? $data[0]->blog_image : '' }}">
                                             <input type="hidden" class="form-control mb-10" name="blog_id"
@@ -131,7 +159,7 @@
                             </div>
 
 
-
+{{--
                             <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
@@ -181,7 +209,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

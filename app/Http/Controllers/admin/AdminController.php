@@ -269,12 +269,16 @@ class AdminController extends Controller
     {
         $formData =  $req->except(['_token', 'product_metal_id']);
         if ($req->input('product_metal_id') == '') {
-            $saveData = insertQuery('product_metal', $formData);
+            $saveData = insertQueryId('product_metal', $formData);
+            $metalId = $saveData;
         } else {
-            $productId = decryption($req->input('product_metal_id'));
-            $saveData = updateQuery('product_metal', 'product_metal_id', $productId, $formData);
+            $metalId = decryption($req->input('product_metal_id'));
+            $saveData = updateQuery('product_metal', 'product_metal_id', $metalId, $formData);
         }
         $notify = notification($saveData);
+        if ($req->input('product_metal_id') == '') {
+            return redirect(ADMINURL . '/actionproductmetal/edit/' . encryption($metalId))->with($notify['type'], $notify['msg']);
+        }
         return redirect(ADMINURL . '/viewproductmetal')->with($notify['type'], $notify['msg']);
     }
 
@@ -329,12 +333,16 @@ class AdminController extends Controller
     {
         $formData =  $req->except(['_token', 'product_size_id']);
         if ($req->input('product_size_id') == '') {
-            $saveData = insertQuery('product_size', $formData);
+            $saveData = insertQueryId('product_size', $formData);
+            $sizeId = $saveData;
         } else {
-            $productId = decryption($req->input('product_size_id'));
-            $saveData = updateQuery('product_size', 'product_size_id', $productId, $formData);
+            $sizeId = decryption($req->input('product_size_id'));
+            $saveData = updateQuery('product_size', 'product_size_id', $sizeId, $formData);
         }
         $notify = notification($saveData);
+        if ($req->input('product_size_id') == '') {
+            return redirect(ADMINURL . '/actionproductsize/edit/' . encryption($sizeId))->with($notify['type'], $notify['msg']);
+        }
         return redirect(ADMINURL . '/viewproductsize')->with($notify['type'], $notify['msg']);
     }
 
@@ -415,12 +423,17 @@ class AdminController extends Controller
         $formData['category_homepage'] = $product_latest;
 
         if ($req->input('category_id') == '') {
-            $saveData = insertQuery('category', $formData);
+            $saveData = insertQueryId('category', $formData);
+            $categoryId = $saveData;
         } else {
-            $productId = decryption($req->input('category_id'));
-            $saveData = updateQuery('category', 'category_id', $productId, $formData);
+            $categoryId = decryption($req->input('category_id'));
+            $saveData = updateQuery('category', 'category_id', $categoryId, $formData);
         }
         $notify = notification($saveData);
+
+        if ($req->input('category_id') == '') {
+            return redirect(ADMINURL . '/actioncategory/edit/' . encryption($categoryId))->with($notify['type'], $notify['msg']);
+        }
         return redirect(ADMINURL . '/viewcategory')->with($notify['type'], $notify['msg']);
     }
 
@@ -493,12 +506,18 @@ class AdminController extends Controller
             $formData['subcategory_img'] =  $req->input('edit_subcategoryimage');
         }
         if ($req->input('subcategory_id') == '') {
-            $saveData = insertQuery('subcategory', $formData);
+            $saveData = insertQueryId('subcategory', $formData);
+            $subCategoryId = $saveData;
         } else {
-            $productId = decryption($req->input('subcategory_id'));
-            $saveData = updateQuery('subcategory', 'subcategory_id', $productId, $formData);
+            $subCategoryId = decryption($req->input('subcategory_id'));
+            $saveData = updateQuery('subcategory', 'subcategory_id', $subCategoryId, $formData);
         }
         $notify = notification($saveData);
+
+        if ($req->input('subcategory_id') == '') {
+            return redirect(ADMINURL . '/actionsubcategory/edit/' . encryption($subCategoryId))->with($notify['type'], $notify['msg']);
+        }
+
         return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], $notify['msg']);
     }
 
@@ -553,12 +572,18 @@ class AdminController extends Controller
     {
         $formData =  $req->except(['_token', 'faq_id']);
         if ($req->input('faq_id') == '') {
-            $saveData = insertQuery('faq', $formData);
+            $saveData = insertQueryId('faq', $formData);
+            $faqId = $saveData;
         } else {
-            $productId = decryption($req->input('faq_id'));
-            $saveData = updateQuery('faq', 'faq_id', $productId, $formData);
+            $faqId = decryption($req->input('faq_id'));
+            $saveData = updateQuery('faq', 'faq_id', $faqId, $formData);
         }
         $notify = notification($saveData);
+
+        if ($req->input('faq_id') == '') {
+            return redirect(ADMINURL . '/actionfaq/edit/' . encryption($faqId))->with($notify['type'], $notify['msg']);
+        }
+
         return redirect(ADMINURL . '/viewfaq')->with($notify['type'], $notify['msg']);
     }
 
@@ -684,6 +709,10 @@ class AdminController extends Controller
         }
 
 
+        if ($req->input('product_id') == '') {
+            $notify = notification($saveData);
+            return redirect(ADMINURL . '/actionproduct/edit/' . encryption($productId))->with($notify['type'], $notify['msg']);
+        }
 
         $notify = notification($saveData);
         return back()->with($notify['type'], $notify['msg']);
@@ -768,10 +797,6 @@ class AdminController extends Controller
         return redirect(ADMINURL . '/viewbanner')->with($notify['type'], $notify['msg']);
     }
 
-
-
-
-
     public function ViewBlog()
     {
         $blogDetails = HelperController::getBlogDetails();
@@ -818,12 +843,21 @@ class AdminController extends Controller
             $formData['blog_image'] =  $req->input('edit_blogimage');
         }
         if ($req->input('blog_id') == '') {
-            $saveData = insertQuery('blog_details', $formData);
+            $saveData = insertQueryId('blog_details', $formData);
+            $blogId = $saveData;
         } else {
-            $productId = decryption($req->input('blog_id'));
-            $saveData = updateQuery('blog_details', 'blog_id', $productId, $formData);
+            $blogId = decryption($req->input('blog_id'));
+            $saveData = updateQuery('blog_details', 'blog_id', $blogId, $formData);
         }
         $notify = notification($saveData);
+
+        if ($req->input('blog_id') == '') {
+            $notify = notification($saveData);
+            return redirect(ADMINURL . '/actionblog/edit/' . encryption($blogId))->with($notify['type'], $notify['msg']);
+        }
+
+
+
         return redirect(ADMINURL . '/viewblog')->with($notify['type'], $notify['msg']);
     }
 

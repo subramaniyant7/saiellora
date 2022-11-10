@@ -93,6 +93,34 @@
                                                 </div>
                                             </div>
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3>Tamil </h3>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Title<span
+                                                            class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="home_video_title_tamil" required
+                                                            value="{{ count($homeVideo) ? $homeVideo[0]->home_video_title_tamil : old('home_video_title_tamil') }}">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil
+                                                        Description<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <textarea class="form-control mb-10" name="home_video_description_tamil" required>{{count($homeVideo) ? $homeVideo[0]->home_video_description_tamil : old('home_video_description_tamil')}}</textarea>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
                                             <input type="hidden" name="edit_homeimage"
                                                 value="{{ count($homeVideo) ? $homeVideo[0]->home_video_image : '' }}">
@@ -117,7 +145,7 @@
                             </div>
 
 
-                            <hr />
+                            {{-- <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
                                     <h3>Tamil </h3>
@@ -163,7 +191,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

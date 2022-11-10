@@ -80,8 +80,11 @@
                                         <path d="M18 6L6 18M6 6l12 12"></path>
                                     </svg>
                                 </button>
+                                @php
+                                    $clearCategory = explode('~', request()->get('category'));
 
-                                <a href="{{ url(FRONTENDURL . 'products?category=' . request()->get('category').$langCon) }}"
+                                @endphp
+                                <a href="{{ url(FRONTENDURL . 'products?category=' . $clearCategory[0].$langCon) }}"
                                     type="button" class="clear_all button alt" style="display:none">
                                     {{ request()->lang != 'ta' ? 'Clear all' : 'அனைத்தையும் அழி' }}
                                 </a>

@@ -154,7 +154,7 @@
                                         role="listbox">
                                         @foreach ($categoryInfo as $categoryInfo)
                                             <a class="thumbnail thumbnail--media-image active slick-slide slick-current slick-active"
-                                                href="{{ url(FRONTENDURL . 'products?category=' . encryption($categoryInfo->product_id) . $langCon) }}"
+                                                href="#"
                                                 data-src="{{ URL::asset('uploads/products/additional/' . $categoryInfo->product_image) }}"
                                                 data-full-image-width="768" data-media-type="image"
                                                 data-media-id="25365304869024" aria-label="Select thumbnail"

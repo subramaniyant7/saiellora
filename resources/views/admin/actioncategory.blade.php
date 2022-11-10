@@ -63,7 +63,7 @@
                                                         <input type="file" class="form-control mb-10" name="category_img"
                                                             value="{{ isset($action) && $action == 'edit' ? $data[0]->category_img : old('category_img') }}">
                                                         @if (isset($data) && $data[0]->category_img != '')
-                                                            <span><img style="height: 200px;margin-top: 1em;"
+                                                            <span><img style="height: 200px;width:100%;margin-top: 1em;"
                                                                     src="{{ URL::asset('uploads/category/' . $data[0]->category_img) }}"></span>
                                                         @endif
                                                     </div>
@@ -102,6 +102,21 @@
                                                 </div>
                                             @endif
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3>Tamil </h3>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Category
+                                                        Name<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="category_name_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->category_name_tamil : old('category_name_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <input type="hidden" name="edit_categoryimage"
                                                 value="{{ isset($data) ? $data[0]->category_img : '' }}">
                                             <input type="hidden" class="form-control mb-10" name="category_id"
@@ -124,7 +139,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <hr />
+                            {{-- <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
                                     <h3 >Tamil </h3>
@@ -161,7 +176,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

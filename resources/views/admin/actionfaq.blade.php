@@ -70,6 +70,31 @@
                                                 </div>
                                             @endif
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3>Tamil </h3>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Question<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="faq_question_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->faq_question_tamil : old('faq_question_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Answer<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <textarea class="form-control mb-10" name="faq_answer_tamil" required>{{isset($action)&& $action == 'edit' ? $data[0]->faq_answer_tamil: old('faq_answer_tamil')}}</textarea>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <input type="hidden" class="form-control mb-10" name="faq_id"
                                                 value="{{ isset($action) && $action == 'edit' ? encryption($data[0]->faq_id) : '' }}">
 
@@ -90,7 +115,7 @@
                             </div>
 
 
-                            <hr />
+                            {{-- <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
                                     <h3>Tamil </h3>
@@ -137,7 +162,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

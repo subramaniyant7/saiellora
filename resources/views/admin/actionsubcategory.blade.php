@@ -81,6 +81,22 @@
                                             </div>
                                             @endif
 
+                                            <div style="padding-bottom: 3em;" class="text-center">
+                                                <h3 >Tamil </h3>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label mb-10 text-left">Tamil Sub-Category
+                                                        Name<span class="help"> *</span></label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control mb-10"
+                                                            name="subcategory_name_tamil" required
+                                                            value="{{ isset($action) && $action == 'edit' ? $data[0]->subcategory_name_tamil : old('subcategory_name_tamil') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <input type="hidden" name="edit_subcategoryimage" value="{{ isset($data) ? $data[0]->subcategory_img : '' }}">
                                             <input type="hidden" class="form-control mb-10" name="subcategory_id"
                                                 value ="{{ isset($action) && $action=='edit' ? encryption($data[0]->subcategory_id) : '' }}"  >
@@ -102,7 +118,7 @@
                             </div>
 
 
-                            <hr />
+                            {{-- <hr />
                             <div class="form-wrap mt-40">
                                 <div style="padding-bottom: 3em;" class="text-center">
                                     <h3 >Tamil </h3>
@@ -139,7 +155,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
 
 
                         </div>
