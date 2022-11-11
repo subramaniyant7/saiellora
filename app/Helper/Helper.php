@@ -192,7 +192,7 @@ function PrintData($data){
 }
 
 function getSubcategoryByCategory($id){
-    return DB::table("subcategory")->whereIn('category_id', $id)->get();
+    return DB::table("subcategory")->whereIn('category_id', $id)->where('status', 1)->get();
 }
 
 
