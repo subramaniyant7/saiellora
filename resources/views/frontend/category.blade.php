@@ -140,7 +140,7 @@
                                                         }
                                                     }
                                                 @endphp
-                                                @foreach (getSubcategoryByCategory($categoryList) as $subcategory)
+                                                @forelse (getSubcategoryByCategory($categoryList) as $subcategory)
                                                     @php
                                                         $checked = '';
                                                         if (count($subcategoryList) && in_array($subcategory->subcategory_id, $subcategoryList)) {
@@ -157,7 +157,9 @@
                                                         <span
                                                             class="cc-checkbox__label">{{ request()->lang != 'ta' ? $subcategory->subcategory_name : ($subcategory->subcategory_name_tamil != '' ? $subcategory->subcategory_name_tamil : $subcategory->subcategory_name) }}</span>
                                                     </label>
-                                                @endforeach
+                                                    @empty
+                                                    <span>{{ request()->lang != 'ta' ? 'No Sub Category found' : 'துணைப்பிரிவு எதுவும் இல்லை' }} </span>
+                                                @endforelse
                                             </div>
                                         </div>
                                     </details>
