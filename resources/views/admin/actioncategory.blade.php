@@ -28,20 +28,6 @@
                                     <div class="row">
                                         <div class="col-md-7 col-md-offset-3">
 
-                                            {{-- <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label mb-10  text-left">Menu Name<span class="help"> *</span></label>
-                                                    <div class="col-md-8">
-                                                        <select class="selectpicker" name="menu_id" data-style="form-control btn-default btn-outline" required>
-                                                            <option value="">Select</option>
-                                                            @foreach (getActiveRecord('menu') as $menu)
-                                                                <option value="{{ $menu->menu_id }}" {{ ((isset($action) && $action == 'edit') && $data[0]->menu_id == $menu->menu_id ) ? 'selected' : '' }} >{{ $menu->menu_name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label mb-10 text-left">Category Name<span

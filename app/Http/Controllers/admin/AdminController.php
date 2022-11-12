@@ -387,6 +387,11 @@ class AdminController extends Controller
         if (count($menuData) == 0) return redirect(ADMINURL . '/viewcategory');
 
         if ($option == 'delete') {
+            $productExist = HelperController::getProductDetailsByCategory($actionId);
+            if(count($productExist)){
+                return back()->with('error','This Category already mapped with products.You cannot delete this category');
+            }
+
             $delete = deleteQuery($actionId, 'category', 'category_id');
             $notify = notification($delete);
             return redirect(ADMINURL . '/viewcategory')->with($notify['type'], 'Data Deleted Successfully');
@@ -427,6 +432,12 @@ class AdminController extends Controller
             $categoryId = $saveData;
         } else {
             $categoryId = decryption($req->input('category_id'));
+            $productExist = HelperController::getProductDetailsByCategory($categoryId);
+            if($formData['status'] != 1 && count($productExist)){
+                return back()->with('error','This Category already mapped with products. You cannot disable this category');
+            }
+
+
             $saveData = updateQuery('category', 'category_id', $categoryId, $formData);
         }
         $notify = notification($saveData);
@@ -478,6 +489,10 @@ class AdminController extends Controller
         if (count($subCategoryData) == 0) return redirect(ADMINURL . '/viewsubcategory');
 
         if ($option == 'delete') {
+            $productExist = HelperController::getProductDetailsByCategory($actionId);
+            if(count($productExist)){
+                return back()->with('error','This Category already mapped with products.You cannot delete this category');
+            }
             $delete = deleteQuery($actionId, 'subcategory', 'subcategory_id');
             $notify = notification($delete);
             return redirect(ADMINURL . '/viewsubcategory')->with($notify['type'], 'Data Deleted Successfully');
@@ -510,6 +525,10 @@ class AdminController extends Controller
             $subCategoryId = $saveData;
         } else {
             $subCategoryId = decryption($req->input('subcategory_id'));
+            $productExist = HelperController::getProductDetailsByCategory($subCategoryId);
+            if($formData['status'] != 1 && count($productExist)){
+                return back()->with('error','This Category already mapped with products.You cannot delete this category');
+            }
             $saveData = updateQuery('subcategory', 'subcategory_id', $subCategoryId, $formData);
         }
         $notify = notification($saveData);

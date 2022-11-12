@@ -31,9 +31,13 @@ $(document).ready(function () {
         document.getElementById('scrolllatest_content').scrollLeft -= 200;
     });
 
-
     if (Object.keys(objectParam).length > 1) {
         $('.clear_all').show();
+    }
+
+    if(objectParam.hasOwnProperty('category')){
+        let splitParam = objectParam.category.split('~');
+        if(splitParam.length > 1)  $('.clear_all').show();
     }
 });
 

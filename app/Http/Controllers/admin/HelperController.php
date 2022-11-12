@@ -111,4 +111,13 @@ class HelperController extends Controller
         return DB::table('product_images')->where('product_id',$id)->get();
     }
 
+    static function getProductDetailsByCategory($id)
+    {
+        return DB::table("products")->where('product_category', $id)->get();
+    }
+
+    static function getProductDetailsBySubCategory($id)
+    {
+        return DB::table("products")->where('product_subcategory', $id)->get();
+    }
 }
