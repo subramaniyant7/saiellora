@@ -525,7 +525,7 @@ class AdminController extends Controller
             $subCategoryId = $saveData;
         } else {
             $subCategoryId = decryption($req->input('subcategory_id'));
-            $productExist = HelperController::getProductDetailsByCategory($subCategoryId);
+            $productExist = HelperController::getProductDetailsBySubCategory($subCategoryId);
             if($formData['status'] != 1 && count($productExist)){
                 return back()->with('error','This Category already mapped with products.You cannot delete this category');
             }
