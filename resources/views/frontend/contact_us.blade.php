@@ -42,13 +42,16 @@
                             </a>
                         </div>
 
-                        <h3 class="text-column__title" style="text-align: left">SAI ELLORA</h3>
+                        <h3 class="text-column__title" style="text-align: left">SAI ELLORA - ISO Certified Company</h3>
                         <div class="text-column__text rte align-center" style="text-align: left">
                             <p><i class="fa fa-map-marker" aria-hidden="true"></i> 1/694 MAIN ROAD ,NEAR GIRLS HIGHER
                                 SECONDARY SCHOOL,NEAR HERO HONDA BIKE SHOWROOM,NACHIYAR
                                 KOVIL,PIN 61260</p>
                             <p><i class="fa fa-envelope" aria-hidden="true"></i>
                                 {{ request()->lang != 'ta' ? 'Email' : 'மின்னஞ்சல்' }} - Saiellora@gmail.com</p>
+
+                            <p><i class="fa fa-money" aria-hidden="true"></i>
+                                {{ request()->lang != 'ta' ? 'GST' : 'ஜிஎஸ்டி' }} - 33AXFPN5248M1Z4</p>
 
                             <p><i class="fa fa-phone" aria-hidden="true"></i>
                                 {{ request()->lang != 'ta' ? 'Phone' : 'தொலைபேசி' }} - 7200931501 ,
