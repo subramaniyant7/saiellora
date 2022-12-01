@@ -124,9 +124,7 @@
 
                 <div class="text-beside-logo-column column">
                     <div class="rte">
-                        <p><strong>Sai Ellora -</strong> Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.&nbsp;</p>
+                        <p><strong>Sai Ellora </strong> is an ISO Certified Company with <br/>GSTIN - 33AXFPN5248M1Z4.&nbsp;</p>
                     </div>
                 </div>
 
